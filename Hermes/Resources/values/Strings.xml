@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ApplicationName">Hermes</string>
+    <string name="Email">Email</string>
+    <string name="Password">Contraseña</string>
+    <string name="Login">Iniciar sesión</string>
+    <string name="Signup">Crear cuenta</string>
+
+</resources>
