@@ -6,4 +6,7 @@
     <string name="Login">Iniciar sesión</string>
     <string name="Signup">Crear cuenta</string>
 
+    <string name="OpenDrawer">Opciones</string>
+    <string name="CloseDrawer">Hermes</string>
+
 </resources>

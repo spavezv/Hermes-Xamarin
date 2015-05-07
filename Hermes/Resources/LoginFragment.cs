@@ -17,7 +17,7 @@ namespace Hermes
 	public class LoginFragment : Fragment, View.IOnClickListener
 	{
 
-		private Button _signup, _login;
+		private Button btnSignup, btnLogin;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -31,10 +31,17 @@ namespace Hermes
 		{
 			var view = inflater.Inflate (Resource.Layout.layout_login, container, false);
 
-			_signup = view.FindViewById<Button>(Resource.Id.signup);
-			_signup.SetOnClickListener (this);
-			_login = view.FindViewById<Button>(Resource.Id.login);
-			_login.SetOnClickListener (this);
+			btnSignup = view.FindViewById<Button>(Resource.Id.btnSignup);
+			btnSignup.SetOnClickListener (this);
+			btnLogin = view.FindViewById<Button>(Resource.Id.btnLogin);
+			btnLogin.SetOnClickListener (this);
+
+			btnLogin.Click += (sender, e) =>
+			{
+				var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
+
+				StartActivity(intent);
+			};
 
 			// Use this to return your custom view for this Fragment
 			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
@@ -46,10 +53,10 @@ namespace Hermes
 
 			switch (v.Id) 
 			{
-			case Resource.Id.signup:
+			case Resource.Id.btnSignup:
 				((MainActivity) this.Activity).replaceFragment(new SignupFragment ());
 				break;
-			case Resource.Id.login:
+			case Resource.Id.btnLogin:
 				break;
 			default:
 				break;
