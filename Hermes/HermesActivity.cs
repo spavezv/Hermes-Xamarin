@@ -1,98 +1,55 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Widget;
+using Android.Views;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V4.Widget;
 
 namespace Hermes
 {
-	[Activity (Label = "HermesActivity")]			
-	public class HermesActivity : AppCompatActivity
+    [Activity(Label = "Hermes", Theme = "@style/MyTheme")]			
+	public class HermesActivity : AppCompatActivity 
 	{
-		private SupportToolbar stoolbar;
-		private ActionBarDrawerToggle drawerToggle;
-		private DrawerLayout drawerLayout;
-		private ListView lstItemsDrawer;
+	    private SupportToolbar mToolbar;
+        private MyActionBarDrawerToggle mDrawerToggle;
+        private DrawerLayout mDrawerLayout;
+        private ListView mLeftDrawer;
 
 		protected override void OnCreate (Bundle bundle)
 		{
-			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.HermesMain);
+			base.OnCreate(bundle);
+			SetContentView(Resource.Layout.hermes);
 
-			stoolbar = FindViewById<SupportToolbar> (Resource.Id.toolbar);
-			drawerLayout = FindViewById<DrawerLayout> (Resource.Id.drawer_layout);
-			lstItemsDrawer = FindViewById<ListView> (Resource.Id.left_drawer);
-			lstItemsDrawer.Tag = 0;
+			mToolbar = FindViewById <Toolbar> (Resource.Id.toolbar_hermes);
+            mDrawerLayout = FindViewById <DrawerLayout> (Resource.Id.drawer_layout);
+            mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
 
-			SetSupportActionBar (stoolbar);
-			drawerToggle = new ActionBarDrawerToggle (
-				this, //Activity
-				drawerLayout, //Drawer Layout
-				Resource.String.OpenDrawer, //Open Message
-				Resource.String.ApplicationName); //Close Message
-			
-			drawerLayout.SetDrawerListener(drawerToggle);
-			SupportActionBar.SetHomeButtonEnabled(true);
-			SupportActionBar.SetDisplayShowTitleEnabled(true);
-			drawerToggle.SyncState();
+			SetSupportActionBar (mToolbar);
 
-			if (bundle != null)
-			{
-				if (bundle.GetString("DrawerState") == "Opened")
-				{
-					SupportActionBar.SetTitle(Resource.String.OpenDrawer);
-				}
+            mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
 
-				else
-				{
-					SupportActionBar.SetTitle(Resource.String.ApplicationName);
-				}
-			}
+            mDrawerLayout.SetDrawerListener(mDrawerToggle);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayShowTitleEnabled(true);
+            mDrawerToggle.SyncState();
 
-			else
-			{
-				//This is the first the time the activity is ran
-				SupportActionBar.SetTitle(Resource.String.ApplicationName);
-			}
+			SupportActionBar.Title = "Hermes";
 
 		}
 
+		public override bool OnCreateOptionsMenu (IMenu menu)
+		{
+			MenuInflater.Inflate (Resource.Menu.menu_main, menu);
+			return base.OnCreateOptionsMenu (menu);
+		}
 		public override bool OnOptionsItemSelected (IMenuItem item)
 		{
-			drawerToggle.OnOptionsItemSelected (item);
+            mDrawerToggle.OnOptionsItemSelected(item);
 			return base.OnOptionsItemSelected (item);
 		}
 
-		protected override void OnSaveInstanceState (Bundle outState)
-		{
-			if (drawerLayout.IsDrawerOpen((int)GravityFlags.Left))
-			{
-				outState.PutString("DrawerState", "Opened");
-			}
-
-			else
-			{
-				outState.PutString("DrawerState", "Closed");
-			}
-
-			base.OnSaveInstanceState (outState);
-		}
-
-		protected override void OnPostCreate (Bundle savedInstanceState)
-		{
-			base.OnPostCreate (savedInstanceState);
-			drawerToggle.SyncState();
-		}
 	}
 }
 

@@ -9,4 +9,10 @@
     <string name="OpenDrawer">Opciones</string>
     <string name="CloseDrawer">Hermes</string>
 
+    <string-array name="pages_array">
+      <item>Home</item>
+      <item>Trending</item>
+      <item>Profile</item>
+    </string-array>
+
 </resources>

@@ -1,48 +1,50 @@
 ﻿using Android.App;
-using Android.Views;
 using Android.OS;
 using Android.Support.V7.App;
-using Android.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Widget;
+using Android.Views;
 
 namespace Hermes
 {
-	[Activity (Label = "Hermes", MainLauncher = true, Icon = "@drawable/icon")]
-	public class MainActivity : AppCompatActivity
+    [Activity(Label = "Hermes", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
+	public class MainActivity : AppCompatActivity 
 	{
 
-        protected override void OnCreate(Bundle bundle)
+		protected override void OnCreate (Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.main);
 
 			var toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
-
-			//Toolbar will now take on default actionbar characteristics
 			SetSupportActionBar (toolbar);
 
-			SupportActionBar.Title = "Hermes";
-
-			replaceFragment(new LoginFragment ());
+			Fragment f = new LoginFragment ();
+			FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
+			fragmentTx.Add(Resource.Id.fragment_container, f);
+			fragmentTx.AddToBackStack(null);
+			fragmentTx.Commit();
 
         }
 
 		public void replaceFragment(Fragment f){
-			Toast.MakeText (this, "Cambiar Fragment", ToastLength.Long).Show();
-
-			// Create a new fragment and a transaction.
 			FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-			// The fragment will have the ID of Resource.Id.fragment_container.
-			fragmentTx.Add(Resource.Id.fragment_container, f);
-			// Add the transaction to the back stack.
+			fragmentTx.Replace(Resource.Id.fragment_container, f);
 			fragmentTx.AddToBackStack(null);
-			// Commit the transaction.
 			fragmentTx.Commit();
+		}
 
+		public override bool OnCreateOptionsMenu (IMenu menu)
+		{
+			MenuInflater.Inflate (Resource.Menu.menu_main, menu);
+			return base.OnCreateOptionsMenu (menu);
+		}
+		public override bool OnOptionsItemSelected (IMenuItem item)
+		{	
+			Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();
+			return base.OnOptionsItemSelected (item);
 		}
 
     }
 }
-
