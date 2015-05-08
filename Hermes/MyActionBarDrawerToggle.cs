@@ -21,11 +21,13 @@ namespace Hermes
         public override void OnDrawerOpened(Android.Views.View drawerView)
         {
             base.OnDrawerOpened(drawerView);
+			mHostActivity.SupportActionBar.SetTitle (mOpenedResource);
         }
 
         public override void OnDrawerClosed(Android.Views.View drawerView)
         {
             base.OnDrawerClosed(drawerView);
+			mHostActivity.SupportActionBar.SetTitle (mClosedResource);
         }
 
         public override void OnDrawerSlide(Android.Views.View drawerView, float slideOffset)

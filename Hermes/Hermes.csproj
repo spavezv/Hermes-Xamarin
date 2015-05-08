@@ -43,13 +43,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Xamarin.Android.Support.v4.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.AppCompat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +60,10 @@
     <Compile Include="HermesActivity.cs" />
     <Compile Include="ActionBarDrawerToggle\ActionBarDrawerToggle.cs" />
     <Compile Include="ActionBarDrawerToggle\ItemsAdapter.cs" />
+    <Compile Include="CourtBookingActivity.cs" />
+    <Compile Include="SlindingTab\SlidingTabScrollView.cs" />
+    <Compile Include="SlindingTab\SlidingTabStrip.cs" />
+    <Compile Include="SlindingTab\SlidingTabsFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -79,6 +81,9 @@
     <AndroidResource Include="Resources\menu\menu_hermes.xml" />
     <AndroidResource Include="Resources\layout\main.axml" />
     <AndroidResource Include="Resources\layout\hermes.axml" />
+    <AndroidResource Include="Resources\layout\item_listview.axml" />
+    <AndroidResource Include="Resources\layout\tab_page.axml" />
+    <AndroidResource Include="Resources\layout\sliding_tab_fragment.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -100,4 +105,7 @@
   </Target>
   -->
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SlindingTab\" />
+  </ItemGroup>
 </Project>

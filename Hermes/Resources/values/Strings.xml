@@ -9,10 +9,9 @@
     <string name="OpenDrawer">Opciones</string>
     <string name="CloseDrawer">Hermes</string>
 
-    <string-array name="pages_array">
-      <item>Home</item>
-      <item>Trending</item>
-      <item>Profile</item>
-    </string-array>
-
+    <string name="ReservarCancha">Reservar Cancha</string>
+    <string name="ReservarTaller">Reservar Taller</string>
+    <string name="MisReservas">Mis reservas</string>
+    <string name="Configuracion">Configuracion</string>
+    <string name="AyudaYComentarios">Ayuda y comentarios</string>
 </resources>

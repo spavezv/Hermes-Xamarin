@@ -5,7 +5,11 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Widget;
 using Android.Views;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using ItemClickEventArgs = Android.Widget.AdapterView;
 using Android.Support.V4.Widget;
+using System.Collections.Generic;
+using System.Collections;
+using Android.Content;
 
 namespace Hermes
 {
@@ -16,6 +20,8 @@ namespace Hermes
         private MyActionBarDrawerToggle mDrawerToggle;
         private DrawerLayout mDrawerLayout;
         private ListView mLeftDrawer;
+		private ItemsAdapter mLeftAdapter;
+		private List<string> mLeftDataSet;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -27,15 +33,42 @@ namespace Hermes
             mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
 
 			SetSupportActionBar (mToolbar);
+			mLeftDataSet = new List<string> ();
+			mLeftDataSet.Add ("Reservar cancha");
+			mLeftDataSet.Add ("Reservar taller");
+			mLeftDataSet.Add ("Mis reservas");
+			mLeftDataSet.Add ("Configuración");
+			mLeftDataSet.Add ("Ayuda y comentarios");
+			mLeftAdapter = new ItemsAdapter (this, mLeftDataSet);
+			mLeftDrawer.Adapter = mLeftAdapter;
 
-            mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
+			mLeftDrawer.ItemClick += OnListItemClick;
+
+			mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
 
             mDrawerLayout.SetDrawerListener(mDrawerToggle);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayShowTitleEnabled(true);
             mDrawerToggle.SyncState();
 
-			SupportActionBar.Title = "Hermes";
+			if (bundle != null)
+			{
+				if (bundle.GetString("DrawerState") == "Opened")
+				{
+					SupportActionBar.SetTitle(Resource.String.OpenDrawer);
+				}
+
+				else
+				{
+					SupportActionBar.SetTitle(Resource.String.CloseDrawer);
+				}
+			}
+
+			else
+			{
+				//This is the first the time the activity is ran
+				SupportActionBar.SetTitle(Resource.String.CloseDrawer);
+			}
 
 		}
 
@@ -46,10 +79,54 @@ namespace Hermes
 		}
 		public override bool OnOptionsItemSelected (IMenuItem item)
 		{
-            mDrawerToggle.OnOptionsItemSelected(item);
+			mDrawerToggle.OnOptionsItemSelected(item);
 			return base.OnOptionsItemSelected (item);
 		}
+		protected override void OnSaveInstanceState (Bundle outState)
+		{
+			if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
+			{
+				outState.PutString("DrawerState", "Opened");
+			}
 
+			else
+			{
+				outState.PutString("DrawerState", "Closed");
+			}
+
+			base.OnSaveInstanceState (outState);
+		}
+		protected override void OnPostCreate (Bundle savedInstanceState)
+		{
+			base.OnPostCreate (savedInstanceState);
+			mDrawerToggle.SyncState();
+		}
+		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig)
+		{
+			base.OnConfigurationChanged (newConfig);
+			mDrawerToggle.OnConfigurationChanged(newConfig);
+		}
+
+		void OnListItemClick (object sender, AdapterView.ItemClickEventArgs e)
+		{
+			var listView = sender as ListView;
+			switch (e.Position) {
+			case 0: //Reservar cancha
+				var intent = new Intent (this, typeof(CourtBookingActivity));
+				StartActivity (intent);
+				break;
+//
+//			case 1: //Reservar taller
+//
+//			case 2: //Mis Reserva
+//
+//			case 3: //Configuracion
+//
+//			case 4: //ayuda
+
+		
+			}
+		}
 	}
 }
 
