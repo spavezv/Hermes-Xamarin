@@ -1348,8 +1348,8 @@ namespace Hermes
 			// aapt resource value: 0x7f080041
 			public const int action_context_bar = 2131230785;
 			
-			// aapt resource value: 0x7f080061
-			public const int action_help = 2131230817;
+			// aapt resource value: 0x7f080062
+			public const int action_help = 2131230818;
 			
 			// aapt resource value: 0x7f080002
 			public const int action_menu_divider = 2131230722;
@@ -1366,8 +1366,8 @@ namespace Hermes
 			// aapt resource value: 0x7f080025
 			public const int action_mode_close_button = 2131230757;
 			
-			// aapt resource value: 0x7f080060
-			public const int action_refresh = 2131230816;
+			// aapt resource value: 0x7f080061
+			public const int action_refresh = 2131230817;
 			
 			// aapt resource value: 0x7f080026
 			public const int activity_chooser_view_content = 2131230758;
@@ -1407,6 +1407,9 @@ namespace Hermes
 			
 			// aapt resource value: 0x7f080034
 			public const int customPanel = 2131230772;
+			
+			// aapt resource value: 0x7f08005f
+			public const int datePicker1 = 2131230815;
 			
 			// aapt resource value: 0x7f08003e
 			public const int decor_content_parent = 2131230782;
@@ -1471,8 +1474,8 @@ namespace Hermes
 			// aapt resource value: 0x7f08002a
 			public const int list_item = 2131230762;
 			
-			// aapt resource value: 0x7f08005f
-			public const int list_tab_page = 2131230815;
+			// aapt resource value: 0x7f080060
+			public const int list_tab = 2131230816;
 			
 			// aapt resource value: 0x7f080015
 			public const int middle = 2131230741;
@@ -1759,10 +1762,13 @@ namespace Hermes
 			public const int support_simple_spinner_dropdown_item = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int tab_page = 2130903075;
+			public const int tab_date = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int toolbar = 2130903076;
+			public const int tab_list = 2130903076;
+			
+			// aapt resource value: 0x7f030025
+			public const int toolbar = 2130903077;
 			
 			static Layout()
 			{

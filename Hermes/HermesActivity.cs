@@ -112,8 +112,12 @@ namespace Hermes
 			var listView = sender as ListView;
 			switch (e.Position) {
 			case 0: //Reservar cancha
-				var intent = new Intent (this, typeof(CourtBookingActivity));
-				StartActivity (intent);
+				FragmentTransaction transaction = FragmentManager.BeginTransaction ();
+				SlidingTabsFragment fragment = new SlidingTabsFragment ();
+				transaction.Replace (Resource.Id.container, fragment);
+				transaction.Commit ();
+				mDrawerLayout.CloseDrawers ();
+
 				break;
 //
 //			case 1: //Reservar taller

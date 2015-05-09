@@ -12,8 +12,8 @@ namespace Hermes
 	{
 
 		private const int TITLE_OFFSET_DIPS = 24;
-		private const int TAB_VIEW_PADDING_DIPS = 16;
-		private const int TAB_VIEW_TEXT_SIZE_SP = 12;
+		private const int TAB_VIEW_PADDING_DIPS = 28; //relleno del titulo del tab
+		private const int TAB_VIEW_TEXT_SIZE_SP = 12; //tamaño del texto
 
 		private int mTitleOffset;
 

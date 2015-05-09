@@ -33,6 +33,7 @@ namespace Hermes
 			List<string> items = new List<string>();
 			private List<string> courtTypesItems;
 			private ListView listViewCourtTypes;
+			private DatePickerFragment datePicker;
 
 			public SamplePagerAdapter() : base()
 			{
@@ -54,10 +55,10 @@ namespace Hermes
 
 			public override Java.Lang.Object InstantiateItem(ViewGroup container, int position)
 			{
-				View view = LayoutInflater.From(container.Context).Inflate(Resource.Layout.tab_page, container, false);
+				View view = LayoutInflater.From(container.Context).Inflate(Resource.Layout.tab_list, container, false);
 				if (position == 0) {
-					view = LayoutInflater.From(container.Context).Inflate(Resource.Layout.tab_page, container, false);
-					listViewCourtTypes = view.FindViewById<ListView> (Resource.Id.list_tab_page);
+					view = LayoutInflater.From(container.Context).Inflate(Resource.Layout.tab_list, container, false);
+					listViewCourtTypes = view.FindViewById<ListView> (Resource.Id.list_tab);
 
 					courtTypesItems = new List<string>();
 					courtTypesItems.Add("Fútbol 7");
@@ -69,11 +70,16 @@ namespace Hermes
 
 					listViewCourtTypes.Adapter = myAdapter;
 					container.AddView(view);
-					Toast.MakeText (container.Context, "0", ToastLength.Short).Show ();
+
 					return view;
 				}
 				if (position == 1) {
-					Toast.MakeText (container.Context, "1", ToastLength.Short).Show ();
+					//Date picker
+//					view = LayoutInflater.From(container.Context).Inflate(Resource.Layout.tab_date, container, false);
+//					datePicker = new DatePickerFragment((container.Context), DateTime.Now, this);
+//					container.AddView (view);
+//					return view;
+					Toast.MakeText (container.Context, "3", ToastLength.Short).Show ();
 				}
 				if (position == 2) {
 					Toast.MakeText (container.Context, "2", ToastLength.Short).Show ();
