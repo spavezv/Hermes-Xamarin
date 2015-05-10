@@ -3,14 +3,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:myapp="http://schemas.android.com/apk/res-auto">
 
-	<item android:id="@+id/action_refresh"
+	<item android:id="@+id/ic_settings"
 		
-		android:title="Refresh"
-		myapp:showAsAction="always" />
+		android:title="Ajustes"
+		myapp:showAsAction="never" />
 
-	<item android:id="@+id/action_help"
+	<item android:id="@+id/ic_find"
 		
-		android:title="Help"
+		android:title="Buscar"
 		myapp:showAsAction="always"/>
 
 </menu>

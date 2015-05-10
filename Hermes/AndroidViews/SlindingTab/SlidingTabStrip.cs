@@ -5,7 +5,7 @@ using Android.Content;
 using Android.Util;
 using Android.Views;
 
-namespace Hermes
+namespace Hermes.AndroidViews.SlidingTab
 {
 	public class SlidingTabStrip : LinearLayout
 	{

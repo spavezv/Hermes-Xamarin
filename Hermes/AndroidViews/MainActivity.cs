@@ -4,8 +4,9 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Widget;
 using Android.Views;
+using Hermes.AndroidViews.Account;
 
-namespace Hermes
+namespace Hermes.AndroidViews
 {
     [Activity(Label = "Hermes", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
 	public class MainActivity : AppCompatActivity 

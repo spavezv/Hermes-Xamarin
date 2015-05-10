@@ -5,6 +5,7 @@ using Android.Content;
 using Android.Util;
 using Android.OS;
 using Android.Views;
+using Hermes.AndroidViews.SlidingTab;
 
 namespace Hermes
 {

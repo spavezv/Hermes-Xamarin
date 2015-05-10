@@ -6,8 +6,9 @@ using Android.OS;
 using System.Collections.Generic;
 using Android.Widget;
 using Android.Support.V7.App;
+using Hermes.AndroidViews.CourtBooking;
 
-namespace Hermes
+namespace Hermes.AndroidViews.SlidingTab
 {
 	public class SlidingTabsFragment : Fragment
 	{

@@ -12,7 +12,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace Hermes
+namespace Hermes.AndroidViews.Account
 {
 	public class LoginFragment : Fragment, View.IOnClickListener
 	{
@@ -29,7 +29,7 @@ namespace Hermes
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			var view = inflater.Inflate (Resource.Layout.layout_login, container, false);
+			var view = inflater.Inflate (Resource.Layout.login, container, false);
 
 			btnSignup = view.FindViewById<Button>(Resource.Id.btnSignup);
 			btnSignup.SetOnClickListener (this);

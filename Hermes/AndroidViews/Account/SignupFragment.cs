@@ -12,7 +12,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace Hermes
+namespace Hermes.AndroidViews.Account
 {
 	public class SignupFragment : Fragment
 	{
@@ -25,7 +25,7 @@ namespace Hermes
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			var view = inflater.Inflate (Resource.Layout.layout_signup, container, false);
+			var view = inflater.Inflate (Resource.Layout.signup, container, false);
 
 			return view;
 		}

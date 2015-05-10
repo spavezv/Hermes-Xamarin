@@ -3,7 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 
-namespace Hermes
+namespace Hermes.AndroidViews.CourtBooking
 {
 	public class DatePickerFragment: DialogFragment
 	{

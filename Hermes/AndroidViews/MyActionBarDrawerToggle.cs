@@ -3,7 +3,7 @@ using Android.Support.V7.App;
 using System;
 using SupportActionBarDrawerToggle = Android.Support.V7.App.ActionBarDrawerToggle;
 
-namespace Hermes
+namespace Hermes.AndroidViews
 {
     public class MyActionBarDrawerToggle : SupportActionBarDrawerToggle
     {

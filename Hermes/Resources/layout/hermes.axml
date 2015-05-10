@@ -13,13 +13,7 @@
         <RelativeLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Support V7 Action Bar Drawer Toggle"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
+            android:layout_height="match_parent" />
         <ListView
             android:id="@+id/left_drawer"
             android:layout_width="240dp"
