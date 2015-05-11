@@ -27,9 +27,10 @@ namespace Hermes.AndroidViews.Reservations
     public class MyView : RecyclerView.ViewHolder
     {
       public View mMainView { get; set; }
-      public TextView mName { get; set; }
-      public TextView mSubject { get; set; }
-      public TextView mMessage { get; set; }
+      public TextView mType { get; set; }
+      public TextView mBusiness { get; set; }
+      public TextView mAddress { get; set; }
+      public TextView mDate { get; set; }
 
       public MyView(View view)
         : base(view)
@@ -41,22 +42,13 @@ namespace Hermes.AndroidViews.Reservations
     public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
     {
       View row = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.row_reservation, parent, false);
-      TextView txtName = row.FindViewById<TextView>(Resource.Id.txtName);
-      TextView txtSubject = row.FindViewById<TextView>(Resource.Id.txtSubject);
-      TextView txtMessage = row.FindViewById<TextView>(Resource.Id.txtMessage);
-      MyView view = new MyView(row) { mName = txtName, mSubject = txtSubject, mMessage = txtMessage };
+      TextView txtType = row.FindViewById<TextView>(Resource.Id.txt_type);
+      TextView txtBusiness = row.FindViewById<TextView>(Resource.Id.txt_business);
+      TextView txtAddress = row.FindViewById<TextView>(Resource.Id.txt_address);
+      TextView txtDate = row.FindViewById<TextView>(Resource.Id.txt_date);
+      MyView view = new MyView(row) { mType = txtType, mBusiness = txtBusiness, mAddress= txtAddress, mDate = txtDate };
       return view;
     }
-
-    /**
-     * Añadir elemento a la lista
-     * mReservations.Add(new Reservation() {Name = "name", Subject = "subject, Message = "message"});
-    */
-
-    /**
-     * Remover elemento de la lista
-     * mReservations.Remove(mReservations.Count - 1);
-    */
 
     public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
     {
@@ -64,9 +56,10 @@ namespace Hermes.AndroidViews.Reservations
       //int indexPosition = (mReservations.Count - 1) - position;
       int indexPosition = position;
       myHolder.mMainView.Click += mMainView_Click;
-      myHolder.mName.Text = mReservations[indexPosition].Name;
-      myHolder.mSubject.Text = mReservations[indexPosition].Subject;
-      myHolder.mMessage.Text = mReservations[indexPosition].Message;
+      myHolder.mType.Text = mReservations[indexPosition].Type;
+      myHolder.mBusiness.Text = mReservations[indexPosition].Business;
+      myHolder.mAddress.Text = mReservations[indexPosition].Address;
+      myHolder.mDate.Text = mReservations[indexPosition].Date;
 
       if (position > mCurrentPosition)
       {
@@ -87,11 +80,11 @@ namespace Hermes.AndroidViews.Reservations
 
     private void SetAnimation(View view, int currentAnim)
     {
-      Animator animator = AnimatorInflater.LoadAnimator(mContext, Resource.Animation.flip);
-      animator.SetTarget(view);
-      animator.Start();
-      //Animation anim = AnimationUtils.LoadAnimation(mContext, currentAnim);
-      //view.StartAnimation(anim);
+      //Animator animator = AnimatorInflater.LoadAnimator(mContext, Resource.Animation.flip);
+      //animator.SetTarget(view);
+      //animator.Start();
+      Animation anim = AnimationUtils.LoadAnimation(mContext, currentAnim);
+      view.StartAnimation(anim);
     }
 
     void mMainView_Click(object sender, System.EventArgs e)
@@ -99,8 +92,8 @@ namespace Hermes.AndroidViews.Reservations
       int position = mRecyclerView.GetChildPosition((View)sender);
       //int indexPosition = (mReservations.Count - 1) - position;
       int indexPosition = position;
-      mReservations.Add(new Reservation() {Name = indexPosition.ToString(), Subject = "subject", Message = "message"});
-      Console.WriteLine(mReservations[indexPosition].Name);
+      mReservations.Add(new Reservation() {Type = indexPosition.ToString(), Business = "Empresa", Address = "dirección", Date = "12/12/12"});
+      Console.WriteLine(mReservations[indexPosition].Type);
     }
 
     public override int ItemCount
