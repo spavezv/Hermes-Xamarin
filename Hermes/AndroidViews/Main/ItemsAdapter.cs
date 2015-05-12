@@ -6,7 +6,7 @@ using Android.Views;
 using Android.Support.V7.App;
 using System.Collections;
 
-namespace Hermes
+namespace Hermes.AndroidViews.ActionBarDrawerToggle
 {
 	public class ItemsAdapter : BaseAdapter<string>
 	{

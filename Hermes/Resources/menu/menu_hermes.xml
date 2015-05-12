@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:myapp="http://schemas.android.com/apk/res-auto">
-
-	<item android:id="@+id/ic_settings"
-		
+    <item
+        android:id="@+id/ic_settings"
 		android:title="Ajustes"
-		myapp:showAsAction="never" />
-
-	<item android:id="@+id/ic_find"
-		
-		android:title="Buscar"
+        android:icon="@drawable/ic_action_settings"
+        myapp:showAsAction="never" />
+    <item
+        android:id="@+id/ic_find"
+        android:icon="@drawable/ic_action_search"
 		myapp:showAsAction="always"/>
 
 </menu>

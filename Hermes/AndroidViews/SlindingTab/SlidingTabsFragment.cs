@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Android.Widget;
 using Android.Support.V7.App;
 using Hermes.AndroidViews.CourtBooking;
+using Hermes.AndroidViews.ActionBarDrawerToggle;
 
 namespace Hermes.AndroidViews.SlidingTab
 {

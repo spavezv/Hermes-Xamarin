@@ -12,6 +12,7 @@ using System.Collections;
 using Android.Content;
 using Hermes.AndroidViews.SlidingTab;
 using Hermes.AndroidViews.Reservations;
+using Hermes.AndroidViews.ActionBarDrawerToggle;
 
 namespace Hermes.AndroidViews
 {
@@ -47,6 +48,8 @@ namespace Hermes.AndroidViews
       mLeftAdapter = new ItemsAdapter(this, mLeftDataSet);
       mLeftDrawer.Adapter = mLeftAdapter;
 
+      mLeftDrawer.AddHeaderView(LayoutInflater.From(this).Inflate(Resource.Layout.header, null, false), null, true);
+
       mLeftDrawer.ItemClick += OnListItemClick;
 
       mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
@@ -79,7 +82,7 @@ namespace Hermes.AndroidViews
 
     public override bool OnCreateOptionsMenu(IMenu menu)
     {
-      MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+      MenuInflater.Inflate(Resource.Menu.menu_hermes, menu);
       return base.OnCreateOptionsMenu(menu);
     }
     public override bool OnOptionsItemSelected(IMenuItem item)
@@ -124,17 +127,19 @@ namespace Hermes.AndroidViews
       var listView = sender as ListView;
       switch (e.Position)
       {
-        case 0: //Reservar cancha
+        case 0: //Usuario
+          break;
+        case 1: //Reservar cancha
           ChangeFragment(new SlidingTabsFragment());
           break;
-        case 1: //Reservar taller
+        case 2: //Reservar taller
           break;
-        case 2: //Mis Reserva
+        case 3: //Mis Reserva
           ChangeFragment(new UserReservations());
           break;
-        case 3: //Configuracion
+        case 4: //Configuracion
           break;
-        case 4: //ayuda
+        case 5: //ayuda
           break;
       }
     }
