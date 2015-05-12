@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:id="@+id/tab_date_layout">
+    android:id="@+id/linearLayout1">
     <FrameLayout
-        android:id="@+id/content_fragment_date"
+        android:id="@+id/content_fragment_hour"
         android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="0px">
-        <DatePicker
+        android:layout_height="0px"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <TimePicker
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/date_picker" />
+            android:id="@+id/time_picker" />
     </FrameLayout>
 </LinearLayout>

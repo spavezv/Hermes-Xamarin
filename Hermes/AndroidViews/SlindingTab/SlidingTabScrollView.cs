@@ -78,7 +78,6 @@ namespace Hermes
 			set
 			{
 				mTabStrip.RemoveAllViews();
-
 				mViewPager = value;
 				if (value != null)
 				{
@@ -92,13 +91,14 @@ namespace Hermes
 
 		void value_PageScrolled(object sender, ViewPager.PageScrolledEventArgs e)
 		{
-			int tabCount = mTabStrip.ChildCount;
+			int tabCount = mTabStrip.ChildCount; //cuenta las tabs que existen
 
 			if ((tabCount == 0) || (e.Position < 0) || (e.Position >= tabCount))
 			{
 				//if any of these conditions apply, return, no need to scroll
 				return;
 			}
+
 
 			mTabStrip.OnViewPagerPageChanged(e.Position, e.PositionOffset);
 
@@ -114,7 +114,6 @@ namespace Hermes
 			}
 
 		}
-
 		void value_PageScrollStateChanged(object sender, ViewPager.PageScrollStateChangedEventArgs e)
 		{
 			mScrollState = e.State;
@@ -124,6 +123,7 @@ namespace Hermes
 				mViewPagerPageChangeListener.OnPageScrollStateChanged(e.State);
 			}
 		}
+
 
 		void value_PageSelected(object sender, ViewPager.PageSelectedEventArgs e)
 		{
@@ -138,9 +138,10 @@ namespace Hermes
 			{
 				mViewPagerPageChangeListener.OnPageSelected(e.Position);
 			}
+
 		}
 
-		private void PopulateTabStrip()
+		public void PopulateTabStrip()
 		{
 			PagerAdapter adapter = mViewPager.Adapter;
 
@@ -156,13 +157,19 @@ namespace Hermes
 
 		}
 
-		void tabView_Click(object sender, EventArgs e)
+		public void tabView_Click(object sender, EventArgs e)
 		{
+			
 			TextView clickTab = (TextView)sender;
 			int pageToScrollTo = (int)clickTab.Tag;
 			mViewPager.CurrentItem = pageToScrollTo;
 		}
 
+		public void moveTab(int position)
+		{
+			mViewPager.CurrentItem = position;
+		}
+			
 		private TextView CreateDefaultTabView(Android.Content.Context context)
 		{
 			TextView textView = new TextView(context);
@@ -198,8 +205,9 @@ namespace Hermes
 			}
 		}
 
-		private void ScrollToTab(int tabIndex, int extraOffset)
+		public void ScrollToTab(int tabIndex, int extraOffset)
 		{
+			
 			int tabCount = mTabStrip.ChildCount;
 
 			if (tabCount == 0 || tabIndex < 0 || tabIndex >= tabCount)
