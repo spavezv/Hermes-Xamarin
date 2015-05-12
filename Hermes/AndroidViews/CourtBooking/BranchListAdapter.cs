@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Android.Support.V7.App;
 using Android.Views;
 
-namespace Hermes
+namespace Hermes.AndroidViews.CourtBooking
 {
 	public class BranchListAdapter: BaseAdapter<string>
 	{
@@ -40,7 +40,7 @@ namespace Hermes
 			{
 				row = LayoutInflater.From (context).Inflate(Resource.Layout.item_listview, null, false);
 			}
-			ImageView imgHour = row.FindViewById<ImageView> (Resource.Id.img_lst_item);
+			ImageView imgHour = row.FindViewById<ImageView> (Resource.Id.img_drawer_item);
 			TextView txtHour = row.FindViewById<TextView> (Resource.Id.txt_drawer_item);
 			//imgHour.SetImageResource (Resource.Drawable.ic_gps_list);
 			txtHour.Text = items [position];

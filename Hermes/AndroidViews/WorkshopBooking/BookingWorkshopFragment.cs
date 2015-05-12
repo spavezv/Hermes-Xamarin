@@ -1,31 +1,33 @@
 ﻿using System;
-using Android.Support.V4.App;
+
 using Android.Support.V4.View;
 using Android.Views;
 using Android.OS;
 using Android.Widget;
 using System.Collections.Generic;
 using Android.Support.V7.App;
+using Android.App;
+using Hermes.AndroidViews.CourtBooking;
 
-namespace Hermes
+namespace Hermes.AndroidViews.WorkshopBooking
 {
 	public class BookingWorkshopFragment: Fragment, 
 	Android.App.DatePickerDialog.IOnDateSetListener
 
 
 	{
-		private SlidingTabScrollView mSlidingTabScrollView;
+		private WorkshopTabScrollView mSlidingTabScrollView;
 		private ViewPager mViewPager;
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			return inflater.Inflate(Resource.Layout.sliding_tab_fragment, container, false);
+			return inflater.Inflate(Resource.Layout.workshop_fragment, container, false);
 		}
 
 		public override void OnViewCreated(View view, Bundle savedInstanceState)
 		{
-			mSlidingTabScrollView = view.FindViewById<SlidingTabScrollView>(Resource.Id.sliding_tabs);
-			mViewPager = view.FindViewById<ViewPager>(Resource.Id.viewpager);
+			mSlidingTabScrollView = view.FindViewById<WorkshopTabScrollView>(Resource.Id.tab_workshop);
+			mViewPager = view.FindViewById<ViewPager>(Resource.Id.vp_workshop);
 			mViewPager.Adapter = new SamplePagerAdapter(mSlidingTabScrollView, mViewPager);
 
 			mSlidingTabScrollView.ViewPager = mViewPager;
@@ -43,10 +45,10 @@ namespace Hermes
 			private List<string> workshopTypesItems, workshopHoursItems, workshopBranchesItems;
 			private ListView listViewWorkshoptTypes, listViewBranches, listViewHours;
 			private DatePicker datePicker;
-			SlidingTabScrollView msTabScrollView;
+			WorkshopTabScrollView msTabScrollView;
 			ViewPager mviewPager;
 
-			public SamplePagerAdapter(SlidingTabScrollView sTabScrollView, ViewPager vPager) : base()
+			public SamplePagerAdapter(WorkshopTabScrollView sTabScrollView, ViewPager vPager) : base()
 			{
 				items.Add("Taller");
 				items.Add("Fecha");
@@ -113,7 +115,7 @@ namespace Hermes
 					workshopBranchesItems.Add("Las ex Gordas");
 					workshopBranchesItems.Add("Fitness Club");
 					workshopBranchesItems.Add("Insanity");
-					BranchListAdapter myAdapter= new BranchListAdapter((AppCompatActivity)(container.Context), workshopTypesItems);
+					BranchListAdapter myAdapter= new BranchListAdapter((AppCompatActivity)(container.Context), workshopBranchesItems);
 
 					listViewBranches.Adapter = myAdapter;
 					listViewBranches.ItemClick += (sender, e) => 
@@ -172,9 +174,9 @@ namespace Hermes
 
 		}
 		public class AndroidDatePickerListener: Java.Lang.Object, DatePicker.IOnDateChangedListener {
-			private SlidingTabScrollView mSlidingTabScrollView;
+			private WorkshopTabScrollView mSlidingTabScrollView;
 			private int position;
-			public AndroidDatePickerListener(SlidingTabScrollView tabScrollView, int pos){
+			public AndroidDatePickerListener(WorkshopTabScrollView tabScrollView, int pos){
 				mSlidingTabScrollView= tabScrollView;
 				position= pos;
 			}

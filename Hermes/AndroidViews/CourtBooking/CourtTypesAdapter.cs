@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Android.Support.V7.App;
 using Android.Views;
 
-namespace Hermes
+namespace Hermes.AndroidViews.CourtBooking
 {
 	public class CourtTypesAdapter: BaseAdapter<string>
 	{

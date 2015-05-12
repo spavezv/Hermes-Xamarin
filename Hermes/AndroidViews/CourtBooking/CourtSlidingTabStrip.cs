@@ -4,10 +4,11 @@ using Android.Graphics;
 using Android.Content;
 using Android.Util;
 using Android.Views;
+using Hermes.AndroidViews.CourtBooking;
 
-namespace Hermes.AndroidViews.SlidingTab
+namespace Hermes.AndroidViews.CourtBooking
 {
-	public class SlidingTabStrip : LinearLayout
+	public class CourtSlidingTabStrip : LinearLayout
 	{
 		//Copy and paste from here................................................................
 		private const int DEFAULT_BOTTOM_BORDER_THICKNESS_DIPS = 2;
@@ -42,10 +43,10 @@ namespace Hermes.AndroidViews.SlidingTab
 		//Stop copy and paste here........................................................................
 
 		//Constructors
-		public SlidingTabStrip (Context context) : this(context, null)
+		public CourtSlidingTabStrip (Context context) : this(context, null)
 		{ }
 
-		public SlidingTabStrip (Context context, IAttributeSet attrs) : base(context, attrs)
+		public CourtSlidingTabStrip (Context context, IAttributeSet attrs) : base(context, attrs)
 		{
 			SetWillNotDraw(false);
 
@@ -72,7 +73,7 @@ namespace Hermes.AndroidViews.SlidingTab
 			mDividerPaint.StrokeWidth = (int)(DEFAULT_DIVIDER_THICKNESS_DIPS * density);
 		}
 
-		public SlidingTabScrollView.TabColorizer CustomTabColorizer
+		public CourtTabScrollView.TabColorizer CustomTabColorizer
 		{
 			set
 			{
@@ -123,7 +124,7 @@ namespace Hermes.AndroidViews.SlidingTab
 			int height = Height;
 			int tabCount = ChildCount;
 			int dividerHeightPx = (int)(Math.Min(Math.Max(0f, mDividerHeight), 1f) * height);
-			SlidingTabScrollView.TabColorizer tabColorizer = mCustomTabColorizer != null ? mCustomTabColorizer : mDefaultTabColorizer;
+			CourtTabScrollView.TabColorizer tabColorizer = mCustomTabColorizer != null ? mCustomTabColorizer : mDefaultTabColorizer;
 
 			//Thick colored underline below the current selection
 			if (tabCount > 0)

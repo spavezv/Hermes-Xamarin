@@ -6,7 +6,6 @@ using Android.OS;
 using System.Collections.Generic;
 using Android.Widget;
 using Android.Support.V7.App;
-using Hermes.AndroidViews.CourtBooking;
 using Hermes.AndroidViews.ActionBarDrawerToggle;
 
 namespace Hermes.AndroidViews.SlidingTab
@@ -35,7 +34,7 @@ namespace Hermes.AndroidViews.SlidingTab
 			List<string> items = new List<string>();
 			private List<string> courtTypesItems;
 			private ListView listViewCourtTypes;
-			private DatePickerFragment datePicker;
+			private DatePicker datePicker;
 
 			public SamplePagerAdapter() : base()
 			{

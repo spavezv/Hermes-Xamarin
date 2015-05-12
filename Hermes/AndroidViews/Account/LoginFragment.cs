@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Hermes.AndroidViews.Main;
 
 namespace Hermes.AndroidViews.Account
 {

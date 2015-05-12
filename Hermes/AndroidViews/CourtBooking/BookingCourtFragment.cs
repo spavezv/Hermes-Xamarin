@@ -9,14 +9,14 @@ using Android.Support.V7.App;
 using Java.Util;
 using Android.Content;
 
-namespace Hermes.AndroidViews.SlidingTab
+namespace Hermes.AndroidViews.CourtBooking
 {
-	public class SlidingTabsFragment : Fragment, 
+	public class BookingCourtFragment : Fragment, 
 	Android.App.DatePickerDialog.IOnDateSetListener
 
 
 	{
-		private SlidingTabScrollView mSlidingTabScrollView;
+		private CourtTabScrollView mSlidingTabScrollView;
 		private ViewPager mViewPager;
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -26,7 +26,7 @@ namespace Hermes.AndroidViews.SlidingTab
 
 		public override void OnViewCreated(View view, Bundle savedInstanceState)
 		{
-			mSlidingTabScrollView = view.FindViewById<SlidingTabScrollView>(Resource.Id.sliding_tabs);
+			mSlidingTabScrollView = view.FindViewById<CourtTabScrollView>(Resource.Id.sliding_tabs);
 			mViewPager = view.FindViewById<ViewPager>(Resource.Id.viewpager);
 			mViewPager.Adapter = new SamplePagerAdapter(mSlidingTabScrollView, mViewPager);
 
@@ -45,10 +45,10 @@ namespace Hermes.AndroidViews.SlidingTab
 			private List<string> courtTypesItems, courtHoursItems, courtBranchesItems;
 			private ListView listViewCourtTypes, listViewBranches, listViewHours;
 			private DatePicker datePicker;
-			SlidingTabScrollView msTabScrollView;
+			CourtTabScrollView msTabScrollView;
 			ViewPager mviewPager;
 
-			public SamplePagerAdapter(SlidingTabScrollView sTabScrollView, ViewPager vPager) : base()
+			public SamplePagerAdapter(CourtTabScrollView sTabScrollView, ViewPager vPager) : base()
 			{
 				items.Add("Cancha");
 				items.Add("Fecha");
@@ -115,7 +115,7 @@ namespace Hermes.AndroidViews.SlidingTab
 					courtBranchesItems.Add("Canchas Guaiquillo");
 					courtBranchesItems.Add("Canchas Zapallar");
 					courtBranchesItems.Add("Rauquen");
-					BranchListAdapter myAdapter= new BranchListAdapter((AppCompatActivity)(container.Context), courtTypesItems);
+					BranchListAdapter myAdapter= new BranchListAdapter((AppCompatActivity)(container.Context), courtBranchesItems);
 
 					listViewBranches.Adapter = myAdapter;
 					listViewBranches.ItemClick += (sender, e) => 
@@ -174,9 +174,9 @@ namespace Hermes.AndroidViews.SlidingTab
 	
 		}
 		public class AndroidDatePickerListener: Java.Lang.Object, DatePicker.IOnDateChangedListener {
-			private SlidingTabScrollView mSlidingTabScrollView;
+			private CourtTabScrollView mSlidingTabScrollView;
 			private int position;
-			public AndroidDatePickerListener(SlidingTabScrollView tabScrollView, int pos){
+			public AndroidDatePickerListener(CourtTabScrollView tabScrollView, int pos){
 				mSlidingTabScrollView= tabScrollView;
 				position= pos;
 			}

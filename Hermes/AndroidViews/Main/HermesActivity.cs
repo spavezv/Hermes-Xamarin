@@ -8,13 +8,12 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using ItemClickEventArgs = Android.Widget.AdapterView;
 using Android.Support.V4.Widget;
 using System.Collections.Generic;
-using System.Collections;
-using Android.Content;
-using Hermes.AndroidViews.SlidingTab;
 using Hermes.AndroidViews.Reservations;
 using Hermes.AndroidViews.ActionBarDrawerToggle;
+using Hermes.AndroidViews.CourtBooking;
+using Hermes.AndroidViews.WorkshopBooking;
 
-namespace Hermes.AndroidViews
+namespace Hermes.AndroidViews.Main
 {
   [Activity(Label = "Hermes", Theme = "@style/MyTheme")]
   public class HermesActivity : AppCompatActivity
@@ -78,6 +77,8 @@ namespace Hermes.AndroidViews
         SupportActionBar.SetTitle(Resource.String.CloseDrawer);
       }
 
+		ChangeFragment (new UserReservations ());
+
     }
 
     public override bool OnCreateOptionsMenu(IMenu menu)
@@ -130,9 +131,10 @@ namespace Hermes.AndroidViews
         case 0: //Usuario
           break;
         case 1: //Reservar cancha
-          ChangeFragment(new SlidingTabsFragment());
+				ChangeFragment(new BookingCourtFragment());
           break;
         case 2: //Reservar taller
+				ChangeFragment(new BookingWorkshopFragment());
           break;
         case 3: //Mis Reserva
           ChangeFragment(new UserReservations());

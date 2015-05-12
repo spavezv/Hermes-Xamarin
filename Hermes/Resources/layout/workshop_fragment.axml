@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <Hermes.AndroidViews.CourtBooking.CourtTabScrollView
-        android:id="@+id/sliding_tabs"
+    <Hermes.AndroidViews.WorkshopBooking.WorkshopTabScrollView
+        android:id="@+id/tab_workshop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/vp_workshop"
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1"

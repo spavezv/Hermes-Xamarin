@@ -49,13 +49,11 @@
     <Reference Include="Xamarin.Android.Support.v7.AppCompat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.CardView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Xamarin.Android.Support.v7.CardView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v7.CardView.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.RecyclerView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,10 +68,16 @@
     <Compile Include="AndroidViews\Account\SignupFragment.cs" />
     <Compile Include="AndroidViews\Main\HermesActivity.cs" />
     <Compile Include="AndroidViews\Main\ItemsAdapter.cs" />
-    <Compile Include="AndroidViews\SlindingTab\SlidingTabScrollView.cs" />
-    <Compile Include="AndroidViews\SlindingTab\SlidingTabStrip.cs" />
-    <Compile Include="AndroidViews\SlindingTab\SlidingTabsFragment.cs" />
-    <Compile Include="AndroidViews\CourtBooking\DatePickerFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\BookingCourtFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\BranchListAdapter.cs" />
+    <Compile Include="AndroidViews\CourtBooking\CourtTypesAdapter.cs" />
+    <Compile Include="AndroidViews\CourtBooking\HourListAdapter.cs" />
+    <Compile Include="AndroidViews\WorkshopBooking\BookingWorkshopFragment.cs" />
+    <Compile Include="AndroidViews\WorkshopBooking\WorkshopTypesAdapter.cs" />
+    <Compile Include="AndroidViews\CourtBooking\CourtTabScrollView.cs" />
+    <Compile Include="AndroidViews\WorkshopBooking\WorkshopTabScrollView.cs" />
+    <Compile Include="AndroidViews\CourtBooking\CourtSlidingTabStrip.cs" />
+    <Compile Include="AndroidViews\WorkshopBooking\BookingSlidingTabStrip.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -90,6 +94,7 @@
     <AndroidResource Include="Resources\layout\header.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\workshop_fragment.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
@@ -139,4 +144,9 @@
   -->
   <ItemGroup />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AndroidViews\CourtBooking\" />
+    <Folder Include="AndroidViews\WorkshopBooking\" />
+    <Folder Include="AndroidViews\SlindingTab\" />
+  </ItemGroup>
 </Project>

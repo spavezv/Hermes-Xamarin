@@ -5,9 +5,9 @@ using Android.Content;
 using Android.Util;
 using Android.Views;
 
-namespace Hermes.AndroidViews.SlidingTab
+namespace Hermes.AndroidViews.WorkshopBooking
 {
-	public class SlidingTabStrip : LinearLayout
+	public class BookingSlidingTabStrip : LinearLayout
 	{
 		//Copy and paste from here................................................................
 		private const int DEFAULT_BOTTOM_BORDER_THICKNESS_DIPS = 2;
@@ -37,15 +37,15 @@ namespace Hermes.AndroidViews.SlidingTab
 		private float mSelectionOffset;
 
 		//Tab colorizer
-		private CourtTabScrollView.TabColorizer mCustomTabColorizer;
+		private WorkshopTabScrollView.TabColorizer mCustomTabColorizer;
 		private SimpleTabColorizer mDefaultTabColorizer;
 		//Stop copy and paste here........................................................................
 
 		//Constructors
-		public SlidingTabStrip (Context context) : this(context, null)
+		public BookingSlidingTabStrip (Context context) : this(context, null)
 		{ }
 
-		public SlidingTabStrip (Context context, IAttributeSet attrs) : base(context, attrs)
+		public BookingSlidingTabStrip (Context context, IAttributeSet attrs) : base(context, attrs)
 		{
 			SetWillNotDraw(false);
 
@@ -72,7 +72,7 @@ namespace Hermes.AndroidViews.SlidingTab
 			mDividerPaint.StrokeWidth = (int)(DEFAULT_DIVIDER_THICKNESS_DIPS * density);
 		}
 
-		public SlidingTabScrollView.TabColorizer CustomTabColorizer
+		public WorkshopTabScrollView.TabColorizer CustomTabColorizer
 		{
 			set
 			{
@@ -123,7 +123,7 @@ namespace Hermes.AndroidViews.SlidingTab
 			int height = Height;
 			int tabCount = ChildCount;
 			int dividerHeightPx = (int)(Math.Min(Math.Max(0f, mDividerHeight), 1f) * height);
-			SlidingTabScrollView.TabColorizer tabColorizer = mCustomTabColorizer != null ? mCustomTabColorizer : mDefaultTabColorizer;
+			WorkshopTabScrollView.TabColorizer tabColorizer = mCustomTabColorizer != null ? mCustomTabColorizer : mDefaultTabColorizer;
 
 			//Thick colored underline below the current selection
 			if (tabCount > 0)
@@ -173,7 +173,7 @@ namespace Hermes.AndroidViews.SlidingTab
 			return Color.Rgb((int)r, (int)g, (int)b);
 		}
 
-		private class SimpleTabColorizer : CourtTabScrollView.TabColorizer
+		private class SimpleTabColorizer : WorkshopTabScrollView.TabColorizer
 		{
 			private int[] mIndicatorColors;
 			private int[] mDividerColors;
