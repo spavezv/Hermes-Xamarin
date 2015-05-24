@@ -9,30 +9,30 @@
         android:paddingRight="16dp"
         android:layout_centerInParent="true">
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="@string/Email" />
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/email"
+            android:layout_below="@id/et_email"
             android:inputType="textPassword"
             android:hint="@string/Password" />
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/password"
+            android:layout_below="@id/et_password"
             android:layout_centerHorizontal="true"
             android:text="@string/Login" />
         <Button
-            android:id="@+id/btnSignup"
+            android:id="@+id/btn_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btnLogin"
+            android:layout_below="@id/btn_login"
             android:layout_centerHorizontal="true"
             android:text="@string/Signup" />
     </RelativeLayout>

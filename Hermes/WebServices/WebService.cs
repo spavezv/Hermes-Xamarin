@@ -17,20 +17,31 @@ namespace Hermes.WebServices
       request.Accept = "application/json";
       request.Method = "GET";
 
-      // Send the request to the server and wait for the response:
-      using (WebResponse response = await request.GetResponseAsync())
-      {
-        // Get a stream representation of the HTTP web response:
-        using (Stream stream = response.GetResponseStream())
-        {
-          // Use this stream to build a JSON document object:
-          JsonValue jsonDoc = await Task.Run(() => JsonObject.Load(stream));
-          Console.Out.WriteLine("Response: {0}", jsonDoc.ToString());
+      WebResponse response = null;
 
-          // Return the JSON document:
-          return jsonDoc;
+      try
+      {
+        // Send the request to the server and wait for the response:
+        using (response = await request.GetResponseAsync())
+        {
+          // Get a stream representation of the HTTP web response:
+          using (Stream stream = response.GetResponseStream())
+          {
+            // Use this stream to build a JSON document object:
+            JsonValue jsonDoc = await Task.Run(() => JsonObject.Load(stream));
+            Console.Out.WriteLine("Response: {0}", jsonDoc.ToString());
+
+            // Return the JSON document:
+            return jsonDoc;
+          }
         }
       }
+      catch
+      {
+        return null;
+      }
+
+
     }
   }
 }
