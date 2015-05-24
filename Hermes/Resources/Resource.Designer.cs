@@ -1495,8 +1495,8 @@ namespace Hermes
 			// aapt resource value: 0x7f0a0031
 			public const int contentPanel = 2131361841;
 			
-			// aapt resource value: 0x7f0a0067
-			public const int content_fragment_date = 2131361895;
+			// aapt resource value: 0x7f0a006c
+			public const int content_fragment_date = 2131361900;
 			
 			// aapt resource value: 0x7f0a0035
 			public const int custom = 2131361845;
@@ -1504,8 +1504,8 @@ namespace Hermes
 			// aapt resource value: 0x7f0a0034
 			public const int customPanel = 2131361844;
 			
-			// aapt resource value: 0x7f0a0068
-			public const int date_picker = 2131361896;
+			// aapt resource value: 0x7f0a006d
+			public const int date_picker = 2131361901;
 			
 			// aapt resource value: 0x7f0a003e
 			public const int decor_content_parent = 2131361854;
@@ -1537,8 +1537,20 @@ namespace Hermes
 			// aapt resource value: 0x7f0a0058
 			public const int et_email = 2131361880;
 			
+			// aapt resource value: 0x7f0a0066
+			public const int et_lastnames = 2131361894;
+			
+			// aapt resource value: 0x7f0a0065
+			public const int et_names = 2131361893;
+			
 			// aapt resource value: 0x7f0a0059
 			public const int et_password = 2131361881;
+			
+			// aapt resource value: 0x7f0a0068
+			public const int et_password_confirmation = 2131361896;
+			
+			// aapt resource value: 0x7f0a0067
+			public const int et_phone = 2131361895;
 			
 			// aapt resource value: 0x7f0a0027
 			public const int expand_activities_button = 2131361831;
@@ -1555,14 +1567,14 @@ namespace Hermes
 			// aapt resource value: 0x7f0a000d
 			public const int homeAsUp = 2131361805;
 			
-			// aapt resource value: 0x7f0a0071
-			public const int ic_action_help = 2131361905;
+			// aapt resource value: 0x7f0a0076
+			public const int ic_action_help = 2131361910;
 			
-			// aapt resource value: 0x7f0a0070
-			public const int ic_find = 2131361904;
+			// aapt resource value: 0x7f0a0075
+			public const int ic_find = 2131361909;
 			
-			// aapt resource value: 0x7f0a006f
-			public const int ic_settings = 2131361903;
+			// aapt resource value: 0x7f0a0074
+			public const int ic_settings = 2131361908;
 			
 			// aapt resource value: 0x7f0a002b
 			public const int icon = 2131361835;
@@ -1588,8 +1600,8 @@ namespace Hermes
 			// aapt resource value: 0x7f0a002a
 			public const int list_item = 2131361834;
 			
-			// aapt resource value: 0x7f0a006b
-			public const int list_tab = 2131361899;
+			// aapt resource value: 0x7f0a0070
+			public const int list_tab = 2131361904;
 			
 			// aapt resource value: 0x7f0a0015
 			public const int middle = 2131361813;
@@ -1621,14 +1633,14 @@ namespace Hermes
 			// aapt resource value: 0x7f0a003a
 			public const int radio = 2131361850;
 			
-			// aapt resource value: 0x7f0a006c
-			public const int rv_reservations = 2131361900;
+			// aapt resource value: 0x7f0a0071
+			public const int rv_reservations = 2131361905;
 			
-			// aapt resource value: 0x7f0a006a
-			public const int sample_content_fragment = 2131361898;
+			// aapt resource value: 0x7f0a006f
+			public const int sample_content_fragment = 2131361903;
 			
-			// aapt resource value: 0x7f0a0069
-			public const int sample_main_layout = 2131361897;
+			// aapt resource value: 0x7f0a006e
+			public const int sample_main_layout = 2131361902;
 			
 			// aapt resource value: 0x7f0a001f
 			public const int screen = 2131361823;
@@ -1682,7 +1694,10 @@ namespace Hermes
 			public const int showTitle = 2131361809;
 			
 			// aapt resource value: 0x7f0a0064
-			public const int sliding_tabs = 2131361892;
+			public const int signup_form = 2131361892;
+			
+			// aapt resource value: 0x7f0a0069
+			public const int sliding_tabs = 2131361897;
 			
 			// aapt resource value: 0x7f0a0007
 			public const int split_action_bar = 2131361799;
@@ -1702,11 +1717,11 @@ namespace Hermes
 			// aapt resource value: 0x7f0a000b
 			public const int tabMode = 2131361803;
 			
-			// aapt resource value: 0x7f0a0066
-			public const int tab_date_layout = 2131361894;
+			// aapt resource value: 0x7f0a006b
+			public const int tab_date_layout = 2131361899;
 			
-			// aapt resource value: 0x7f0a006d
-			public const int tab_workshop = 2131361901;
+			// aapt resource value: 0x7f0a0072
+			public const int tab_workshop = 2131361906;
 			
 			// aapt resource value: 0x7f0a0033
 			public const int textSpacerNoButtons = 2131361843;
@@ -1747,11 +1762,11 @@ namespace Hermes
 			// aapt resource value: 0x7f0a0012
 			public const int useLogo = 2131361810;
 			
-			// aapt resource value: 0x7f0a0065
-			public const int viewpager = 2131361893;
+			// aapt resource value: 0x7f0a006a
+			public const int viewpager = 2131361898;
 			
-			// aapt resource value: 0x7f0a006e
-			public const int vp_workshop = 2131361902;
+			// aapt resource value: 0x7f0a0073
+			public const int vp_workshop = 2131361907;
 			
 			// aapt resource value: 0x7f0a001a
 			public const int withText = 2131361818;
@@ -1955,89 +1970,101 @@ namespace Hermes
 			// aapt resource value: 0x7f050000
 			public const int ApplicationName = 2131034112;
 			
-			// aapt resource value: 0x7f05000b
-			public const int AyudaYComentarios = 2131034123;
-			
-			// aapt resource value: 0x7f050006
-			public const int CloseDrawer = 2131034118;
+			// aapt resource value: 0x7f05000f
+			public const int AyudaYComentarios = 2131034127;
 			
 			// aapt resource value: 0x7f05000a
-			public const int Configuracion = 2131034122;
-			
-			// aapt resource value: 0x7f050001
-			public const int Email = 2131034113;
-			
-			// aapt resource value: 0x7f050003
-			public const int Login = 2131034115;
-			
-			// aapt resource value: 0x7f050009
-			public const int MisReservas = 2131034121;
-			
-			// aapt resource value: 0x7f050005
-			public const int OpenDrawer = 2131034117;
-			
-			// aapt resource value: 0x7f050002
-			public const int Password = 2131034114;
-			
-			// aapt resource value: 0x7f050007
-			public const int ReservarCancha = 2131034119;
-			
-			// aapt resource value: 0x7f050008
-			public const int ReservarTaller = 2131034120;
-			
-			// aapt resource value: 0x7f050004
-			public const int Signup = 2131034116;
-			
-			// aapt resource value: 0x7f05000c
-			public const int abc_action_bar_home_description = 2131034124;
-			
-			// aapt resource value: 0x7f05000d
-			public const int abc_action_bar_home_description_format = 2131034125;
+			public const int CloseDrawer = 2131034122;
 			
 			// aapt resource value: 0x7f05000e
-			public const int abc_action_bar_home_subtitle_description_format = 2131034126;
+			public const int Configuracion = 2131034126;
 			
-			// aapt resource value: 0x7f05000f
-			public const int abc_action_bar_up_description = 2131034127;
+			// aapt resource value: 0x7f05000d
+			public const int MisReservas = 2131034125;
+			
+			// aapt resource value: 0x7f050009
+			public const int OpenDrawer = 2131034121;
+			
+			// aapt resource value: 0x7f05000b
+			public const int ReservarCancha = 2131034123;
+			
+			// aapt resource value: 0x7f05000c
+			public const int ReservarTaller = 2131034124;
 			
 			// aapt resource value: 0x7f050010
-			public const int abc_action_menu_overflow_description = 2131034128;
+			public const int abc_action_bar_home_description = 2131034128;
 			
 			// aapt resource value: 0x7f050011
-			public const int abc_action_mode_done = 2131034129;
+			public const int abc_action_bar_home_description_format = 2131034129;
 			
 			// aapt resource value: 0x7f050012
-			public const int abc_activity_chooser_view_see_all = 2131034130;
+			public const int abc_action_bar_home_subtitle_description_format = 2131034130;
 			
 			// aapt resource value: 0x7f050013
-			public const int abc_activitychooserview_choose_application = 2131034131;
+			public const int abc_action_bar_up_description = 2131034131;
 			
 			// aapt resource value: 0x7f050014
-			public const int abc_search_hint = 2131034132;
+			public const int abc_action_menu_overflow_description = 2131034132;
 			
 			// aapt resource value: 0x7f050015
-			public const int abc_searchview_description_clear = 2131034133;
+			public const int abc_action_mode_done = 2131034133;
 			
 			// aapt resource value: 0x7f050016
-			public const int abc_searchview_description_query = 2131034134;
+			public const int abc_activity_chooser_view_see_all = 2131034134;
 			
 			// aapt resource value: 0x7f050017
-			public const int abc_searchview_description_search = 2131034135;
+			public const int abc_activitychooserview_choose_application = 2131034135;
 			
 			// aapt resource value: 0x7f050018
-			public const int abc_searchview_description_submit = 2131034136;
+			public const int abc_search_hint = 2131034136;
 			
 			// aapt resource value: 0x7f050019
-			public const int abc_searchview_description_voice = 2131034137;
+			public const int abc_searchview_description_clear = 2131034137;
 			
 			// aapt resource value: 0x7f05001a
-			public const int abc_shareactionprovider_share_with = 2131034138;
+			public const int abc_searchview_description_query = 2131034138;
 			
 			// aapt resource value: 0x7f05001b
-			public const int abc_shareactionprovider_share_with_application = 2131034139;
+			public const int abc_searchview_description_search = 2131034139;
 			
 			// aapt resource value: 0x7f05001c
-			public const int abc_toolbar_collapse_description = 2131034140;
+			public const int abc_searchview_description_submit = 2131034140;
+			
+			// aapt resource value: 0x7f05001d
+			public const int abc_searchview_description_voice = 2131034141;
+			
+			// aapt resource value: 0x7f05001e
+			public const int abc_shareactionprovider_share_with = 2131034142;
+			
+			// aapt resource value: 0x7f05001f
+			public const int abc_shareactionprovider_share_with_application = 2131034143;
+			
+			// aapt resource value: 0x7f050020
+			public const int abc_toolbar_collapse_description = 2131034144;
+			
+			// aapt resource value: 0x7f050001
+			public const int email = 2131034113;
+			
+			// aapt resource value: 0x7f050007
+			public const int lastnames = 2131034119;
+			
+			// aapt resource value: 0x7f050004
+			public const int login = 2131034116;
+			
+			// aapt resource value: 0x7f050006
+			public const int names = 2131034118;
+			
+			// aapt resource value: 0x7f050002
+			public const int password = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int password_confirmation = 2131034115;
+			
+			// aapt resource value: 0x7f050008
+			public const int phone = 2131034120;
+			
+			// aapt resource value: 0x7f050005
+			public const int signup = 2131034117;
 			
 			static String()
 			{

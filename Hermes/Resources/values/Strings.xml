@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ApplicationName">Hermes</string>
-    <string name="Email">Email</string>
-    <string name="Password">Contraseña</string>
-    <string name="Login">Iniciar sesión</string>
-    <string name="Signup">Crear cuenta</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="password_confirmation">Confirmación de contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="signup">Crear cuenta</string>
+    <string name="names">Nombres</string>
+    <string name="lastnames">Apellidos</string>
+    <string name="phone">Teléfono</string>
 
     <string name="OpenDrawer">Opciones</string>
     <string name="CloseDrawer">Hermes</string>

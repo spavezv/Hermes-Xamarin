@@ -27,8 +27,6 @@ namespace Hermes.AndroidViews
       fragmentTx.Add(Resource.Id.fragment_container, f);
       fragmentTx.AddToBackStack(null);
       fragmentTx.Commit();
-      
-
     }
 
     public void replaceFragment(Fragment f)
@@ -48,6 +46,18 @@ namespace Hermes.AndroidViews
     {
       Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();
       return base.OnOptionsItemSelected(item);
+    }
+
+    public override void OnBackPressed()
+    {
+      if (this.FragmentManager.BackStackEntryCount > 0)
+      {
+        this.FragmentManager.PopBackStack();
+      }
+      else
+      {
+        base.OnBackPressed();
+      }
     }
 
   }
