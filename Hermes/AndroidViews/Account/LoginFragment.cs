@@ -25,7 +25,7 @@ namespace Hermes.AndroidViews.Account
   {
 
     private Button btnSignup, btnLogin;
-    private EditText et_mail, et_password;
+    private EditText etMail, etPassword;
     private String email, password;
 
     public override void OnCreate(Bundle savedInstanceState)
@@ -40,8 +40,8 @@ namespace Hermes.AndroidViews.Account
     {
       var view = inflater.Inflate(Resource.Layout.login, container, false);
 
-      et_mail = view.FindViewById<EditText>(Resource.Id.et_email);
-      et_password = view.FindViewById<EditText>(Resource.Id.et_password);
+      etMail = view.FindViewById<EditText>(Resource.Id.et_email);
+      etPassword = view.FindViewById<EditText>(Resource.Id.et_password);
       btnSignup = view.FindViewById<Button>(Resource.Id.btn_signup);
       btnLogin = view.FindViewById<Button>(Resource.Id.btn_login);
       btnSignup.SetOnClickListener(this);
@@ -53,8 +53,8 @@ namespace Hermes.AndroidViews.Account
     public async void OnClick(View v)
     {
       WebService ws = new WebService();
-      JsonValue jsonValue;
-      string url;
+      JsonValue json;
+      string url, message;
 
       switch (v.Id)
       {
@@ -67,22 +67,36 @@ namespace Hermes.AndroidViews.Account
            * Si el Json retorna que son correctos, iniciar sesión
            * Si no, debería avisar indicar que no fue así
            */
-          email = et_mail.Text;
-          password = HashPassword(et_password.Text);
+          email = etMail.Text;
+          password = HashPassword(etPassword.Text);
           Console.WriteLine("Password: " + password);
 
-          url = GlobalVar.URL + "hermes.users";
-          jsonValue = await ws.GetTask(url);
+          url = GlobalVar.URL + "clients/authenticate/" + email + "/" + password;
+          json = await ws.GetTask(url);
 
-          if (jsonValue != null)
+          if (json != null)
           {
+
+            if (json["id"] != -1)
+            {
+              message = "Login Correcto";
+            } else
+            {
+              message = "Login Incorrecto";
+            }
+            Toast.MakeText((MainActivity)this.Activity, message, ToastLength.Long).Show();
+
             var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
             StartActivity(intent);
           }
           else
           {
-            //Error en la obtención del JsonValue
+            //Error en la obtención del JsonValue, puede ser mal url
             Console.WriteLine("ES NULL");
+            Toast.MakeText((MainActivity)this.Activity, "Json esta malo", ToastLength.Long).Show();
+
+            var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
+            StartActivity(intent);
           }
           break;
         default:

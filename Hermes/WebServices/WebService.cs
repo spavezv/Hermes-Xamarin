@@ -11,6 +11,8 @@ namespace Hermes.WebServices
   {
     public async Task<JsonValue> GetTask(string url)
     {
+      Console.WriteLine("URL: " + url);
+
       // Create an HTTP web request using the URL:
       HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
       request.ContentType = "application/json";
