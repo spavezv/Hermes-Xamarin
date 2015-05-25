@@ -78,6 +78,7 @@
     <Compile Include="AndroidViews\Reservations\RecyclerAdapter.cs" />
     <Compile Include="AndroidViews\Reservations\Reservation.cs" />
     <Compile Include="AndroidViews\Reservations\UserReservations.cs" />
+    <Compile Include="Models\Clients.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AndroidViews\Account\LoginFragment.cs" />

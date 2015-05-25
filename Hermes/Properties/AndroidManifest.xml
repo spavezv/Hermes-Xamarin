@@ -2,4 +2,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Hermes.Hermes" android:versionCode="1" android:versionName="1.0" android:installLocation="preferExternal">
 	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="22" />
 	<application android:label="Hermes" android:icon="@drawable/Icon" android:theme="@style/MyTheme"></application>
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

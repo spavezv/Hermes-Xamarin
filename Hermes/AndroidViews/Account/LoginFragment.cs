@@ -54,7 +54,7 @@ namespace Hermes.AndroidViews.Account
     {
       WebService ws = new WebService();
       JsonValue json;
-      string url, message;
+      string url;
 
       switch (v.Id)
       {
@@ -79,13 +79,13 @@ namespace Hermes.AndroidViews.Account
 
             if (json["id"] != -1)
             {
-              message = "Login Correcto";
+              Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
+              //Aca debería pasar al HermesActivity
             } else
             {
-              message = "Login Incorrecto";
+              Toast.MakeText((MainActivity)this.Activity, "Contraseña o correo incorrectos.", ToastLength.Long).Show();
             }
-            Toast.MakeText((MainActivity)this.Activity, message, ToastLength.Long).Show();
-
+            //Esto debería ir arriba, en el if.
             var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
             StartActivity(intent);
           }
