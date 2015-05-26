@@ -42,7 +42,8 @@ namespace Hermes
 
 			listViewCourtHours.ItemClick += (sender, e) => 
 			{
-				//capturar el item
+				var hora = lstCourtHours[e.Position];
+				((HermesActivity)this.Activity).block = hora;
 				imgRight.SetImageResource (Resource.Drawable.ic_check_available);
 				imgRight.SetOnClickListener (this);
 			};
@@ -60,10 +61,14 @@ namespace Hermes
 				((HermesActivity)this.Activity).replaceFragment(new BookingCourtNamesFragment());	
 				break;
 			case Resource.Id.img_arrow_right:
-				Android.App.AlertDialog.Builder builder= new Android.App.AlertDialog.Builder(((HermesActivity)this.Activity));
-				Android.App.AlertDialog alertDialog = builder.Create();
-				alertDialog.SetTitle("¿Realizar reserva?");
-				alertDialog.SetMessage("Su reservacion es: ");
+				Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder (((HermesActivity)this.Activity));
+				Android.App.AlertDialog alertDialog = builder.Create ();
+				alertDialog.SetTitle ("¿Realizar reserva?");
+				alertDialog.SetMessage ("Su reservacion es: \n"
+				+ "Tipo de cancha: " + ((HermesActivity)this.Activity).court + "\n"
+					+ "Fecha: " + ((HermesActivity)this.Activity).date + "\n"
+					+ "Recinto: " + ((HermesActivity)this.Activity).place + "\n"
+					+ "Hora: " + ((HermesActivity)this.Activity).block);
 				alertDialog.SetButton("Aceptar", (s, ev) => 
 					{/*do something*/});
 				alertDialog.SetButton2("Cancelar", (s, ev) => {alertDialog.Dismiss();});

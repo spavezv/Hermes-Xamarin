@@ -55,7 +55,8 @@ namespace Hermes.AndroidViews.CourtBooking
 
 			listViewCourtTypes.ItemClick += (sender, e) => 
 			{
-				//capturar el item
+				var tipoCancha = courtTypesItems[e.Position];
+				((HermesActivity)this.Activity).court = tipoCancha;
 				imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_available);
 				imgRight.SetOnClickListener (this);
 

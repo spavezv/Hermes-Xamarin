@@ -6,6 +6,7 @@ using Android.Widget;
 using Hermes.AndroidViews;
 using Android.App;
 using Hermes.AndroidViews.Main;
+using System.Globalization;
 
 namespace Hermes.AndroidViews.CourtBooking
 {
@@ -74,6 +75,10 @@ namespace Hermes.AndroidViews.CourtBooking
 					//capturar la fecha
 				mBookCourtDateFrag.imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_available);
 				mBookCourtDateFrag.imgRight.SetOnClickListener (mBookCourtDateFrag);
+
+				var date = new DateTime(year, monthOfYear + 1, dayOfMonth);
+				((HermesActivity)mBookCourtDateFrag.Activity).date= date.ToString("d MMMM", 
+					CultureInfo.CreateSpecificCulture("es-MX"));
 			}
 
 
@@ -81,7 +86,8 @@ namespace Hermes.AndroidViews.CourtBooking
 
 		public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
 		{
-			var date = new DateTime(year, monthOfYear + 1, dayOfMonth);
+			
+
 
 		}
 	}

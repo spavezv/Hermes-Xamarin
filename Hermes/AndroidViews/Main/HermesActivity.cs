@@ -25,6 +25,11 @@ namespace Hermes.AndroidViews.Main
     private ItemsAdapter mLeftAdapter;
     private List<string> mLeftDataSet;
 
+		public string court { set; get;}
+		public string date { set; get;}
+		public string place { set; get;}
+		public string block { set; get;}
+
     protected override void OnCreate(Bundle bundle)
     {
       base.OnCreate(bundle);

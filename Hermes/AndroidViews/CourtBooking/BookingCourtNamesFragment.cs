@@ -13,7 +13,7 @@ namespace Hermes
 	public class BookingCourtNamesFragment: Fragment, View.IOnClickListener
 	{
 			private List<string> lstCourtNames;
-			private ListView listViewCourtNames;
+			public ListView listViewCourtNames;
 			private ImageView imgLeft, imgRight;
 			private TextView txtCategory;
 
@@ -42,7 +42,8 @@ namespace Hermes
 
 			listViewCourtNames.ItemClick += (sender, e) => 
 			{
-				//capturar el item
+				var recinto = lstCourtNames[e.Position];
+				((HermesActivity)this.Activity).place = recinto;
 				imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_available);
 				imgRight.SetOnClickListener (this);
 			};
