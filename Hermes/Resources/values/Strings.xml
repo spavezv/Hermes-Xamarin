@@ -18,4 +18,9 @@
     <string name="MisReservas">Mis reservas</string>
     <string name="Configuracion">Configuracion</string>
     <string name="AyudaYComentarios">Ayuda y comentarios</string>
+
+    <string name="TipodeCancha">Tipo de Cancha</string>
+    <string name="FechadeReserva">Elige Fecha</string>
+    <string name="RecintosDisponibles">Recintos Disponibles</string>
+    <string name="HorasDisponibles">Horas Disponibles</string>
 </resources>

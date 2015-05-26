@@ -77,7 +77,7 @@ namespace Hermes.AndroidViews.Main
         SupportActionBar.SetTitle(Resource.String.CloseDrawer);
       }
 
-		ChangeFragment (new UserReservations ());
+		//ChangeFragment (new UserReservations ());
 
     }
 
@@ -131,13 +131,13 @@ namespace Hermes.AndroidViews.Main
         case 0: //Usuario
           break;
         case 1: //Reservar cancha
-				ChangeFragment(new BookingCourtFragment());
+			replaceFragment(new BookingCourtTypeFragment());
           break;
         case 2: //Reservar taller
-				ChangeFragment(new BookingWorkshopFragment());
+			replaceFragment(new BookingWorkshopFragment());
           break;
         case 3: //Mis Reserva
-          ChangeFragment(new UserReservations());
+      		replaceFragment(new UserReservations());
           break;
         case 4: //Configuracion
           break;
@@ -146,8 +146,9 @@ namespace Hermes.AndroidViews.Main
       }
     }
 
-    public void ChangeFragment(Fragment fragment)
+    public void replaceFragment(Fragment fragment)
     {
+			
       FragmentTransaction transaction = FragmentManager.BeginTransaction();
       transaction.Replace(Resource.Id.container, fragment);
       transaction.Commit();

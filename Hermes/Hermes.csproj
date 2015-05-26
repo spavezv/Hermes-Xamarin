@@ -85,18 +85,20 @@
     <Compile Include="AndroidViews\Account\SignupFragment.cs" />
     <Compile Include="AndroidViews\Main\HermesActivity.cs" />
     <Compile Include="AndroidViews\Main\ItemsAdapter.cs" />
-    <Compile Include="AndroidViews\CourtBooking\BookingCourtFragment.cs" />
     <Compile Include="AndroidViews\CourtBooking\BranchListAdapter.cs" />
     <Compile Include="AndroidViews\CourtBooking\CourtTypesAdapter.cs" />
     <Compile Include="AndroidViews\CourtBooking\HourListAdapter.cs" />
     <Compile Include="AndroidViews\WorkshopBooking\BookingWorkshopFragment.cs" />
     <Compile Include="AndroidViews\WorkshopBooking\WorkshopTypesAdapter.cs" />
-    <Compile Include="AndroidViews\CourtBooking\CourtTabScrollView.cs" />
     <Compile Include="AndroidViews\WorkshopBooking\WorkshopTabScrollView.cs" />
-    <Compile Include="AndroidViews\CourtBooking\CourtSlidingTabStrip.cs" />
     <Compile Include="AndroidViews\WorkshopBooking\BookingSlidingTabStrip.cs" />
     <Compile Include="WebServices\GlobalVar.cs" />
     <Compile Include="WebServices\WebService.cs" />
+    <Compile Include="AndroidViews\CourtBooking\BookingCourtTypeFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\BookingCourtDateFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\BookingCourtNamesFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\BookingCourtHoursFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\Court.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -114,6 +116,15 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\workshop_fragment.axml" />
+    <AndroidResource Include="Resources\layout\header_booking.axml" />
+    <AndroidResource Include="Resources\layout\booking_list_fragment.axml" />
+    <AndroidResource Include="Resources\layout\booking_date_fragment.axml" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_left_available.png" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_right_available.png" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_right_disable.png" />
+    <AndroidResource Include="Resources\drawable\ic_check_available.png" />
+    <AndroidResource Include="Resources\drawable\ic_check_disable.png" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_left_disable.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
