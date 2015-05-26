@@ -29,6 +29,7 @@ namespace Hermes.AndroidViews.Main
 		public string date { set; get;}
 		public string place { set; get;}
 		public string block { set; get;}
+		public string workshop { set; get;}
 
     protected override void OnCreate(Bundle bundle)
     {
@@ -139,7 +140,7 @@ namespace Hermes.AndroidViews.Main
 			replaceFragment(new BookingCourtTypeFragment());
           break;
         case 2: //Reservar taller
-			replaceFragment(new BookingWorkshopFragment());
+			replaceFragment(new BookngWorkshopTypeFragment());
           break;
         case 3: //Mis Reserva
       		replaceFragment(new UserReservations());

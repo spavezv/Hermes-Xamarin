@@ -23,4 +23,6 @@
     <string name="FechadeReserva">Elige Fecha</string>
     <string name="RecintosDisponibles">Recintos Disponibles</string>
     <string name="HorasDisponibles">Horas Disponibles</string>
+    <string name="TipodeTaller">Tipo de Taller</string>
+
 </resources>
