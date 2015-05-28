@@ -33,6 +33,7 @@ namespace Hermes.WebServices
             JsonValue jsonDoc = await Task.Run(() => JsonObject.Load(stream));
             Console.Out.WriteLine("Response: {0}", jsonDoc.ToString());
 
+            
             // Return the JSON document:
             return jsonDoc;
           }

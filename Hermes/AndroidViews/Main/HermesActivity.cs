@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using Hermes.AndroidViews.Reservations;
 using Hermes.AndroidViews.ActionBarDrawerToggle;
 using Hermes.AndroidViews.CourtBooking;
-using Hermes.AndroidViews.WorkshopBooking;
+using Hermes.Models;
 
 namespace Hermes.AndroidViews.Main
 {
@@ -25,11 +25,14 @@ namespace Hermes.AndroidViews.Main
     private ItemsAdapter mLeftAdapter;
     private List<string> mLeftDataSet;
 
-		public string court { set; get;}
-		public string date { set; get;}
-		public string place { set; get;}
-		public string block { set; get;}
+		public string TypeSport { set; get;}
+		public string DateEsp { set; get;}
+    public string Date { set; get; }
+    public Branches mBranch { set; get; }
+
 		public string workshop { set; get;}
+
+    public Block mBlock { set; get; }
 
     protected override void OnCreate(Bundle bundle)
     {
@@ -46,7 +49,6 @@ namespace Hermes.AndroidViews.Main
       
       mLeftDataSet = new List<string>();
       mLeftDataSet.Add("Reservar cancha");
-      mLeftDataSet.Add("Reservar taller");
       mLeftDataSet.Add("Mis reservas");
       mLeftDataSet.Add("Configuración");
       mLeftDataSet.Add("Ayuda y comentarios");
@@ -83,7 +85,10 @@ namespace Hermes.AndroidViews.Main
         SupportActionBar.SetTitle(Resource.String.CloseDrawer);
       }
 
-		//ChangeFragment (new UserReservations ());
+      Fragment f = new UserReservations();
+      FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
+      fragmentTx.Add(Resource.Id.container, f);
+      fragmentTx.Commit();
 
     }
 
@@ -139,16 +144,15 @@ namespace Hermes.AndroidViews.Main
         case 1: //Reservar cancha
 			replaceFragment(new BookingCourtTypeFragment());
           break;
-        case 2: //Reservar taller
-			replaceFragment(new BookngWorkshopTypeFragment());
+        case 2: //Mis Reserva
+          replaceFragment(new UserReservations());
           break;
-        case 3: //Mis Reserva
-      		replaceFragment(new UserReservations());
+        case 3: //Configuracion
+      		
           break;
-        case 4: //Configuracion
+        case 4: //ayuda
           break;
-        case 5: //ayuda
-          break;
+       
       }
     }
 

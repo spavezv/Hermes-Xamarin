@@ -10,10 +10,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace Hermes.WebServices
+namespace Hermes.Models
 {
-  class GlobalVar
+  public class Block
   {
-    public const string URL = "http://192.168.1.103:8080/HermesWS/webresources/hermes.";
+    public string start { set; get; }
+    public string finish { set; get; }
+    public int price { set; get; }
+    public int id { set; get; }
   }
 }

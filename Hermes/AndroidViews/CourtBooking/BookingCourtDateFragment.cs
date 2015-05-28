@@ -77,8 +77,9 @@ namespace Hermes.AndroidViews.CourtBooking
 				mBookCourtDateFrag.imgRight.SetOnClickListener (mBookCourtDateFrag);
 
 				var date = new DateTime(year, monthOfYear + 1, dayOfMonth);
-				((HermesActivity)mBookCourtDateFrag.Activity).date= date.ToString("d MMMM", 
+				((HermesActivity)mBookCourtDateFrag.Activity).DateEsp= date.ToString("d MMMM", 
 					CultureInfo.CreateSpecificCulture("es-MX"));
+        ((HermesActivity)mBookCourtDateFrag.Activity).Date= date.ToString("yyyy-MM-dd");
 			}
 
 

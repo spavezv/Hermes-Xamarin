@@ -71,6 +71,8 @@ namespace Hermes.AndroidViews.Account
           password = HashPassword(etPassword.Text);
           Console.WriteLine("Password: " + password);
 
+          var progressDialog = ProgressDialog.Show((MainActivity)this.Activity, "Por favor espere", "Iniciando sesión", true);
+
           url = GlobalVar.URL + "clients/authenticate/" + email + "/" + password;
           json = await ws.GetTask(url);
 
@@ -80,30 +82,34 @@ namespace Hermes.AndroidViews.Account
             if (json["id"] != -1)
             {
               Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
-              //Aca debería pasar al HermesActivity
+              var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
+              StartActivity(intent);
             } else
             {
               Toast.MakeText((MainActivity)this.Activity, "Contraseña o correo incorrectos.", ToastLength.Long).Show();
             }
             //Esto debería ir arriba, en el if.
-            var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
-            StartActivity(intent);
+            
           }
           else
           {
             //Error en la obtención del JsonValue, puede ser mal url
-            Console.WriteLine("ES NULL");
-            Toast.MakeText((MainActivity)this.Activity, "Json esta malo", ToastLength.Long).Show();
+            Toast.MakeText((MainActivity)this.Activity, "Problemas de conexión, intente más tarde.", ToastLength.Long).Show();
 
             var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
             StartActivity(intent);
           }
+         
           break;
         default:
           break;
       }
 
     }
+
+
+
+
 
     public String HashPassword(String password)
     {
@@ -115,5 +121,6 @@ namespace Hermes.AndroidViews.Account
     }
 
   }
+
 }
 

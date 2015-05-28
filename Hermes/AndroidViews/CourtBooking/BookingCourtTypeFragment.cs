@@ -21,7 +21,7 @@ namespace Hermes.AndroidViews.CourtBooking
 {
 	public class BookingCourtTypeFragment: Fragment, View.IOnClickListener
 	{
-		private List<string> courtTypesItems;
+		private List<string> courtTypesItems = new List<string> ();
 		private ListView listViewCourtTypes;
 		private ImageView imgLeft, imgRight;
 		private TextView txtCategory;
@@ -44,19 +44,13 @@ namespace Hermes.AndroidViews.CourtBooking
 			listViewCourtTypes.ChoiceMode = ChoiceMode.Single;
 
 			//Aqui deberia tener un json llenando esta lista
-			courtTypesItems = new List<string> ();
-			courtTypesItems.Add ("Futbol");
-			courtTypesItems.Add ("Tenis");
-			courtTypesItems.Add ("Voleyball");
-			courtTypesItems.Add ("Basquetball");
 
-			CourtTypesAdapter myAdapter= new CourtTypesAdapter((AppCompatActivity)(container.Context), courtTypesItems);
-			listViewCourtTypes.Adapter = myAdapter;
+      poblateItemsAdapter(container);			
 
 			listViewCourtTypes.ItemClick += (sender, e) => 
 			{
 				var tipoCancha = courtTypesItems[e.Position];
-				((HermesActivity)this.Activity).court = tipoCancha;
+				((HermesActivity)this.Activity).TypeSport = tipoCancha;
 				imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_available);
 				imgRight.SetOnClickListener (this);
 
@@ -66,6 +60,63 @@ namespace Hermes.AndroidViews.CourtBooking
 
 			return view;
 		}
+
+    private async void poblateItemsAdapter(ViewGroup container)
+    {
+      WebService ws = new WebService();
+      JsonValue json;
+      string url;
+      
+      url = GlobalVar.URL + "courts/sports";
+      json = await ws.GetTask(url);
+
+      if (json != null)
+      {
+        //Le devuelve una lista
+        JsonValue sportsResults = json["Item"];
+        JsonArray ResName = (JsonArray)JsonArray.Parse(sportsResults.ToString());
+        for (int i = 0; i < ResName.Count; i++)
+        {
+          var jsonObj = ResName[i];
+          courtTypesItems.Add(jsonObj["value"]);
+
+        }
+
+        if (courtTypesItems.Count != 0)
+        {
+          CourtTypesAdapter myAdapter = new CourtTypesAdapter((AppCompatActivity)(container.Context), courtTypesItems);
+          listViewCourtTypes.Adapter = myAdapter;
+        }
+        else 
+        {
+          messageEmptySport();
+        }
+
+        
+        
+      }
+      else
+      {
+        //Error en la obtención del JsonValue, puede ser mal url
+        Toast.MakeText((HermesActivity)this.Activity, "No hay tipo de deportes disponible", ToastLength.Long).Show();
+
+      }
+    }
+
+    private void messageEmptySport()
+    {
+      Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(((HermesActivity)this.Activity));
+      Android.App.AlertDialog alertDialog = builder.Create();
+      alertDialog.SetTitle("No hay canchas disponibles.");
+      alertDialog.SetMessage("Todas las canchas del sistema están reservadas");
+      alertDialog.SetButton("OK", (s, ev) =>
+      { 
+          var intent = new Intent((HermesActivity)this.Activity, typeof(HermesActivity));
+          StartActivity(intent);
+          alertDialog.Dismiss();
+      });
+      alertDialog.Show();
+    }
 
 
 

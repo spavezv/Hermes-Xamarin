@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hermes
+namespace Hermes.Models
 {
 	public class Court
 	{

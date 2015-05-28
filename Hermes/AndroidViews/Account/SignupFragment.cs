@@ -71,6 +71,7 @@ namespace Hermes.AndroidViews.Account
           Clients c = new Clients {name = name, lastname = lastname, phone = phone, email = email, encryptedPassword = password};
 
           string json = JsonConvert.SerializeObject(c);
+
           Console.WriteLine(json);
 
           string url = GlobalVar.URL + "clients";

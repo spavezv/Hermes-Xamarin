@@ -74,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidViews\Account\MainActivity.cs" />
+    <Compile Include="Models\Block.cs" />
+    <Compile Include="Models\Branches.cs" />
+    <Compile Include="Models\Business.cs" />
     <Compile Include="AndroidViews\Main\MyActionBarDrawerToggle.cs" />
     <Compile Include="AndroidViews\Reservations\RecyclerAdapter.cs" />
     <Compile Include="AndroidViews\Reservations\Reservation.cs" />
@@ -88,17 +91,13 @@
     <Compile Include="AndroidViews\CourtBooking\BranchListAdapter.cs" />
     <Compile Include="AndroidViews\CourtBooking\CourtTypesAdapter.cs" />
     <Compile Include="AndroidViews\CourtBooking\HourListAdapter.cs" />
-    <Compile Include="AndroidViews\WorkshopBooking\BookingWorkshopFragment.cs" />
-    <Compile Include="AndroidViews\WorkshopBooking\WorkshopTypesAdapter.cs" />
-    <Compile Include="AndroidViews\WorkshopBooking\WorkshopTabScrollView.cs" />
-    <Compile Include="AndroidViews\WorkshopBooking\BookingSlidingTabStrip.cs" />
     <Compile Include="WebServices\GlobalVar.cs" />
     <Compile Include="WebServices\WebService.cs" />
     <Compile Include="AndroidViews\CourtBooking\BookingCourtTypeFragment.cs" />
     <Compile Include="AndroidViews\CourtBooking\BookingCourtDateFragment.cs" />
     <Compile Include="AndroidViews\CourtBooking\BookingCourtNamesFragment.cs" />
     <Compile Include="AndroidViews\CourtBooking\BookingCourtHoursFragment.cs" />
-    <Compile Include="AndroidViews\CourtBooking\Court.cs" />
+    <Compile Include="Models\Court.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -125,6 +124,12 @@
     <AndroidResource Include="Resources\drawable\ic_check_available.png" />
     <AndroidResource Include="Resources\drawable\ic_check_disable.png" />
     <AndroidResource Include="Resources\drawable\ic_arrow_left_disable.png" />
+    <AndroidResource Include="Resources\layout\item_branch_listview.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\item_block_listview.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
@@ -173,7 +178,7 @@
   </Target>
   -->
   <ItemGroup>
-    <Folder Include="AndroidViews\SlindingTab\" />
+    <Folder Include="AndroidViews\Utility\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

@@ -25,7 +25,6 @@ namespace Hermes.AndroidViews
       Fragment f = new LoginFragment();
       FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
       fragmentTx.Add(Resource.Id.fragment_container, f);
-      fragmentTx.AddToBackStack(null);
       fragmentTx.Commit();
     }
 

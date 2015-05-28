@@ -7,12 +7,16 @@ using Hermes.AndroidViews.CourtBooking;
 using Android.Support.V7.App;
 using Hermes.AndroidViews.Main;
 using Android.OS;
+using Hermes.Models;
+using Hermes.WebServices;
+using System.Json;
+using Newtonsoft.Json;
 
 namespace Hermes
 {
 	public class BookingCourtHoursFragment: Fragment, View.IOnClickListener
 	{
-		private List<string> lstCourtHours;
+		private List<Block> lstCourtHours;
 		private ListView listViewCourtHours;
 		private ImageView imgLeft, imgRight;
 		private TextView txtCategory;
@@ -30,20 +34,11 @@ namespace Hermes
 			listViewCourtHours.ChoiceMode = ChoiceMode.Single;
 			imgRight.SetImageResource (Resource.Drawable.ic_check_disable);
 
-			//Aqui deberia tener un json llenando esta lista
-			lstCourtHours = new List<string> ();
-			lstCourtHours.Add ("15:00");
-			lstCourtHours.Add ("16:00");
-			lstCourtHours.Add ("17:00");
-			lstCourtHours.Add ("18:00");
-
-			HourListAdapter myAdapter= new HourListAdapter((AppCompatActivity)(container.Context), lstCourtHours);
-			listViewCourtHours.Adapter = myAdapter;
-
+      poblateItemsAdapter(container);
 			listViewCourtHours.ItemClick += (sender, e) => 
 			{
-				var hora = lstCourtHours[e.Position];
-				((HermesActivity)this.Activity).block = hora;
+        ((HermesActivity)this.Activity).mBlock = lstCourtHours[e.Position];
+
 				imgRight.SetImageResource (Resource.Drawable.ic_check_available);
 				imgRight.SetOnClickListener (this);
 			};
@@ -52,6 +47,34 @@ namespace Hermes
 
 			return view;
 		}
+
+    private async void poblateItemsAdapter(ViewGroup container)
+    {
+      WebService ws = new WebService();
+      string url = GlobalVar.URL + "blocks/getBlocks/" + ((HermesActivity)this.Activity).TypeSport + "/" + ((HermesActivity)this.Activity).Date + "/" + ((HermesActivity)this.Activity).mBranch.id;
+      JsonValue json = await ws.GetTask(url);
+
+      if (json != null)
+      {
+        lstCourtHours = JsonConvert.DeserializeObject<List<Block>>(json.ToString());
+
+        if (lstCourtHours.Count != 0)
+        {
+          HourListAdapter myAdapter = new HourListAdapter((AppCompatActivity)(container.Context), lstCourtHours);
+          listViewCourtHours.Adapter = myAdapter;
+        }
+        else
+        {
+          messageEmptySport();
+        }
+      }
+
+    }
+
+    private void messageEmptySport()
+    {
+      throw new NotImplementedException();
+    }
 
 		public void OnClick(View v)
 		{
@@ -65,10 +88,10 @@ namespace Hermes
 				Android.App.AlertDialog alertDialog = builder.Create ();
 				alertDialog.SetTitle ("¿Realizar reserva?");
 				alertDialog.SetMessage ("Su reservacion es: \n"
-				+ "Tipo de cancha: " + ((HermesActivity)this.Activity).court + "\n"
-					+ "Fecha: " + ((HermesActivity)this.Activity).date + "\n"
-					+ "Recinto: " + ((HermesActivity)this.Activity).place + "\n"
-					+ "Hora: " + ((HermesActivity)this.Activity).block);
+				+ "Tipo de cancha: " + ((HermesActivity)this.Activity).TypeSport + "\n"
+					+ "Fecha: " + ((HermesActivity)this.Activity).DateEsp + "\n"
+          + "Recinto: " + ((HermesActivity)this.Activity).mBranch.businessId.name + "\n"
+          + "Hora: " + ((HermesActivity)this.Activity).mBlock.start + " hrs. a " + ((HermesActivity)this.Activity).mBlock.finish + " hrs." );
 				alertDialog.SetButton("Aceptar", (s, ev) => 
 					{/*do something*/});
 				alertDialog.SetButton2("Cancelar", (s, ev) => {alertDialog.Dismiss();});
