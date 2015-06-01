@@ -25,4 +25,10 @@
     <string name="HorasDisponibles">Bloques Disponibles</string>
     <string name="TipodeTaller">Tipo de Taller</string>
 
+    <string name="ErrorNombre">Primer nombre es obligatorio</string>
+    <string name="ErrorEmail">Email inválido</string>
+    <string name="ErrorPass">La contraseña debe tener mínimo 6 caracteres</string>
+    <string name="ErrorPass2">Las contraseñas deben coincidir</string>
+    <string name="ErrorPhone">Teléfono inválido</string>
+
 </resources>
