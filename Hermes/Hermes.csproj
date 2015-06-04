@@ -93,11 +93,11 @@
     <Compile Include="AndroidViews\CourtBooking\HourListAdapter.cs" />
     <Compile Include="WebServices\GlobalVar.cs" />
     <Compile Include="WebServices\WebService.cs" />
-    <Compile Include="AndroidViews\CourtBooking\BookingCourtTypeFragment.cs" />
-    <Compile Include="AndroidViews\CourtBooking\BookingCourtDateFragment.cs" />
-    <Compile Include="AndroidViews\CourtBooking\BookingCourtNamesFragment.cs" />
-    <Compile Include="AndroidViews\CourtBooking\BookingCourtHoursFragment.cs" />
     <Compile Include="Models\Court.cs" />
+    <Compile Include="AndroidViews\CourtBooking\DateFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\BranchFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\BlocksFragment.cs" />
+    <Compile Include="AndroidViews\CourtBooking\TypeFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

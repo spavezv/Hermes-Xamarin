@@ -16,7 +16,7 @@ using Android.Content;
 
 namespace Hermes
 {
-  public class BookingCourtNamesFragment : Fragment, View.IOnClickListener
+  public class BranchFragment : Fragment, View.IOnClickListener
   {
     public List<Branches> lstBranches;
     public ListView listViewBranchesNames;
@@ -54,15 +54,15 @@ namespace Hermes
     {
       WebService ws = new WebService();
       string url = GlobalVar.URL + "branches/getBranches/" + ((HermesActivity)this.Activity).TypeSport + "/" + ((HermesActivity)this.Activity).Date;
-      JsonValue json = await ws.GetTask(url);
+		JsonValue json = await ws.GetTask(url);
 
       if (json != null)
       {
-        lstBranches = JsonConvert.DeserializeObject<List<Branches>>(json.ToString());
+		lstBranches = JsonConvert.DeserializeObject<List<Branches>>(json.ToString());
 
         if (lstBranches.Count != 0)
         {
-          BranchListAdapter myAdapter = new BranchListAdapter((AppCompatActivity)(container.Context), lstBranches);
+		  BranchListAdapter myAdapter = new BranchListAdapter((AppCompatActivity)(container.Context), lstBranches);
           listViewBranchesNames.Adapter = myAdapter;
         }
         else
@@ -92,11 +92,11 @@ namespace Hermes
       switch (v.Id)
       {
         case Resource.Id.img_arrow_left:
-          ((HermesActivity)this.Activity).replaceFragment(new BookingCourtDateFragment());
+          ((HermesActivity)this.Activity).replaceFragment(new DateFragment());
           break;
         case Resource.Id.img_arrow_right:
           //Dialog
-          ((HermesActivity)this.Activity).replaceFragment(new BookingCourtHoursFragment());
+          ((HermesActivity)this.Activity).replaceFragment(new BlocksFragment());
           break;
 
         default:

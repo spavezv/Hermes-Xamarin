@@ -21,7 +21,7 @@ namespace Hermes.Models
       public int price { set; get; }
       public string createdAt { set; get; }
       public string updatedAt { set; get; }
-      public Clients clientId { set; get; }
+	  public Clients clientId{ set; get; }
       public Court courtId { set; get; }
     
   }

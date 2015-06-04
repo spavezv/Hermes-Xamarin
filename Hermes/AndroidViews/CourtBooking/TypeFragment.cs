@@ -19,7 +19,7 @@ using Hermes.AndroidViews.Main;
 
 namespace Hermes.AndroidViews.CourtBooking
 {
-	public class BookingCourtTypeFragment: Fragment, View.IOnClickListener
+	public class TypeFragment: Fragment, View.IOnClickListener
 	{
 		private List<string> courtTypesItems = new List<string> ();
 		private ListView listViewCourtTypes;
@@ -43,9 +43,7 @@ namespace Hermes.AndroidViews.CourtBooking
 
 			listViewCourtTypes.ChoiceMode = ChoiceMode.Single;
 
-			//Aqui deberia tener un json llenando esta lista
-
-      poblateItemsAdapter(container);			
+		    poblateItemsAdapter(container);			
 
 			listViewCourtTypes.ItemClick += (sender, e) => 
 			{
@@ -55,9 +53,6 @@ namespace Hermes.AndroidViews.CourtBooking
 				imgRight.SetOnClickListener (this);
 
 			};
-//
-
-
 			return view;
 		}
 
@@ -128,7 +123,7 @@ namespace Hermes.AndroidViews.CourtBooking
 				//Toast.MakeText((MainActivity)this.Activity, "No hay izquierda", ToastLength.Long).Show();
 				break;
 			case Resource.Id.img_arrow_right:
-				((HermesActivity)this.Activity).replaceFragment(new BookingCourtDateFragment());		
+				((HermesActivity)this.Activity).replaceFragment(new DateFragment());		
 				break;
 			default:
 				break;

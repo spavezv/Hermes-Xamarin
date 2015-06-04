@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Android.Support.V7.App;
 using Android.Views;
 using Hermes.Models;
+using Java.Text;
+using Java.Util;
 
 namespace Hermes.AndroidViews.CourtBooking
 {
@@ -41,11 +43,8 @@ namespace Hermes.AndroidViews.CourtBooking
 
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
-			DateTime start = DateTime.Parse(items[position].start);
-			string startBlock = start.ToString ("HH:mm");
-
-			DateTime finish = DateTime.Parse(items[position].finish);
-			string finishBlock = finish.ToString ("HH:mm");
+			String inicio = items [position].start.Substring (11, 5);
+			String termino = items [position].finish.Substring (11, 5);
 
 			View row = convertView;
 			if(row == null)
@@ -54,8 +53,7 @@ namespace Hermes.AndroidViews.CourtBooking
 			}
       TextView txtBlockTime = row.FindViewById<TextView>(Resource.Id.txt_block_time);
 			TextView txtBlockPrice = row.FindViewById<TextView> (Resource.Id.txt_block_price);
-			//imgHour.SetImageResource (Resource.Drawable.ic_hour_list);
-			txtBlockTime.Text = startBlock + " hrs. a " + finishBlock + " hrs.";
+			txtBlockTime.Text = inicio + " hrs. a " + termino + " hrs.";
      		txtBlockPrice.Text = "$" + items[position].price;
 
 			return row;

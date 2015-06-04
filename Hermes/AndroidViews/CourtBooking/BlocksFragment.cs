@@ -15,7 +15,7 @@ using Android.Content;
 
 namespace Hermes
 {
-	public class BookingCourtHoursFragment: Fragment, View.IOnClickListener
+	public class BlocksFragment: Fragment, View.IOnClickListener
 	{
 		private List<Block> lstCourtHours;
 		private ListView listViewCourtHours;
@@ -96,24 +96,21 @@ namespace Hermes
 			switch (v.Id)
 			{
 			case Resource.Id.img_arrow_left:
-				((HermesActivity)this.Activity).replaceFragment(new BookingCourtNamesFragment());	
+				((HermesActivity)this.Activity).replaceFragment(new BranchFragment());	
 				break;
 			case Resource.Id.img_arrow_right:
-				DateTime start = DateTime.Parse(selectedBlock.start);
-				string startBlock = start.ToString ("HH:mm");
-
-				DateTime finish = DateTime.Parse(selectedBlock.finish);
-				string finishBlock = finish.ToString ("HH:mm");
+				String inicio = selectedBlock.start.Substring (11, 5);
+				String termino = selectedBlock.finish.Substring (11, 5);
 
 				Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder (((HermesActivity)this.Activity));
 				Android.App.AlertDialog alertDialog = builder.Create ();
-				alertDialog.SetTitle ("¿Realizar reserva?");
+				alertDialog.SetTitle ("Detalles de reserva:");
 				alertDialog.SetMessage ("Su reservacion es: \n"
 				+ "Tipo de cancha: " + ((HermesActivity)this.Activity).TypeSport + "\n"
 					+ "Fecha: " + ((HermesActivity)this.Activity).DateEsp + "\n"
           + "Recinto: " + ((HermesActivity)this.Activity).mBranch.businessId.name + "\n"
-          + "Hora: " + startBlock + " hrs. a " + finishBlock + " hrs." );
-				alertDialog.SetButton("Aceptar", (s, ev) => 
+          + "Hora: " + inicio + " hrs. a " + termino + " hrs." );
+				alertDialog.SetButton("Reservar", (s, ev) => 
 					{bookCourt();});
 				alertDialog.SetButton2("Cancelar", (s, ev) => {alertDialog.Dismiss();});
 				alertDialog.Show();
@@ -140,6 +137,9 @@ namespace Hermes
 
 			if (json != null) {
 				Toast.MakeText ((HermesActivity)this.Activity, "Reserva realizada", ToastLength.Long).Show ();
+				var intent = new Intent((HermesActivity)this.Activity, typeof(HermesActivity));
+				StartActivity(intent);
+
 			} else {
 				Toast.MakeText ((HermesActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show ();
 			}

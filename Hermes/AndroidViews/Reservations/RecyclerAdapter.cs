@@ -8,16 +8,18 @@ using System;
 using Android.Content;
 using Android.Views.Animations;
 using Android.Animation;
+using Hermes.Models;
+using System.Globalization;
 
 namespace Hermes.AndroidViews.Reservations
 {
   public class RecyclerAdapter : RecyclerView.Adapter
   {
-    private MyList<Reservation> mReservations;
+    private MyList<Block> mReservations;
     private RecyclerView mRecyclerView;
     private Context mContext;
     private int mCurrentPosition = -1;
-    public RecyclerAdapter(MyList<Reservation> reservations, RecyclerView recyclerView, Context context)
+    public RecyclerAdapter(MyList<Block> reservations, RecyclerView recyclerView, Context context)
     {
       mReservations = reservations;
       mRecyclerView = recyclerView;
@@ -55,11 +57,17 @@ namespace Hermes.AndroidViews.Reservations
       MyView myHolder = holder as MyView;
       //int indexPosition = (mReservations.Count - 1) - position;
       int indexPosition = position;
-      myHolder.mMainView.Click += mMainView_Click;
-      myHolder.mType.Text = mReservations[indexPosition].Type;
-      myHolder.mBusiness.Text = mReservations[indexPosition].Business;
-      myHolder.mAddress.Text = mReservations[indexPosition].Address;
-      myHolder.mDate.Text = mReservations[indexPosition].Date;
+
+			DateTime date = DateTime.Parse(mReservations[indexPosition].date);
+			string dateReservation = date.ToString ("d MMMM", 
+				CultureInfo.CreateSpecificCulture("es-MX"));
+			myHolder.mMainView.Click += mMainView_Click;
+			myHolder.mType.Text = mReservations[indexPosition].courtId.sport;
+			myHolder.mBusiness.Text = mReservations[indexPosition].courtId.branchId.businessId.name;
+			myHolder.mAddress.Text = mReservations[indexPosition].courtId.branchId.street + " " +
+				mReservations[indexPosition].courtId.branchId.number + " " +
+				mReservations[indexPosition].courtId.branchId.commune ;
+			myHolder.mDate.Text = dateReservation ;
 
       if (position > mCurrentPosition)
       {
@@ -86,14 +94,12 @@ namespace Hermes.AndroidViews.Reservations
       Animation anim = AnimationUtils.LoadAnimation(mContext, currentAnim);
       view.StartAnimation(anim);
     }
-
+		//Aqui esta el click de cada item
     void mMainView_Click(object sender, System.EventArgs e)
     {
       int position = mRecyclerView.GetChildPosition((View)sender);
       //int indexPosition = (mReservations.Count - 1) - position;
-      int indexPosition = position;
-      mReservations.Add(new Reservation() {Type = indexPosition.ToString(), Business = "Empresa", Address = "dirección", Date = "12/12/12"});
-      Console.WriteLine(mReservations[indexPosition].Type);
+      
     }
 
     public override int ItemCount
@@ -108,14 +114,14 @@ namespace Hermes.AndroidViews.Reservations
 
   }
 
-  public class MyList<T>
+  public class MyList<Block>
   {
-    private List<T> mItems;
+	private List<Block> mItems;
     private RecyclerView.Adapter mAdapter;
 
     public MyList()
     {
-      mItems = new List<T>();
+		mItems = new List<Block>();
     }
 
     public RecyclerView.Adapter Adapter
@@ -124,7 +130,7 @@ namespace Hermes.AndroidViews.Reservations
       set { mAdapter = value; }
     }
 
-    public void Add(T item)
+	public void Add(Block item)
     {
       mItems.Add(item);
       if (Adapter != null)
@@ -142,7 +148,7 @@ namespace Hermes.AndroidViews.Reservations
       }
     }
 
-    public T this[int index]
+	public Block this[int index]
     {
       get { return mItems[index]; }
       set { mItems[index] = value; }

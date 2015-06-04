@@ -10,7 +10,7 @@ using System.Globalization;
 
 namespace Hermes.AndroidViews.CourtBooking
 {
-	public class BookingCourtDateFragment: Fragment , View.IOnClickListener
+	public class DateFragment: Fragment , View.IOnClickListener
 	{
 		public ImageView imgLeft, imgRight;
 		private TextView txtCategory;
@@ -52,10 +52,10 @@ namespace Hermes.AndroidViews.CourtBooking
 			switch (v.Id)
 			{
 			case Resource.Id.img_arrow_left:
-				((HermesActivity)this.Activity).replaceFragment(new BookingCourtTypeFragment());		
+				((HermesActivity)this.Activity).replaceFragment(new TypeFragment());		
 				break;
 			case Resource.Id.img_arrow_right:
-				((HermesActivity)this.Activity).replaceFragment(new BookingCourtNamesFragment());		
+				((HermesActivity)this.Activity).replaceFragment(new BranchFragment());		
 				break;
 			default:
 				break;
@@ -65,8 +65,8 @@ namespace Hermes.AndroidViews.CourtBooking
 
 
 		public class AndroidDatePickerListener: Java.Lang.Object, DatePicker.IOnDateChangedListener {
-			BookingCourtDateFragment mBookCourtDateFrag;
-			public AndroidDatePickerListener (BookingCourtDateFragment bookingCourtDateFragment)
+			DateFragment mBookCourtDateFrag;
+			public AndroidDatePickerListener (DateFragment bookingCourtDateFragment)
 			{
 				mBookCourtDateFrag = bookingCourtDateFragment;
 			}

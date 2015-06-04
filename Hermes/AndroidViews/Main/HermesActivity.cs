@@ -145,7 +145,7 @@ namespace Hermes.AndroidViews.Main
         case 0: //Usuario
           break;
         case 1: //Reservar cancha
-			replaceFragment(new BookingCourtTypeFragment());
+			replaceFragment(new TypeFragment());
           break;
         case 2: //Mis Reserva
           replaceFragment(new UserReservations());
