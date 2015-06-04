@@ -11,6 +11,7 @@ using Hermes.Models;
 using Hermes.WebServices;
 using System.Json;
 using Newtonsoft.Json;
+using Android.Content;
 
 namespace Hermes
 {
@@ -20,6 +21,9 @@ namespace Hermes
 		private ListView listViewCourtHours;
 		private ImageView imgLeft, imgRight;
 		private TextView txtCategory;
+		public HourListAdapter myAdapter;
+		public Block selectedBlock;
+
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 
@@ -37,8 +41,8 @@ namespace Hermes
       poblateItemsAdapter(container);
 			listViewCourtHours.ItemClick += (sender, e) => 
 			{
-        ((HermesActivity)this.Activity).mBlock = lstCourtHours[e.Position];
-
+        	((HermesActivity)this.Activity).mBlock = lstCourtHours[e.Position];
+				selectedBlock = myAdapter.getBlock(e.Position);
 				imgRight.SetImageResource (Resource.Drawable.ic_check_available);
 				imgRight.SetOnClickListener (this);
 			};
@@ -60,8 +64,9 @@ namespace Hermes
 
         if (lstCourtHours.Count != 0)
         {
-          HourListAdapter myAdapter = new HourListAdapter((AppCompatActivity)(container.Context), lstCourtHours);
+          myAdapter = new HourListAdapter((AppCompatActivity)(container.Context), lstCourtHours);
           listViewCourtHours.Adapter = myAdapter;
+
         }
         else
         {
@@ -73,7 +78,17 @@ namespace Hermes
 
     private void messageEmptySport()
     {
-      throw new NotImplementedException();
+			Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(((HermesActivity)this.Activity));
+			Android.App.AlertDialog alertDialog = builder.Create();
+			alertDialog.SetTitle("Sin horas disponibles.");
+			alertDialog.SetMessage("No existen horas disponibles en la sucursal escogida.");
+			alertDialog.SetButton("OK", (s, ev) =>
+				{
+					var intent = new Intent((HermesActivity)this.Activity, typeof(HermesActivity));
+					StartActivity(intent);
+					alertDialog.Dismiss();
+				});
+			alertDialog.Show();
     }
 
 		public void OnClick(View v)
@@ -84,6 +99,12 @@ namespace Hermes
 				((HermesActivity)this.Activity).replaceFragment(new BookingCourtNamesFragment());	
 				break;
 			case Resource.Id.img_arrow_right:
+				DateTime start = DateTime.Parse(selectedBlock.start);
+				string startBlock = start.ToString ("HH:mm");
+
+				DateTime finish = DateTime.Parse(selectedBlock.finish);
+				string finishBlock = finish.ToString ("HH:mm");
+
 				Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder (((HermesActivity)this.Activity));
 				Android.App.AlertDialog alertDialog = builder.Create ();
 				alertDialog.SetTitle ("¿Realizar reserva?");
@@ -91,9 +112,9 @@ namespace Hermes
 				+ "Tipo de cancha: " + ((HermesActivity)this.Activity).TypeSport + "\n"
 					+ "Fecha: " + ((HermesActivity)this.Activity).DateEsp + "\n"
           + "Recinto: " + ((HermesActivity)this.Activity).mBranch.businessId.name + "\n"
-          + "Hora: " + ((HermesActivity)this.Activity).mBlock.start + " hrs. a " + ((HermesActivity)this.Activity).mBlock.finish + " hrs." );
+          + "Hora: " + startBlock + " hrs. a " + finishBlock + " hrs." );
 				alertDialog.SetButton("Aceptar", (s, ev) => 
-					{/*do something*/});
+					{bookCourt();});
 				alertDialog.SetButton2("Cancelar", (s, ev) => {alertDialog.Dismiss();});
 				alertDialog.Show();
 				break;
@@ -102,6 +123,26 @@ namespace Hermes
 				break;
 			}
 
+		}
+
+		public async void bookCourt ()
+		{
+			
+			selectedBlock.clientId = HermesActivity.Client;
+
+			string json = JsonConvert.SerializeObject (selectedBlock);
+
+			Console.WriteLine ("JSON A ENVIAR" + json);
+
+			WebService ws = new WebService();
+			string url = GlobalVar.URL + "blocks/" + selectedBlock.id;
+			json = await ws.PutTask(url, json);
+
+			if (json != null) {
+				Toast.MakeText ((HermesActivity)this.Activity, "Reserva realizada", ToastLength.Long).Show ();
+			} else {
+				Toast.MakeText ((HermesActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show ();
+			}
 		}
 	}
 }

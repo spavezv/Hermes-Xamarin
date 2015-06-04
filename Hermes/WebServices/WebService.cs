@@ -46,7 +46,7 @@ namespace Hermes.WebServices
     }
 
 
-    public async Task<JsonValue> PostTask(string url, String json)
+    public async Task<JsonValue> PutTask(string url, String json)
     {
       Console.WriteLine("URL: " + url);
 
@@ -54,7 +54,7 @@ namespace Hermes.WebServices
       HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
       request.ContentType = "application/json";
       request.Accept = "text/plain";
-      request.Method = "POST";
+      request.Method = "PUT";
 
       Console.WriteLine("antes de enviar");
       try
@@ -91,6 +91,52 @@ namespace Hermes.WebServices
         return null;
       }
     }
+
+		public async Task<JsonValue> PostTask(string url, String json)
+		{
+			Console.WriteLine("URL: " + url);
+
+			// Create an HTTP web request using the URL:
+			HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
+			request.ContentType = "application/json";
+			request.Accept = "text/plain";
+			request.Method = "POST";
+
+			Console.WriteLine("antes de enviar");
+			try
+			{
+				using (var stream = await Task.Factory.FromAsync<Stream>(request.BeginGetRequestStream,
+					request.EndGetRequestStream, null))
+				{
+					byte[] requestAsBytes = Encoding.UTF8.GetBytes(json);
+					await stream.WriteAsync(requestAsBytes, 0, requestAsBytes.Length);
+					Console.WriteLine("envió");
+				}
+			}
+			catch
+			{
+				Console.WriteLine("catch al enviar");
+				return null;
+			}
+			Console.WriteLine("antes de recibir");
+			try
+			{
+				using (WebResponse responseObject = await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request))
+				{
+					var responseStream = responseObject.GetResponseStream();
+					var sr = new StreamReader(responseStream);
+					string received = await sr.ReadToEndAsync();
+					Console.WriteLine("recibido " + received);
+					Console.WriteLine("recibió");
+					return received;
+				}
+			}
+			catch
+			{
+				Console.WriteLine("catch al recibir");
+				return null;
+			}
+		}
 
 
   }

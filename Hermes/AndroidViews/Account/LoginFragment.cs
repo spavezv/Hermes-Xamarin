@@ -18,6 +18,8 @@ using Hermes.AndroidViews.Main;
 using System.Net.Http;
 using Hermes.WebServices;
 using System.Security.Cryptography;
+using Hermes.Models;
+using Newtonsoft.Json;
 
 namespace Hermes.AndroidViews.Account
 {
@@ -27,6 +29,7 @@ namespace Hermes.AndroidViews.Account
     private Button btnSignup, btnLogin;
     private EditText etMail, etPassword;
     private String email, password;
+	public static Clients Client;
 
     public override void OnCreate(Bundle savedInstanceState)
     {
@@ -81,6 +84,7 @@ namespace Hermes.AndroidViews.Account
 
             if (json["id"] != -1)
             {
+			Client = JsonConvert.DeserializeObject<Clients>(json.ToString());
               Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
               var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
               StartActivity(intent);

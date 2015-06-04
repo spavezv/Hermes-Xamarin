@@ -12,6 +12,8 @@ using Hermes.AndroidViews.Reservations;
 using Hermes.AndroidViews.ActionBarDrawerToggle;
 using Hermes.AndroidViews.CourtBooking;
 using Hermes.Models;
+using System;
+using Hermes.AndroidViews.Account;
 
 namespace Hermes.AndroidViews.Main
 {
@@ -27,12 +29,13 @@ namespace Hermes.AndroidViews.Main
 
 		public string TypeSport { set; get;}
 		public string DateEsp { set; get;}
-    public string Date { set; get; }
-    public Branches mBranch { set; get; }
+  		public string Date { set; get; }
+    	public Branches mBranch { set; get; }
 
 		public string workshop { set; get;}
 
-    public Block mBlock { set; get; }
+   		public Block mBlock { set; get; }
+		public static Clients Client = LoginFragment.Client;
 
     protected override void OnCreate(Bundle bundle)
     {
@@ -84,7 +87,7 @@ namespace Hermes.AndroidViews.Main
         //This is the first the time the activity is ran
         SupportActionBar.SetTitle(Resource.String.CloseDrawer);
       }
-
+		
       Fragment f = new UserReservations();
       FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
       fragmentTx.Add(Resource.Id.container, f);

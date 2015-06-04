@@ -23,7 +23,10 @@ namespace Hermes.AndroidViews.CourtBooking
 				return items.Count;
 			}
 		}
-
+		public Block getBlock(int position)
+		{
+			return items [position];
+		}
 		public override long GetItemId (int position)
 		{
 			return position;
@@ -38,6 +41,12 @@ namespace Hermes.AndroidViews.CourtBooking
 
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
+			DateTime start = DateTime.Parse(items[position].start);
+			string startBlock = start.ToString ("HH:mm");
+
+			DateTime finish = DateTime.Parse(items[position].finish);
+			string finishBlock = finish.ToString ("HH:mm");
+
 			View row = convertView;
 			if(row == null)
 			{
@@ -46,8 +55,8 @@ namespace Hermes.AndroidViews.CourtBooking
       TextView txtBlockTime = row.FindViewById<TextView>(Resource.Id.txt_block_time);
 			TextView txtBlockPrice = row.FindViewById<TextView> (Resource.Id.txt_block_price);
 			//imgHour.SetImageResource (Resource.Drawable.ic_hour_list);
-      txtBlockTime.Text = items[position].start + " hrs. a " + items[position].finish + " hrs.";
-      txtBlockPrice.Text = "$" + items[position].price;
+			txtBlockTime.Text = startBlock + " hrs. a " + finishBlock + " hrs.";
+     		txtBlockPrice.Text = "$" + items[position].price;
 
 			return row;
 		}
