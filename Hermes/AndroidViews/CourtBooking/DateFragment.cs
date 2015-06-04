@@ -19,9 +19,6 @@ namespace Hermes.AndroidViews.CourtBooking
 		public override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-
-			// Create your fragment here
-
 		}
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -31,18 +28,15 @@ namespace Hermes.AndroidViews.CourtBooking
 			imgRight = view.FindViewById<ImageView>(Resource.Id.img_arrow_right);
 			txtCategory = view.FindViewById<TextView>(Resource.Id.txt_book_header);
 			datePicker = view.FindViewById<DatePicker> (Resource.Id.date_boking_fragment);
-
 			txtCategory.SetText (Resource.String.FechadeReserva);
 			imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_disable);
 			imgLeft.SetOnClickListener (this);
 
 			datePicker.Init (
 				DateTime.Now.Year,
-				DateTime.Now.Month,
+				DateTime.Now.Month - 1,
 				DateTime.Now.Day,
 				new AndroidDatePickerListener (this));
-
-
 			return view;
 		}
 
@@ -76,7 +70,7 @@ namespace Hermes.AndroidViews.CourtBooking
 				mBookCourtDateFrag.imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_available);
 				mBookCourtDateFrag.imgRight.SetOnClickListener (mBookCourtDateFrag);
 
-				var date = new DateTime(year, monthOfYear + 1, dayOfMonth);
+				var date = new DateTime(year, monthOfYear +1 , dayOfMonth);
 				((HermesActivity)mBookCourtDateFrag.Activity).DateEsp= date.ToString("d MMMM", 
 					CultureInfo.CreateSpecificCulture("es-MX"));
         ((HermesActivity)mBookCourtDateFrag.Activity).Date= date.ToString("yyyy-MM-dd");
