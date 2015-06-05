@@ -6,6 +6,7 @@
     <string name="password_confirmation">Confirmación de contraseña</string>
     <string name="login">Iniciar sesión</string>
     <string name="signup">Crear cuenta</string>
+    <string name="rememberSession">Recordar sesión</string>
     <string name="names">Nombres</string>
     <string name="lastnames">Apellidos</string>
     <string name="phone">Teléfono</string>

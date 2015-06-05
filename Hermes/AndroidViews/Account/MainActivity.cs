@@ -6,6 +6,8 @@ using Android.Widget;
 using Android.Views;
 using Hermes.AndroidViews.Account;
 using System;
+using Android.Content;
+using Hermes.AndroidViews.Main;
 
 namespace Hermes.AndroidViews
 {
@@ -58,6 +60,23 @@ namespace Hermes.AndroidViews
         base.OnBackPressed();
       }
     }
+		protected override void OnResume ()
+		{
+			ISharedPreferences sharedpreferences = this.GetSharedPreferences ("RunningAssistant.preferences", FileCreationMode.Private);
+			if (sharedpreferences.Contains ("userEmail")) {
+				if (sharedpreferences.Contains ("userPassword")) {
+					var intent = new Intent (this, typeof(HermesActivity));
+					Toast.MakeText(this, "usuario recordado", ToastLength.Long).Show();
+					intent.PutExtra ("userEmail", sharedpreferences.GetString ("userEmail", ""));
+					intent.PutExtra ("userPassword", sharedpreferences.GetString ("userPassword", ""));
+					StartActivity (intent);
+					Finish ();
+				}
+			}
+			base.OnResume ();
+		}
+
+
 
   }
 }
