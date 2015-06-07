@@ -14,6 +14,8 @@ using Hermes.AndroidViews.CourtBooking;
 using Hermes.Models;
 using System;
 using Hermes.AndroidViews.Account;
+using Android.Content;
+using Hermes.WebServices;
 
 namespace Hermes.AndroidViews.Main
 {
@@ -96,24 +98,27 @@ namespace Hermes.AndroidViews.Main
             fragmentTx.Commit();
 
         }
-
+        
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_hermes, menu);
             return base.OnCreateOptionsMenu(menu);
         }
+        
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            //switch (item.ItemId)
-            //{
-            //  case Resource.Id.add:
-            //    break;
-            //  case Resource.Id.Remove:
-            //    break;
-            //}
+            switch (item.ItemId)
+            {
+                case Resource.Id.ic_settings:
+                    break;
+                case Resource.Id.ic_signout:
+                    signout();
+                    break;
+            }
             mDrawerToggle.OnOptionsItemSelected(item);
             return base.OnOptionsItemSelected(item);
         }
+        
         protected override void OnSaveInstanceState(Bundle outState)
         {
             if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
@@ -128,11 +133,13 @@ namespace Hermes.AndroidViews.Main
 
             base.OnSaveInstanceState(outState);
         }
+        
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
             base.OnPostCreate(savedInstanceState);
             mDrawerToggle.SyncState();
         }
+        
         public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
         {
             base.OnConfigurationChanged(newConfig);
@@ -168,6 +175,17 @@ namespace Hermes.AndroidViews.Main
             transaction.Replace(Resource.Id.container, fragment);
             transaction.Commit();
             mDrawerLayout.CloseDrawers();
+        }
+
+        public void signout()
+        {
+            ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+            editor.PutBoolean(GlobalVar.REMEMBER_USER, false);
+            editor.Apply();
+
+            var intent = new Intent(this, typeof(MainActivity));
+            StartActivity(intent);
+            Finish();
         }
     }
 }

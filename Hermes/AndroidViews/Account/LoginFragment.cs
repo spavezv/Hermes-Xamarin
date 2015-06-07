@@ -79,22 +79,17 @@ namespace Hermes.AndroidViews.Account
                     {
                         if (json["id"] != -1)
                         {
-                            if (checkbox.Checked)
-                            {
-                                SavePreferences(v.Context, true);
-                            }
-                            else
-                            {
-                                SavePreferences(v.Context, false);
-                            }
-                            Client = JsonConvert.DeserializeObject<Clients>(json.ToString());
-                            Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
+                            Clients c = JsonConvert.DeserializeObject<Clients>(json.ToString());
+                            SavePreferences(c);
                             var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
+                            Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
                             StartActivity(intent);
+                            this.Activity.Finish();
+
                         }
                         else
                         {
-                            Toast.MakeText((MainActivity)this.Activity, "Contraseña o correo incorrectos.", ToastLength.Long).Show();
+                            Toast.MakeText((MainActivity)this.Activity, "Contraseña o correo equivocado.", ToastLength.Long).Show();
                         }
                     }
                     else
@@ -102,6 +97,7 @@ namespace Hermes.AndroidViews.Account
                         Toast.MakeText((MainActivity)this.Activity, "Problemas de conexión, intente más tarde.", ToastLength.Long).Show();
                         var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
                         StartActivity(intent);
+                        this.Activity.Finish();
                     }
 
                     progressDialog.Dismiss();
@@ -112,30 +108,20 @@ namespace Hermes.AndroidViews.Account
 
         }
 
-        void SavePreferences(Context mContext, Boolean isChecked)
+        void SavePreferences(Clients c)
         {
-            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(mContext);
+            ISharedPreferences prefs = this.Activity.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
             ISharedPreferencesEditor editor = prefs.Edit();
 
-            if (isChecked)
-            {
-                Toast.MakeText((MainActivity)this.Activity, "check, voy a recordar", ToastLength.Long).Show();
-                editor.PutString("userEmail", etMail.Text);
-                editor.PutString("userPassword", HashPassword(etPassword.Text));
-                editor.Apply();        // applies changes asynchronously on newer APIs
-            }
-            else
-            {
-                editor.PutString("userEmail", "");
-                editor.PutString("userPassword", "");
-                editor.Apply();        // applies changes asynchronously on newer APIs
-            }
+            editor.PutInt(GlobalVar.USER_ID, c.id);
+            editor.PutBoolean(GlobalVar.REMEMBER_USER, checkbox.Checked);
+            editor.PutString(GlobalVar.USER_EMAIL, c.email);
+            editor.PutString(GlobalVar.USER_PASSWORD, c.encryptedPassword);
+            editor.Apply();        // applies changes asynchronously on newer APIs
 
-
+            var remember = (checkbox.Checked) ? "Recuerdame " : "NO Recuerdame ";
+            Console.WriteLine(remember);
         }
-
-
-
 
         public String HashPassword(String password)
         {

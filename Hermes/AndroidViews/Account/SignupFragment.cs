@@ -54,30 +54,26 @@ namespace Hermes.AndroidViews.Account
             {
                 case Resource.Id.btn_signup:
                     Console.WriteLine("Iniciando sesión.");
-                    string name = etNames.Text;
-                    string lastname = etLastnames.Text;
-                    string email = etEmail.Text;
-                    string phone = etPhone.Text;
-                    string password = etPassword.Text;
-                    string passwordConfirmation = etPasswordConfirmation.Text;
 
-                    Clients c = new Clients { name = name, lastname = lastname, phone = phone, email = email, encryptedPassword = HashPassword(password) };
-
-                    string json = JsonConvert.SerializeObject(c);
-
-                    string url = GlobalVar.URL + "clients";
-                    WebService ws = new WebService();
-                    json = await ws.PostTask(url, json);
-
-                    if (json != null)
+                    if (!haveErrors())
                     {
-                        Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
-                        var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
-                        StartActivity(intent);
-                    }
-                    else
-                    {
-                        Toast.MakeText((MainActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show();
+                        Clients c = new Clients { name = etNames.Text, lastname = etLastnames.Text, phone = etPhone.Text, email = etEmail.Text, encryptedPassword = HashPassword(etPassword.Text) };
+
+                        string json = JsonConvert.SerializeObject(c);
+
+                        string url = GlobalVar.URL + "clients";
+                        WebService ws = new WebService();
+                        json = await ws.PostTask(url, json);
+
+                        if (json != null)
+                        {
+                            Toast.MakeText((MainActivity)this.Activity, "Cuenta creada, ahora puede iniciar sesión.", ToastLength.Long).Show();
+                            ((MainActivity)this.Activity).replaceFragment(new LoginFragment());
+                        }
+                        else
+                        {
+                            Toast.MakeText((MainActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show();
+                        }
                     }
                     break;
             }
@@ -93,13 +89,27 @@ namespace Hermes.AndroidViews.Account
             return matcher.Matches();
         }
 
-        private bool isValidEmail(string email)
+        private bool haveErrors()
         {
-            const string EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+            Console.WriteLine("REVISANDO ERRORES");
 
-            Java.Util.Regex.Pattern pattern = Java.Util.Regex.Pattern.Compile(EMAIL_PATTERN);
-            Matcher matcher = pattern.Matcher(email);
-            return matcher.Matches();
+            bool errors = false;
+            string name = etNames.Text.ToString();
+            string email = etEmail.Text.ToString();
+
+            if (string.IsNullOrEmpty(name))
+            {
+                etNames.Error = "No puede estar vacío";
+                errors = true;
+            }
+            if (!GlobalVar.IsValidEmail(email))
+            {
+                etEmail.Error = "No es una dirección de correo válida";
+                errors = true;
+            }
+            string m = (errors) ? "HAY ERROR" : "NO HAY ERROR";
+            Console.WriteLine(m);
+            return errors;
         }
 
         public String HashPassword(String password)

@@ -1600,14 +1600,17 @@ namespace Hermes
 			// aapt resource value: 0x7f09000d
 			public const int homeAsUp = 2131296269;
 			
-			// aapt resource value: 0x7f090085
-			public const int ic_action_help = 2131296389;
+			// aapt resource value: 0x7f090086
+			public const int ic_action_help = 2131296390;
 			
-			// aapt resource value: 0x7f090084
-			public const int ic_find = 2131296388;
+			// aapt resource value: 0x7f090085
+			public const int ic_find = 2131296389;
 			
 			// aapt resource value: 0x7f090083
 			public const int ic_settings = 2131296387;
+			
+			// aapt resource value: 0x7f090084
+			public const int ic_signout = 2131296388;
 			
 			// aapt resource value: 0x7f09002b
 			public const int icon = 2131296299;

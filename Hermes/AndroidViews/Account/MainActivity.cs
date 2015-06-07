@@ -8,75 +8,80 @@ using Hermes.AndroidViews.Account;
 using System;
 using Android.Content;
 using Hermes.AndroidViews.Main;
+using Hermes.WebServices;
 
 namespace Hermes.AndroidViews
 {
-  [Activity(Label = "Hermes", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
-  public class MainActivity : AppCompatActivity
-  {
-
-    protected override void OnCreate(Bundle bundle)
+    [Activity(Label = "Hermes", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
+    public class MainActivity : AppCompatActivity
     {
-      base.OnCreate(bundle);
 
-      SetContentView(Resource.Layout.main);
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
 
-      var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-      SetSupportActionBar(toolbar);
+            SetContentView(Resource.Layout.main);
 
-      Fragment f = new LoginFragment();
-      FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-      fragmentTx.Add(Resource.Id.fragment_container, f);
-      fragmentTx.Commit();
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+
+            Fragment f = new LoginFragment();
+            FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
+            fragmentTx.Add(Resource.Id.fragment_container, f);
+            fragmentTx.Commit();
+        }
+
+        public void replaceFragment(Fragment f)
+        {
+            FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
+            fragmentTx.Replace(Resource.Id.fragment_container, f);
+            fragmentTx.AddToBackStack(null);
+            fragmentTx.Commit();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();
+            return base.OnOptionsItemSelected(item);
+        }
+
+        public override void OnBackPressed()
+        {
+            if (this.FragmentManager.BackStackEntryCount > 0)
+            {
+                this.FragmentManager.PopBackStack();
+            }
+            else
+            {
+                base.OnBackPressed();
+            }
+        }
+        protected override void OnResume()
+        {
+            Console.WriteLine("On Resume");
+            ISharedPreferences prefs = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+            var remember = (prefs.GetBoolean(GlobalVar.REMEMBER_USER, false)) ? "Recuerdame " : "NO Recuerdame ";
+            Console.WriteLine(remember);
+            if (prefs.GetBoolean(GlobalVar.REMEMBER_USER, false))
+            {
+                var intent = new Intent(this, typeof(HermesActivity));
+                intent.PutExtra(GlobalVar.USER_ID, prefs.GetInt(GlobalVar.USER_ID, -1));
+                intent.PutExtra(GlobalVar.REMEMBER_USER, prefs.GetBoolean(GlobalVar.REMEMBER_USER, false));
+                intent.PutExtra(GlobalVar.USER_EMAIL, prefs.GetString(GlobalVar.USER_EMAIL, null));
+                intent.PutExtra(GlobalVar.USER_PASSWORD, prefs.GetString(GlobalVar.USER_PASSWORD, null));
+                StartActivity(intent);
+                Finish();
+                
+            }
+            base.OnResume();
+        }
+
+
+
     }
-
-    public void replaceFragment(Fragment f)
-    {
-      FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-      fragmentTx.Replace(Resource.Id.fragment_container, f);
-      fragmentTx.AddToBackStack(null);
-      fragmentTx.Commit();
-    }
-
-    public override bool OnCreateOptionsMenu(IMenu menu)
-    {
-      MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-      return base.OnCreateOptionsMenu(menu);
-    }
-    public override bool OnOptionsItemSelected(IMenuItem item)
-    {
-      Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();
-      return base.OnOptionsItemSelected(item);
-    }
-
-    public override void OnBackPressed()
-    {
-      if (this.FragmentManager.BackStackEntryCount > 0)
-      {
-        this.FragmentManager.PopBackStack();
-      }
-      else
-      {
-        base.OnBackPressed();
-      }
-    }
-		protected override void OnResume ()
-		{
-			ISharedPreferences sharedpreferences = this.GetSharedPreferences ("RunningAssistant.preferences", FileCreationMode.Private);
-			if (sharedpreferences.Contains ("userEmail")) {
-				if (sharedpreferences.Contains ("userPassword")) {
-					var intent = new Intent (this, typeof(HermesActivity));
-					Toast.MakeText(this, "usuario recordado", ToastLength.Long).Show();
-					intent.PutExtra ("userEmail", sharedpreferences.GetString ("userEmail", ""));
-					intent.PutExtra ("userPassword", sharedpreferences.GetString ("userPassword", ""));
-					StartActivity (intent);
-					Finish ();
-				}
-			}
-			base.OnResume ();
-		}
-
-
-
-  }
 }
