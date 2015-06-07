@@ -17,156 +17,158 @@ using Hermes.AndroidViews.Account;
 
 namespace Hermes.AndroidViews.Main
 {
-  [Activity(Label = "Hermes", Theme = "@style/MyTheme")]
-  public class HermesActivity : AppCompatActivity
-  {
-    private SupportToolbar mToolbar;
-    private MyActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
-    private ListView mLeftDrawer;
-    private ItemsAdapter mLeftAdapter;
-    private List<string> mLeftDataSet;
-
-		public string TypeSport { set; get;}
-		public string DateEsp { set; get;}
-  		public string Date { set; get; }
-    	public Branches mBranch { set; get; }
-
-		public string workshop { set; get;}
-
-   		public Block mBlock { set; get; }
-		public static Clients Client = LoginFragment.Client;
-
-    protected override void OnCreate(Bundle bundle)
+    [Activity(Label = "Hermes", Theme = "@style/MyTheme")]
+    public class HermesActivity : AppCompatActivity
     {
-      base.OnCreate(bundle);
-      SetContentView(Resource.Layout.hermes);
+        private SupportToolbar mToolbar;
+        private MyActionBarDrawerToggle mDrawerToggle;
+        private DrawerLayout mDrawerLayout;
+        private ListView mLeftDrawer;
+        private ItemsAdapter mLeftAdapter;
+        private List<string> mLeftDataSet;
 
-      mToolbar = FindViewById<Toolbar>(Resource.Id.toolbar_hermes);
-      mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-      mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
+        public string TypeSport { set; get; }
+        public string DateEsp { set; get; }
+        public string Date { set; get; }
+        public Branches mBranch { set; get; }
 
-      SetSupportActionBar(mToolbar);
-      SupportActionBar.SetHomeButtonEnabled(true);
-      SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-      
-      mLeftDataSet = new List<string>();
-      mLeftDataSet.Add("Reservar cancha");
-      mLeftDataSet.Add("Mis reservas");
-      mLeftDataSet.Add("Configuración");
-      mLeftDataSet.Add("Ayuda y comentarios");
-      mLeftAdapter = new ItemsAdapter(this, mLeftDataSet);
-      mLeftDrawer.Adapter = mLeftAdapter;
+        public string workshop { set; get; }
 
-      mLeftDrawer.AddHeaderView(LayoutInflater.From(this).Inflate(Resource.Layout.header, null, false), null, true);
+        public Block mBlock { set; get; }
+        public static Clients Client;
 
-      mLeftDrawer.ItemClick += OnListItemClick;
-
-      mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
-
-      mDrawerLayout.SetDrawerListener(mDrawerToggle);
-      SupportActionBar.SetHomeButtonEnabled(true);
-      SupportActionBar.SetDisplayShowTitleEnabled(true);
-      mDrawerToggle.SyncState();
-
-      if (bundle != null)
-      {
-        if (bundle.GetString("DrawerState") == "Opened")
+        protected override void OnCreate(Bundle bundle)
         {
-          SupportActionBar.SetTitle(Resource.String.OpenDrawer);
+            base.OnCreate(bundle);
+            SetContentView(Resource.Layout.hermes);
+
+            mToolbar = FindViewById<Toolbar>(Resource.Id.toolbar_hermes);
+            mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
+
+            Client = new Clients();
+
+            SetSupportActionBar(mToolbar);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            mLeftDataSet = new List<string>();
+            mLeftDataSet.Add("Reservar cancha");
+            mLeftDataSet.Add("Mis reservas");
+            mLeftDataSet.Add("Configuración");
+            mLeftDataSet.Add("Ayuda y comentarios");
+            mLeftAdapter = new ItemsAdapter(this, mLeftDataSet);
+            mLeftDrawer.Adapter = mLeftAdapter;
+
+            mLeftDrawer.AddHeaderView(LayoutInflater.From(this).Inflate(Resource.Layout.header, null, false), null, true);
+
+            mLeftDrawer.ItemClick += OnListItemClick;
+
+            mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
+
+            mDrawerLayout.SetDrawerListener(mDrawerToggle);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayShowTitleEnabled(true);
+            mDrawerToggle.SyncState();
+
+            if (bundle != null)
+            {
+                if (bundle.GetString("DrawerState") == "Opened")
+                {
+                    SupportActionBar.SetTitle(Resource.String.OpenDrawer);
+                }
+
+                else
+                {
+                    SupportActionBar.SetTitle(Resource.String.CloseDrawer);
+                }
+            }
+
+            else
+            {
+                //This is the first the time the activity is ran
+                SupportActionBar.SetTitle(Resource.String.CloseDrawer);
+            }
+
+            Fragment f = new UserReservations();
+            FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
+            fragmentTx.Add(Resource.Id.container, f);
+            fragmentTx.Commit();
+
         }
 
-        else
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
-          SupportActionBar.SetTitle(Resource.String.CloseDrawer);
+            MenuInflater.Inflate(Resource.Menu.menu_hermes, menu);
+            return base.OnCreateOptionsMenu(menu);
         }
-      }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            //switch (item.ItemId)
+            //{
+            //  case Resource.Id.add:
+            //    break;
+            //  case Resource.Id.Remove:
+            //    break;
+            //}
+            mDrawerToggle.OnOptionsItemSelected(item);
+            return base.OnOptionsItemSelected(item);
+        }
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
+            {
+                outState.PutString("DrawerState", "Opened");
+            }
 
-      else
-      {
-        //This is the first the time the activity is ran
-        SupportActionBar.SetTitle(Resource.String.CloseDrawer);
-      }
-		
-      Fragment f = new UserReservations();
-      FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-      fragmentTx.Add(Resource.Id.container, f);
-      fragmentTx.Commit();
+            else
+            {
+                outState.PutString("DrawerState", "Closed");
+            }
 
-    }
+            base.OnSaveInstanceState(outState);
+        }
+        protected override void OnPostCreate(Bundle savedInstanceState)
+        {
+            base.OnPostCreate(savedInstanceState);
+            mDrawerToggle.SyncState();
+        }
+        public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
+        {
+            base.OnConfigurationChanged(newConfig);
+            mDrawerToggle.OnConfigurationChanged(newConfig);
+        }
 
-    public override bool OnCreateOptionsMenu(IMenu menu)
-    {
-      MenuInflater.Inflate(Resource.Menu.menu_hermes, menu);
-      return base.OnCreateOptionsMenu(menu);
-    }
-    public override bool OnOptionsItemSelected(IMenuItem item)
-    {
-      //switch (item.ItemId)
-      //{
-      //  case Resource.Id.add:
-      //    break;
-      //  case Resource.Id.Remove:
-      //    break;
-      //}
-      mDrawerToggle.OnOptionsItemSelected(item);
-      return base.OnOptionsItemSelected(item);
-    }
-    protected override void OnSaveInstanceState(Bundle outState)
-    {
-      if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
-      {
-        outState.PutString("DrawerState", "Opened");
-      }
+        void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var listView = sender as ListView;
+            switch (e.Position)
+            {
+                case 0: //Usuario
+                    break;
+                case 1: //Reservar cancha
+                    replaceFragment(new TypeFragment());
+                    break;
+                case 2: //Mis Reserva
+                    replaceFragment(new UserReservations());
+                    break;
+                case 3: //Configuracion
 
-      else
-      {
-        outState.PutString("DrawerState", "Closed");
-      }
+                    break;
+                case 4: //ayuda
+                    break;
 
-      base.OnSaveInstanceState(outState);
-    }
-    protected override void OnPostCreate(Bundle savedInstanceState)
-    {
-      base.OnPostCreate(savedInstanceState);
-      mDrawerToggle.SyncState();
-    }
-    public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
-    {
-      base.OnConfigurationChanged(newConfig);
-      mDrawerToggle.OnConfigurationChanged(newConfig);
-    }
+            }
+        }
 
-    void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
-    {
-      var listView = sender as ListView;
-      switch (e.Position)
-      {
-        case 0: //Usuario
-          break;
-        case 1: //Reservar cancha
-			replaceFragment(new TypeFragment());
-          break;
-        case 2: //Mis Reserva
-          replaceFragment(new UserReservations());
-          break;
-        case 3: //Configuracion
-      		
-          break;
-        case 4: //ayuda
-          break;
-       
-      }
-    }
+        public void replaceFragment(Fragment fragment)
+        {
 
-    public void replaceFragment(Fragment fragment)
-    {
-			
-      FragmentTransaction transaction = FragmentManager.BeginTransaction();
-      transaction.Replace(Resource.Id.container, fragment);
-      transaction.Commit();
-      mDrawerLayout.CloseDrawers();
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            transaction.Replace(Resource.Id.container, fragment);
+            transaction.Commit();
+            mDrawerLayout.CloseDrawers();
+        }
     }
-  }
 }
 

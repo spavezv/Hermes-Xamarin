@@ -52,73 +52,46 @@ namespace Hermes.AndroidViews.Account
         {
             switch (v.Id)
             {
-			case Resource.Id.btn_signup:
-				string name = etNames.Text;
-				string lastname = etLastnames.Text;
-				string email = etEmail.Text;
-				string phone = etPhone.Text;
-				string password = etPassword.Text;
-				string passwordConfirmation = etPasswordConfirmation.Text;
+                case Resource.Id.btn_signup:
+                    Console.WriteLine("Iniciando sesión.");
+                    string name = etNames.Text;
+                    string lastname = etLastnames.Text;
+                    string email = etEmail.Text;
+                    string phone = etPhone.Text;
+                    string password = etPassword.Text;
+                    string passwordConfirmation = etPasswordConfirmation.Text;
 
-                    //Validaciones de entradas
-				if (name.Length == 0) {
-					etNames.Error = GetString (Resource.String.ErrorNombre);
-				}
-				if (!isValidEmail (email)) {
-					etEmail.Error = GetString (Resource.String.ErrorEmail);
-				}
-				if (!isValidPhone (phone)) {
-					etPhone.Error = GetString (Resource.String.ErrorPhone);
-				}
-				if (password.Length < 6) {
-					etPassword.Error = GetString (Resource.String.ErrorPass);
-				}
-				if (!(password.Equals (passwordConfirmation))) {
-					etPasswordConfirmation.Error = GetString (Resource.String.ErrorPass2);
-				}
+                    Clients c = new Clients { name = name, lastname = lastname, phone = phone, email = email, encryptedPassword = HashPassword(password) };
 
-				if (name.Length > 0 && isValidEmail (email) && isValidPhone (phone) && password.Length > 6 &&
-				    password.Equals (passwordConfirmation)) {
-					password = HashPassword (password);
-					Clients c = new Clients {
-						name = name,
-						lastname = lastname,
-						phone = phone,
-						email = email,
-						encryptedPassword = password
-					};
+                    string json = JsonConvert.SerializeObject(c);
 
-					string json = JsonConvert.SerializeObject (c);
+                    string url = GlobalVar.URL + "clients";
+                    WebService ws = new WebService();
+                    json = await ws.PostTask(url, json);
 
-					Console.WriteLine (json);
-
-					string url = GlobalVar.URL + "clients";
-					WebService ws = new WebService ();
-					json = await ws.PostTask (url, json);
-
-					if (json != null) {
-						Toast.MakeText ((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show ();
-						var intent = new Intent ((MainActivity)this.Activity, typeof(HermesActivity));
-						StartActivity (intent);
-					} else {
-						Toast.MakeText ((MainActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show ();
-					}
-
-				}
-
+                    if (json != null)
+                    {
+                        Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
+                        var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
+                        StartActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.MakeText((MainActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show();
+                    }
                     break;
             }
         }
 
-	
-		bool isValidPhone (string phone)
-		{
-			const string phone_pattern = "[6-9][0-9]{7}";
 
-			Java.Util.Regex.Pattern pattern = Java.Util.Regex.Pattern.Compile(phone_pattern);
-			Matcher matcher = pattern.Matcher(phone);
-			return matcher.Matches();
-		}
+        bool isValidPhone(string phone)
+        {
+            const string phone_pattern = "[6-9][0-9]{7}";
+
+            Java.Util.Regex.Pattern pattern = Java.Util.Regex.Pattern.Compile(phone_pattern);
+            Matcher matcher = pattern.Matcher(phone);
+            return matcher.Matches();
+        }
 
         private bool isValidEmail(string email)
         {
