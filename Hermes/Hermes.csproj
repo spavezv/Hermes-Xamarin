@@ -127,10 +127,10 @@
     <AndroidResource Include="Resources\layout\item_branch_listview.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\item_block_listview.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\select_block_fragment.axml" />
+    <AndroidResource Include="Resources\layout\expandable_list.axml" />
+    <AndroidResource Include="Resources\layout\exp_child_list.axml" />
+    <AndroidResource Include="Resources\layout\exp_group_list.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />

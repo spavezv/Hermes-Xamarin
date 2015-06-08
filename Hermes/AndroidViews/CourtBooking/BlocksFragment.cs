@@ -18,7 +18,7 @@ namespace Hermes
 	public class BlocksFragment: Fragment, View.IOnClickListener
 	{
 		private List<Block> lstCourtHours;
-		private ListView listViewCourtHours;
+		private ExpandableListView expListViewCourts;
 		private ImageView imgLeft, imgRight;
 		private TextView txtCategory;
 		public HourListAdapter myAdapter;
@@ -27,45 +27,46 @@ namespace Hermes
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 
-			View view = inflater.Inflate(Resource.Layout.booking_list_fragment, container, false);
+			View view = inflater.Inflate(Resource.Layout.expandable_list, container, false);
 			imgLeft = view.FindViewById<ImageView>(Resource.Id.img_arrow_left);
 			imgRight = view.FindViewById<ImageView>(Resource.Id.img_arrow_right);
 			txtCategory = view.FindViewById<TextView>(Resource.Id.txt_book_header);
-			listViewCourtHours = view.FindViewById<ListView> (Resource.Id.list_booking_fragment);
+			expListViewCourts = view.FindViewById<ExpandableListView> (Resource.Id.exp_list_fragment);
 
 			txtCategory.SetText (Resource.String.HorasDisponibles);
 			imgLeft.SetOnClickListener (this);
-			listViewCourtHours.ChoiceMode = ChoiceMode.Single;
 			imgRight.SetImageResource (Resource.Drawable.ic_check_disable);
 
-      poblateItemsAdapter(container);
-			listViewCourtHours.ItemClick += (sender, e) => 
-			{
-        	((HermesActivity)this.Activity).mBlock = lstCourtHours[e.Position];
-				selectedBlock = myAdapter.getBlock(e.Position);
-				imgRight.SetImageResource (Resource.Drawable.ic_check_available);
-				imgRight.SetOnClickListener (this);
+     		poblateItemsAdapter(container);
+
+			expListViewCourts.ChildClick += (object sender, ExpandableListView.ChildClickEventArgs e) => {
+				Console.WriteLine("{0}:{1} clicked", e.GroupPosition, e.ChildPosition);
+
+//				((HermesActivity)this.Activity).mBlock = lstCourtHours[e.GroupPosition];
+//				selectedBlock = myAdapter.getBlock(e.Position);
+//				imgRight.SetImageResource (Resource.Drawable.ic_check_available);
+//				imgRight.SetOnClickListener (this);
 			};
-			//
-
-
 			return view;
+
 		}
+			
 
     private async void poblateItemsAdapter(ViewGroup container)
     {
+	 
       WebService ws = new WebService();
       string url = GlobalVar.URL + "blocks/getBlocks/" + ((HermesActivity)this.Activity).TypeSport + "/" + ((HermesActivity)this.Activity).Date + "/" + ((HermesActivity)this.Activity).mBranch.id;
-      JsonValue json = await ws.GetTask(url);
+	  Console.WriteLine (url);
+	  JsonValue json = await ws.GetTask(url);
 
       if (json != null)
       {
         lstCourtHours = JsonConvert.DeserializeObject<List<Block>>(json.ToString());
-
-        if (lstCourtHours.Count != 0)
+		if (lstCourtHours.Count != 0)
         {
           myAdapter = new HourListAdapter((AppCompatActivity)(container.Context), lstCourtHours);
-          listViewCourtHours.Adapter = myAdapter;
+		  expListViewCourts.SetAdapter (myAdapter);
 
         }
         else
