@@ -124,10 +124,8 @@
     <AndroidResource Include="Resources\layout\expandable_list.axml" />
     <AndroidResource Include="Resources\layout\exp_child_list.axml" />
     <AndroidResource Include="Resources\layout\exp_group_list.axml" />
-    <AndroidResource Include="Resources\drawable\ic_court.png" />
     <AndroidResource Include="Resources\drawable\ic_configurations.png" />
     <AndroidResource Include="Resources\drawable\ic_help.png" />
-    <AndroidResource Include="Resources\drawable\ic_reservations.png" />
     <AndroidResource Include="Resources\drawable\ic_basketball.png" />
     <AndroidResource Include="Resources\drawable\ic_futbol.png" />
     <AndroidResource Include="Resources\drawable\ic_tennis.png" />
@@ -201,6 +199,16 @@
     <AndroidResource Include="Resources\drawable\ic_action_search.png" />
     <AndroidResource Include="Resources\drawable\ic_action_settings.png" />
     <AndroidResource Include="Resources\drawable\ic_error.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_court.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_court.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_court.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_court.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_court.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_reservations.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_reservations.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_reservations.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_reservations.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_reservations.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

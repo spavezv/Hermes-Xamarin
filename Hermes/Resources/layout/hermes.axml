@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
     <include
         android:id="@+id/toolbar_hermes"
         layout="@layout/toolbar" />
@@ -26,6 +27,6 @@
             android:layout_gravity="start"
             android:choiceMode="singleChoice"
             android:dividerHeight="0dp"
-            android:background="#e3f2fd" />
+            android:background="#ffffff" />
     </android.support.v4.widget.DrawerLayout>
 </LinearLayout>
