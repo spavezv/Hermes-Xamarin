@@ -130,6 +130,10 @@
     <AndroidResource Include="Resources\layout\expandable_list.axml" />
     <AndroidResource Include="Resources\layout\exp_child_list.axml" />
     <AndroidResource Include="Resources\layout\exp_group_list.axml" />
+    <AndroidResource Include="Resources\drawable\ic_court.png" />
+    <AndroidResource Include="Resources\drawable\ic_configurations.png" />
+    <AndroidResource Include="Resources\drawable\ic_help.png" />
+    <AndroidResource Include="Resources\drawable\ic_reservations.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />

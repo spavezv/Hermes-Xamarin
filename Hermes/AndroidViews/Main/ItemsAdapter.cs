@@ -42,13 +42,30 @@ namespace Hermes.AndroidViews.ActionBarDrawerToggle
 			{
 				row = LayoutInflater.From (context).Inflate(Resource.Layout.item_listview, null, false);
 			}
+			ImageView imgNavDrawer = row.FindViewById<ImageView> (Resource.Id.img_drawer_item);
 			TextView txtCourtType = row.FindViewById<TextView> (Resource.Id.txt_drawer_item);
 			txtCourtType.Text = items [position];
+			switch (position) {
+			case 0: //reservar cancha
+				imgNavDrawer.SetImageResource (Resource.Drawable.ic_court);
+				break;
+			case 1: //mis reservas
+				imgNavDrawer.SetImageResource (Resource.Drawable.ic_reservations);
+				break;
+			case 2: //configuracion
+				imgNavDrawer.SetImageResource (Resource.Drawable.ic_configurations);
+				break;
+			case 3: //ayuda
+				imgNavDrawer.SetImageResource (Resource.Drawable.ic_help);
+				break;
+			default:
+				break;
+			}
+
 
 			return row;
 		}
-
-
+			
 	}
 }
 
