@@ -3,8 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:minWidth="25px"
-    android:minHeight="25px"
+    android:background="#ffffff"
     android:id="@+id/booking_list_fragment">
     <include
         layout="@layout/header_booking" />
@@ -12,9 +11,7 @@
         android:id="@+id/sample_booking_list_fragment"
         android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:minWidth="25px"
-        android:minHeight="25px">
+        android:layout_height="0px">
         <DatePicker
             android:layout_width="match_parent"
             android:layout_height="match_parent"

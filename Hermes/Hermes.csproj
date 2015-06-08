@@ -117,12 +117,6 @@
     <AndroidResource Include="Resources\layout\header_booking.axml" />
     <AndroidResource Include="Resources\layout\booking_list_fragment.axml" />
     <AndroidResource Include="Resources\layout\booking_date_fragment.axml" />
-    <AndroidResource Include="Resources\drawable\ic_arrow_left_available.png" />
-    <AndroidResource Include="Resources\drawable\ic_arrow_right_available.png" />
-    <AndroidResource Include="Resources\drawable\ic_arrow_right_disable.png" />
-    <AndroidResource Include="Resources\drawable\ic_check_available.png" />
-    <AndroidResource Include="Resources\drawable\ic_check_disable.png" />
-    <AndroidResource Include="Resources\drawable\ic_arrow_left_disable.png" />
     <AndroidResource Include="Resources\layout\item_branch_listview.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -139,9 +133,41 @@
     <AndroidResource Include="Resources\drawable\ic_tennis.png" />
     <AndroidResource Include="Resources\drawable\ic_volleyball.png" />
     <AndroidResource Include="Resources\layout\item_type_lstv.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_check_disable.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_check_disable.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_check_disable.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_check_disable.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_check_disable.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_arrow_left_available.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_arrow_left_disable.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_arrow_right_available.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_arrow_right_disable.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_arrow_left_available.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_arrow_left_disable.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_arrow_right_available.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_arrow_right_disable.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_arrow_left_available.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_arrow_left_disable.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_arrow_right_available.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_arrow_right_disable.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_arrow_left_available.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_arrow_left_disable.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_arrow_right_available.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_arrow_right_disable.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_arrow_left_available.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_arrow_left_disable.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_arrow_right_available.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_arrow_right_disable.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_check_available.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_check_available.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_check_available.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_check_available.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_check_available.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\toolbar.axml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
     <AndroidResource Include="Resources\menu\menu_main.xml" />
@@ -149,9 +175,6 @@
     <AndroidResource Include="Resources\layout\main.axml" />
     <AndroidResource Include="Resources\layout\hermes.axml" />
     <AndroidResource Include="Resources\layout\item_listview.axml" />
-    <AndroidResource Include="Resources\layout\sliding_tab_fragment.axml" />
-    <AndroidResource Include="Resources\layout\tab_date.axml" />
-    <AndroidResource Include="Resources\layout\tab_list.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
