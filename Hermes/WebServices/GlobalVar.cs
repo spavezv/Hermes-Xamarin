@@ -25,7 +25,7 @@ namespace Hermes.WebServices
 
 
         //REGEX
-        public static Regex EMPTY_STRING = new Regex("");
+        public static Regex PHONE_REGEX = new Regex("^([5-9][0-9]{7})$");
 
 
         public static bool IsValidEmail(string emailaddress)

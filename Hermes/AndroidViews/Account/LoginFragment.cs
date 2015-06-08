@@ -69,38 +69,43 @@ namespace Hermes.AndroidViews.Account
                     break;
                 case Resource.Id.btn_login:
 
-                    email = etMail.Text;
-                    password = HashPassword(etPassword.Text);
-                    var progressDialog = ProgressDialog.Show((MainActivity)this.Activity, "Por favor espere", "Iniciando sesión", true);
-                    url = GlobalVar.URL + "clients/authenticate/" + email + "/" + password;
-                    json = await ws.GetTask(url);
 
-                    if (json != null)
+                    if (!haveErrors())
                     {
-                        if (json["id"] != -1)
-                        {
-                            Clients c = JsonConvert.DeserializeObject<Clients>(json.ToString());
-                            SavePreferences(c);
-                            var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
-                            Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
-                            StartActivity(intent);
-                            this.Activity.Finish();
 
+                        email = etMail.Text;
+                        password = HashPassword(etPassword.Text);
+                        var progressDialog = ProgressDialog.Show((MainActivity)this.Activity, "Por favor espere", "Iniciando sesión", true);
+                        url = GlobalVar.URL + "clients/authenticate/" + email + "/" + password;
+                        json = await ws.GetTask(url);
+
+                        if (json != null)
+                        {
+                            if (json["id"] != -1)
+                            {
+                                Clients c = JsonConvert.DeserializeObject<Clients>(json.ToString());
+                                SavePreferences(c);
+                                var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
+                                Toast.MakeText((MainActivity)this.Activity, "Bienvenido a Hermes.", ToastLength.Long).Show();
+                                StartActivity(intent);
+                                this.Activity.Finish();
+
+                            }
+                            else
+                            {
+                                Toast.MakeText((MainActivity)this.Activity, "Contraseña o correo equivocado.", ToastLength.Long).Show();
+                            }
                         }
                         else
                         {
-                            Toast.MakeText((MainActivity)this.Activity, "Contraseña o correo equivocado.", ToastLength.Long).Show();
+                            Toast.MakeText((MainActivity)this.Activity, "Problemas de conexión, intente más tarde.", ToastLength.Long).Show();
+                            var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
+                            StartActivity(intent);
+                            this.Activity.Finish();
                         }
-                    }
-                    else
-                    {
-                        Toast.MakeText((MainActivity)this.Activity, "Problemas de conexión, intente más tarde.", ToastLength.Long).Show();
-                        var intent = new Intent((MainActivity)this.Activity, typeof(HermesActivity));
-                        StartActivity(intent);
-                        this.Activity.Finish();
-                    }
 
-                    progressDialog.Dismiss();
+                        progressDialog.Dismiss();
+                    }
                     break;
                 default:
                     break;
@@ -132,6 +137,24 @@ namespace Hermes.AndroidViews.Account
             return password;
         }
 
+        public bool haveErrors()
+        {
+            bool errors = false;
+            string email = etMail.Text.ToString();
+            string password = etPassword.Text.ToString();
+
+
+            if (!GlobalVar.IsValidEmail(email)) {
+                etMail.Error = "No es una dirección de correo válida";
+                errors = true;
+            }
+            if (password.Length < 8)
+            {
+                etPassword.Error = "La contraseña debe tener al menos 8 caracteres";
+                errors = true;
+            }
+            return errors;
+        }
     }
 
 }

@@ -95,11 +95,25 @@ namespace Hermes.AndroidViews.Account
 
             bool errors = false;
             string name = etNames.Text.ToString();
+            string lastname = etLastnames.Text.ToString();
+            string phone = etPhone.Text.ToString();
             string email = etEmail.Text.ToString();
+            string password = etPassword.Text.ToString();
+            string pConfirmation = etPasswordConfirmation.Text.ToString();
 
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 etNames.Error = "No puede estar vacío";
+                errors = true;
+            }
+            if (string.IsNullOrWhiteSpace(lastname))
+            {
+                etLastnames.Error = "No puede estar vacío";
+                errors = true;
+            }
+            if (!GlobalVar.PHONE_REGEX.IsMatch(phone))
+            {
+                etPhone.Error = "No es un número válido";
                 errors = true;
             }
             if (!GlobalVar.IsValidEmail(email))
@@ -107,8 +121,16 @@ namespace Hermes.AndroidViews.Account
                 etEmail.Error = "No es una dirección de correo válida";
                 errors = true;
             }
-            string m = (errors) ? "HAY ERROR" : "NO HAY ERROR";
-            Console.WriteLine(m);
+            if (password.Length < 8)
+            {
+                etPassword.Error = "La contraseña debe tener al menos 8 caracteres";
+                errors = true;
+            }
+            else if (!pConfirmation.Equals(password))
+            {
+                etPasswordConfirmation.Error = "Las contraseñas deben coincidir";
+                errors = true;
+            }
             return errors;
         }
 
