@@ -6,6 +6,7 @@ using Android.Views;
 using Hermes.Models;
 using Java.Text;
 using Java.Util;
+using System.Globalization;
 
 namespace Hermes.AndroidViews.CourtBooking
 {
@@ -54,6 +55,7 @@ namespace Hermes.AndroidViews.CourtBooking
 		{
 			String inicio = items[childPosition].start.Substring (11, 5);
 			String termino = items [childPosition].finish.Substring (11, 5);
+
 			View row = convertView;
 			if (row == null) {
 				row = context.LayoutInflater.Inflate (Resource.Layout.exp_child_list, null);
@@ -65,6 +67,7 @@ namespace Hermes.AndroidViews.CourtBooking
  			TextView txtBlockPrice = row.FindViewById<TextView> (Resource.Id.txt_block_price);
 			txtBlockTime.Text= time;
 			txtBlockPrice.Text= price;
+
 			return row;
 		}
 		public override int GetChildrenCount (int groupPosition)

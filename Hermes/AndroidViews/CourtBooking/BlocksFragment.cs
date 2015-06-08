@@ -44,7 +44,6 @@ namespace Hermes
 				superList = myAdapter.superList;
 				selectedBlock = superList[e.GroupPosition][e.ChildPosition];
 				((HermesActivity)this.Activity).mBlock = selectedBlock;		
-				Console.WriteLine(selectedBlock.courtId.name);
 				imgRight.SetImageResource (Resource.Drawable.ic_check_available);
 				imgRight.SetOnClickListener (this);
 			};

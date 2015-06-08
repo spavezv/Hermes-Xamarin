@@ -7,6 +7,7 @@ using Hermes.AndroidViews;
 using Android.App;
 using Hermes.AndroidViews.Main;
 using System.Globalization;
+using Java.Util;
 
 namespace Hermes.AndroidViews.CourtBooking
 {
@@ -31,7 +32,10 @@ namespace Hermes.AndroidViews.CourtBooking
 			txtCategory.SetText (Resource.String.FechadeReserva);
 			imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_disable);
 			imgLeft.SetOnClickListener (this);
+			imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_available);
+			imgRight.SetOnClickListener (this);
 
+			datePicker.MinDate = (long)(DateTime.Today.Millisecond);
 			datePicker.Init (
 				DateTime.Now.Year,
 				DateTime.Now.Month - 1,
@@ -49,6 +53,7 @@ namespace Hermes.AndroidViews.CourtBooking
 				((HermesActivity)this.Activity).replaceFragment(new TypeFragment());		
 				break;
 			case Resource.Id.img_arrow_right:
+				Console.WriteLine ();
 				((HermesActivity)this.Activity).replaceFragment(new BranchFragment());		
 				break;
 			default:
@@ -65,11 +70,7 @@ namespace Hermes.AndroidViews.CourtBooking
 				mBookCourtDateFrag = bookingCourtDateFragment;
 			}
 			public void OnDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-				
-					//capturar la fecha
-				mBookCourtDateFrag.imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_available);
-				mBookCourtDateFrag.imgRight.SetOnClickListener (mBookCourtDateFrag);
-
+				//capturar la fecha
 				var date = new DateTime(year, monthOfYear +1 , dayOfMonth);
 				((HermesActivity)mBookCourtDateFrag.Activity).DateEsp= date.ToString("d MMMM", 
 					CultureInfo.CreateSpecificCulture("es-MX"));

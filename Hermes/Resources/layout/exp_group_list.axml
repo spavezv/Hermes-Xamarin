@@ -2,7 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="#bbdefb"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp"
+    android:layout_centerVertical="true">
     <TextView
         android:id="@+id/txt_court_name"
         android:layout_width="match_parent"
@@ -11,6 +15,6 @@
         android:text="DataHeader"
         android:layout_margin="2dp"
         android:textStyle="bold"
-        android:paddingStart="50dp"
-        android:paddingLeft="50dp" />
+        android:paddingLeft="5dp"
+        android:layout_centerVertical="true" />
 </LinearLayout>
