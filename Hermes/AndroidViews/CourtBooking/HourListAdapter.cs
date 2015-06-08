@@ -14,6 +14,8 @@ namespace Hermes.AndroidViews.CourtBooking
 		public List<Block> items { get; set;}
 		public AppCompatActivity context;
 		List<String> parentItems;
+		Block selectedBlock;
+		public List <List<Block>> superList;
 		//List<Block> childItems;
 
 		public HourListAdapter(AppCompatActivity c, List<Block> items):base() 
@@ -21,6 +23,7 @@ namespace Hermes.AndroidViews.CourtBooking
 			this.items = items;
 			this.context = c;
 			parentItems = new List<String>(); fillParents(items);
+			superList = new List<List<Block>> ();
 		}
 
 
@@ -55,20 +58,27 @@ namespace Hermes.AndroidViews.CourtBooking
 			if (row == null) {
 				row = context.LayoutInflater.Inflate (Resource.Layout.exp_child_list, null);
 			}
-			string time = "", price = "";
+			string time = "TIME", price = "PRICE";
+
 			GetChildViewHelper (groupPosition, childPosition, out time, out price);
 			TextView txtBlockTime = row.FindViewById<TextView>(Resource.Id.txt_block_time);
  			TextView txtBlockPrice = row.FindViewById<TextView> (Resource.Id.txt_block_price);
-
 			txtBlockTime.Text= time;
 			txtBlockPrice.Text= price;
 			return row;
 		}
 		public override int GetChildrenCount (int groupPosition)
 		{			
-			
-			List<Block> results = items.FindAll ((Block obj) => obj.courtId.name [0].Equals (parentItems[groupPosition]));
-			return results.Count;
+			List<Block> aux = new List<Block> ();
+			foreach (var item in items) {
+				if(item.courtId.name == parentItems[groupPosition])
+				{
+					aux.Add (item);
+				}
+			}
+			//List<Block> results = items.FindAll ((Block obj) => obj.courtId.name [0].Equals (parentItems[groupPosition]));
+			Console.WriteLine (parentItems[groupPosition] + aux.Count);
+			return aux.Count;
 		}
 
 		public override int GroupCount {
@@ -79,12 +89,19 @@ namespace Hermes.AndroidViews.CourtBooking
 
 		private void GetChildViewHelper (int groupPosition, int childPosition, out string time, out string price)
 		{
-			String inicio = items[childPosition].start.Substring (11, 5);
-			String termino = items [childPosition].finish.Substring (11, 5);
-
-			List<Block> results = items.FindAll ((Block obj) => obj.courtId.name [0].Equals (parentItems[groupPosition]));
+			//List<Block> results = items.FindAll ((Block obj) => obj.courtId.name [0].Equals (parentItems[groupPosition]));
+			List<Block> aux = new List<Block> ();
+			foreach (var item in items) {
+				if(item.courtId.name == parentItems[groupPosition])
+				{
+					aux.Add (item);
+				}
+			}
+			String inicio = aux[childPosition].start.Substring (11, 5);
+			String termino = aux [childPosition].finish.Substring (11, 5);
 			time =  inicio + " hrs. a " + termino + " hrs.";
-			price = "$" + results [childPosition].price.ToString();
+			price = "$" + aux [childPosition].price.ToString();
+			superList.Add (aux);
 		}
 
 		public override Java.Lang.Object GetChild (int groupPosition, int childPosition)
@@ -109,7 +126,8 @@ namespace Hermes.AndroidViews.CourtBooking
 
 		public override bool IsChildSelectable (int groupPosition, int childPosition)
 		{
-			throw new NotImplementedException ();
+			
+			return true;
 		}
 
 		public override bool HasStableIds {

@@ -18,6 +18,7 @@ namespace Hermes
 	public class BlocksFragment: Fragment, View.IOnClickListener
 	{
 		private List<Block> lstCourtHours;
+		List <List<Block>> superList;
 		private ExpandableListView expListViewCourts;
 		private ImageView imgLeft, imgRight;
 		private TextView txtCategory;
@@ -40,12 +41,12 @@ namespace Hermes
      		poblateItemsAdapter(container);
 
 			expListViewCourts.ChildClick += (object sender, ExpandableListView.ChildClickEventArgs e) => {
-				Console.WriteLine("{0}:{1} clicked", e.GroupPosition, e.ChildPosition);
-
-//				((HermesActivity)this.Activity).mBlock = lstCourtHours[e.GroupPosition];
-//				selectedBlock = myAdapter.getBlock(e.Position);
-//				imgRight.SetImageResource (Resource.Drawable.ic_check_available);
-//				imgRight.SetOnClickListener (this);
+				superList = myAdapter.superList;
+				selectedBlock = superList[e.GroupPosition][e.ChildPosition];
+				((HermesActivity)this.Activity).mBlock = selectedBlock;		
+				Console.WriteLine(selectedBlock.courtId.name);
+				imgRight.SetImageResource (Resource.Drawable.ic_check_available);
+				imgRight.SetOnClickListener (this);
 			};
 			return view;
 
