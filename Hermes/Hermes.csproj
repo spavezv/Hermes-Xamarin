@@ -134,6 +134,11 @@
     <AndroidResource Include="Resources\drawable\ic_configurations.png" />
     <AndroidResource Include="Resources\drawable\ic_help.png" />
     <AndroidResource Include="Resources\drawable\ic_reservations.png" />
+    <AndroidResource Include="Resources\drawable\ic_basketball.png" />
+    <AndroidResource Include="Resources\drawable\ic_futbol.png" />
+    <AndroidResource Include="Resources\drawable\ic_tennis.png" />
+    <AndroidResource Include="Resources\drawable\ic_volleyball.png" />
+    <AndroidResource Include="Resources\layout\item_type_lstv.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
