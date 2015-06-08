@@ -125,8 +125,13 @@ namespace Hermes
 
 		public async void bookCourt ()
 		{
-			
-			selectedBlock.clientId = HermesActivity.Client;
+            ISharedPreferences prefs = this.Activity.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+
+
+
+
+
+            selectedBlock.clientId = new Clients { id = prefs.GetInt(GlobalVar.USER_ID, -1) };
 
 			string json = JsonConvert.SerializeObject (selectedBlock);
 
