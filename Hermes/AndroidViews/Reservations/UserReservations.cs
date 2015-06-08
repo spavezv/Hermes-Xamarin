@@ -55,8 +55,9 @@ namespace Hermes.AndroidViews.Reservations
 			JsonValue json;
 			string url;
 			Clients c = HermesActivity.Client;
+            ISharedPreferences prefs = this.Activity.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
 
-			url = GlobalVar.URL + "clients/blocks/" + c.id;
+			url = GlobalVar.URL + "clients/blocks/" + prefs.GetInt(GlobalVar.USER_ID, -1).ToString();
 			json = await ws.GetTask (url);
 			if (json != null) {
 				
