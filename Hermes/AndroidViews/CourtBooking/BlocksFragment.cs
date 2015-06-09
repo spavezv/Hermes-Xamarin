@@ -131,8 +131,6 @@ namespace Hermes
 
             string json = JsonConvert.SerializeObject(selectedBlock);
 
-            Console.WriteLine("JSON A ENVIAR" + json);
-
             WebService ws = new WebService();
             string url = GlobalVar.URL + "blocks/" + selectedBlock.id;
             json = await ws.PutTask(url, json);

@@ -177,6 +177,14 @@ namespace Hermes.AndroidViews.Main
             mDrawerLayout.CloseDrawers();
         }
 
+        public void nextFragment(Fragment fragment)
+        {
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            transaction.Replace(Resource.Id.container, fragment);
+            transaction.AddToBackStack(null);
+            transaction.Commit();
+        }
+
         public void signout()
         {
             ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();

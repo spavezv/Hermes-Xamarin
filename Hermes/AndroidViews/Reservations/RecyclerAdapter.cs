@@ -104,7 +104,7 @@ namespace Hermes.AndroidViews.Reservations
     {
       int position = mRecyclerView.GetChildPosition((View)sender);
 			mReservation = mReservations[position];
-			((HermesActivity)mContext).replaceFragment (new DetailsFragment());
+			((HermesActivity)mContext).nextFragment (new DetailsFragment());
 
     }
 
