@@ -32,4 +32,7 @@
     <string name="ErrorPass2">Las contraseñas deben coincidir</string>
     <string name="ErrorPhone">Teléfono inválido</string>
 
+    <string name="back">Atrás</string>
+    <string name="delete">Eliminar</string>
+
 </resources>

@@ -55,6 +55,7 @@ namespace Hermes.AndroidViews.CourtBooking
 		{
 			String inicio = items[childPosition].start.Substring (11, 5);
 			String termino = items [childPosition].finish.Substring (11, 5);
+		
 
 			View row = convertView;
 			if (row == null) {

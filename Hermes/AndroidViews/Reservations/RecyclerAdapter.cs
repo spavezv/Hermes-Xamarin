@@ -10,15 +10,19 @@ using Android.Views.Animations;
 using Android.Animation;
 using Hermes.Models;
 using System.Globalization;
+using Hermes.AndroidViews.Main;
 
 namespace Hermes.AndroidViews.Reservations
 {
   public class RecyclerAdapter : RecyclerView.Adapter
   {
-    private MyList<Block> mReservations;
+    private static MyList<Block> mReservations;
     private RecyclerView mRecyclerView;
     private Context mContext;
     private int mCurrentPosition = -1;
+		public static Block mReservation;
+	
+
     public RecyclerAdapter(MyList<Block> reservations, RecyclerView recyclerView, Context context)
     {
       mReservations = reservations;
@@ -33,6 +37,7 @@ namespace Hermes.AndroidViews.Reservations
       public TextView mBusiness { get; set; }
       public TextView mAddress { get; set; }
       public TextView mDate { get; set; }
+
 
       public MyView(View view)
         : base(view)
@@ -98,8 +103,9 @@ namespace Hermes.AndroidViews.Reservations
     void mMainView_Click(object sender, System.EventArgs e)
     {
       int position = mRecyclerView.GetChildPosition((View)sender);
-      //int indexPosition = (mReservations.Count - 1) - position;
-      
+			mReservation = RecyclerAdapter.mReservations[position];
+			((HermesActivity)mContext).replaceFragment (new DetailsFragment());
+
     }
 
     public override int ItemCount

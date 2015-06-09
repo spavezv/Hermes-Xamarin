@@ -87,8 +87,6 @@ namespace Hermes.AndroidViews.CourtBooking
           messageEmptySport();
         }
 
-        
-        
       }
       else
       {

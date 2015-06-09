@@ -97,6 +97,7 @@
     <Compile Include="AndroidViews\CourtBooking\BranchFragment.cs" />
     <Compile Include="AndroidViews\CourtBooking\BlocksFragment.cs" />
     <Compile Include="AndroidViews\CourtBooking\TypeFragment.cs" />
+    <Compile Include="AndroidViews\Reservations\DetailsFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -161,6 +162,28 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_check_available.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_check_available.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_check_available.png" />
+    <AndroidResource Include="Resources\layout\details_fragment.axml" />
+    <AndroidResource Include="Resources\drawable\sucursal.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_calendar.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_court_d.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_direction.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_price.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_calendar.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_court_d.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_direction.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_price.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_court_d.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_direction.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_price.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_court_d.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_direction.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_price.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_court_d.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_direction.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_price.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">
