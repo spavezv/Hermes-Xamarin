@@ -53,7 +53,7 @@ namespace Hermes.AndroidViews.ActionBarDrawerToggle
 				imgNavDrawer.SetImageResource (Resource.Drawable.ic_reservations);
 				break;
 			case 2: //configuracion
-				imgNavDrawer.SetImageResource (Resource.Drawable.ic_configurations);
+				imgNavDrawer.SetImageResource (Resource.Drawable.ic_configuration);
 				break;
 			case 3: //ayuda
 				imgNavDrawer.SetImageResource (Resource.Drawable.ic_help);
