@@ -125,8 +125,6 @@
     <AndroidResource Include="Resources\layout\expandable_list.axml" />
     <AndroidResource Include="Resources\layout\exp_child_list.axml" />
     <AndroidResource Include="Resources\layout\exp_group_list.axml" />
-    <AndroidResource Include="Resources\drawable\ic_configurations.png" />
-    <AndroidResource Include="Resources\drawable\ic_help.png" />
     <AndroidResource Include="Resources\drawable\ic_basketball.png" />
     <AndroidResource Include="Resources\drawable\ic_futbol.png" />
     <AndroidResource Include="Resources\drawable\ic_tennis.png" />
@@ -165,23 +163,18 @@
     <AndroidResource Include="Resources\layout\details_fragment.axml" />
     <AndroidResource Include="Resources\drawable\sucursal.jpg" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_calendar.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_court_d.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_direction.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_price.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_calendar.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_court_d.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_direction.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_price.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_calendar.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_court_d.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_direction.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_price.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_calendar.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_court_d.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_direction.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_price.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_calendar.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_court_d.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_direction.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_price.png" />
   </ItemGroup>
@@ -217,7 +210,6 @@
     <AndroidResource Include="Resources\anim\slide_left_to_right.xml" />
     <AndroidResource Include="Resources\anim\slide_right_to_left.xml" />
     <AndroidResource Include="Resources\anim\flip.xml" />
-    <AndroidResource Include="Resources\drawable\ic_user.png" />
     <AndroidResource Include="Resources\drawable\user_background.png" />
     <AndroidResource Include="Resources\drawable\ic_action_search.png" />
     <AndroidResource Include="Resources\drawable\ic_action_settings.png" />
@@ -232,6 +224,26 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_reservations.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_reservations.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_reservations.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_branch.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_user.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_branch.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_user.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_branch.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_user.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_branch.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_user.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_branch.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_user.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_configuration.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_help.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_configuration.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_help.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_configuration.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_help.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_configuration.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_help.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_configuration.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_help.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
