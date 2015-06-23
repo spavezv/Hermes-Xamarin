@@ -35,4 +35,31 @@
     <string name="back">Atrás</string>
     <string name="delete">Eliminar</string>
 
+    <string name="TtTipoDeporte">Tipo de deporte:</string>
+    <string name="MessTipoDeporte">En esta sección debes elegir que tipo de deporte corresponde la cancha que deseas reservar. Si no se encuentra 
+    tu deporte, es porque no tenemos canchas para reservas por el momento.</string>
+    <string name="TtNext1">Avanzar a la siguiente selección:</string>
+    <string name="MessNext1">Cuando estés decidido de tu elección, toca la flecha para continuar con la elección de la fecha de reserva que desees realizar.</string>
+
+    <string name="TtFecha">Selecciona fecha de reserva:</string>
+    <string name="MessFecha">En esta sección debes elegir en que fecha deseas realizar la reserva. Elige la fecha del calendario que más te acomode.</string>
+    <string name="TtPrev2">Ir a tipo de deporte:</string>
+    <string name="MessPrev2">Si quieres cambiar tu elección de tipo de deporte, puedes volver aquí.</string>
+    <string name="TtNext2">Ir a elegir sucursal:</string>
+    <string name="MessNext2">Si ya estás listo con la fecha de reserva, puedes ver que sucursales están disponibles.</string>
+
+    <string name="TtBranch">Selecciona una sucursal:</string>
+    <string name="MessBranch">En esta sección se mostrarán todas las sucursales disponibles para el día y deporte que escogiste.</string>
+    <string name="TtPrev3">Volver a escoger fecha:</string>
+    <string name="MessPrev3">Si quieres cambiar la fecha de reserva debes seleccionar aquí..</string>
+    <string name="TtNext3">Ir a bloques para reservar:</string>
+    <string name="MessNext3">Si ya estás listo con la sucursa, puedes ver que horarios estan disponibles para reservar.</string>
+
+    <string name="TtBlock">Selecciona un bloque:</string>
+    <string name="MessBlock">En esta sección se mostrarán todos lo bloques disponibles según sucursal. Debes seeccionar un bloque que te acomode para reservar..</string>
+     <string name="TtPrev4">Volver a escoger una sucursal:</string>
+    <string name="MessPrev4">Si quieres cambiar la sucursal para reservar, selecciona aquí.</string>
+    <string name="TtNext4">Confirmar reserva:</string>
+    <string name="MessNext4">Si ya estás listo con la sucursa, puedes ver que horarios estan disponibles para reservar.</string>
+
 </resources>

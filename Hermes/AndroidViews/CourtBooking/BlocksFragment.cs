@@ -27,8 +27,7 @@ namespace Hermes
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-
-            View view = inflater.Inflate(Resource.Layout.expandable_list, container, false);
+			View view = inflater.Inflate(Resource.Layout.expandable_list, container, false);
             imgLeft = view.FindViewById<ImageView>(Resource.Id.img_arrow_left);
             imgRight = view.FindViewById<ImageView>(Resource.Id.img_arrow_right);
             txtCategory = view.FindViewById<TextView>(Resource.Id.txt_book_header);

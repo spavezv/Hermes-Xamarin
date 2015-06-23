@@ -58,7 +58,7 @@ namespace Hermes.AndroidViews.Main
             mLeftDataSet.Add("Reservar cancha");
             mLeftDataSet.Add("Mis reservas");
             mLeftDataSet.Add("Configuración");
-            mLeftDataSet.Add("Ayuda y comentarios");
+            mLeftDataSet.Add("Ayuda");
             mLeftAdapter = new ItemsAdapter(this, mLeftDataSet);
             mLeftDrawer.Adapter = mLeftAdapter;
 
@@ -163,8 +163,8 @@ namespace Hermes.AndroidViews.Main
 
                     break;
                 case 4: //ayuda
-                    break;
-
+				replaceFragment(new HelpFragment());
+				break;
             }
         }
 

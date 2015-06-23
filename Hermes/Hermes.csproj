@@ -71,6 +71,10 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ShowcaseView">
+      <HintPath>..\..\..\Utalca\1-2015\Tecnologias\Xamarin\Ejemplos\ShowcaseView-1.1\ShowcaseView-1.1\lib\android\ShowcaseView.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android.Export" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidViews\Account\MainActivity.cs" />
@@ -98,6 +102,10 @@
     <Compile Include="AndroidViews\CourtBooking\BlocksFragment.cs" />
     <Compile Include="AndroidViews\CourtBooking\TypeFragment.cs" />
     <Compile Include="AndroidViews\Reservations\DetailsFragment.cs" />
+    <Compile Include="AndroidViews\Help\HelpFragment.cs" />
+    <Compile Include="AndroidViews\Help\HelpDate.cs" />
+    <Compile Include="AndroidViews\Help\HelpBranch.cs" />
+    <Compile Include="AndroidViews\Help\HelpBlock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -177,6 +185,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_calendar.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_direction.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_price.png" />
+    <AndroidResource Include="Resources\layout\help_fragment.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">
@@ -255,6 +264,7 @@
   -->
   <ItemGroup>
     <Folder Include="AndroidViews\Utility\" />
+    <Folder Include="AndroidViews\Help\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
