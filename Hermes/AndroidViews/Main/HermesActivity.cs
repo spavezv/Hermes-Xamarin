@@ -57,15 +57,19 @@ namespace Hermes.AndroidViews.Main
             mLeftDataSet = new List<string>();
             mLeftDataSet.Add("Reservar cancha");
             mLeftDataSet.Add("Mis reservas");
-            mLeftDataSet.Add("Configuración");
+            mLeftDataSet.Add("Comentarios");
             mLeftDataSet.Add("Ayuda");
             mLeftAdapter = new ItemsAdapter(this, mLeftDataSet);
             mLeftDrawer.Adapter = mLeftAdapter;
 
-            mLeftDrawer.AddHeaderView(LayoutInflater.From(this).Inflate(Resource.Layout.header, null, false), null, true);
+			mLeftDrawer.AddHeaderView(LayoutInflater.From(this).Inflate(Resource.Layout.header, null, false), null, true);
 
-            mLeftDrawer.ItemClick += OnListItemClick;
-
+			ISharedPreferences prefs = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+			 
+			TextView txtEmail = FindViewById<TextView> (Resource.Id.email);
+			txtEmail.Text = prefs.GetString (GlobalVar.USER_EMAIL, null);
+           
+			mLeftDrawer.ItemClick += OnListItemClick;
             mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
 
             mDrawerLayout.SetDrawerListener(mDrawerToggle);
@@ -159,7 +163,7 @@ namespace Hermes.AndroidViews.Main
                 case 2: //Mis Reserva
                     replaceFragment(new UserReservations());
                     break;
-                case 3: //Configuracion
+                case 3: //Comentarios
 
                     break;
                 case 4: //ayuda

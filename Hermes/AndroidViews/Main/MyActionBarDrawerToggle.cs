@@ -22,6 +22,7 @@ namespace Hermes.AndroidViews
         {
             base.OnDrawerOpened(drawerView);
 			mHostActivity.SupportActionBar.SetTitle (mOpenedResource);
+
         }
 
         public override void OnDrawerClosed(Android.Views.View drawerView)
