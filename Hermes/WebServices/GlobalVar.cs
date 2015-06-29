@@ -16,7 +16,7 @@ namespace Hermes.WebServices
 {
     class GlobalVar
     {
-        public const string URL = "http://192.168.2.2:8080/HermesWS/webresources/hermes.";
+		public const string URL = "http://172.17.33.212:8080/HermesWS/webresources/hermes.";
         public const string HERMES_PREFERENCES = "HERMES.PREFERENCES";
         public const string USER_ID = "HERMES.USER_ID";
         public const string REMEMBER_USER = "HERMES.REMEMBER_UER";

@@ -186,6 +186,11 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_direction.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_price.png" />
     <AndroidResource Include="Resources\layout\help_fragment.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_delete.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_delete.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_delete.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_delete.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_delete.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">

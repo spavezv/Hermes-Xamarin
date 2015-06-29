@@ -36,7 +36,6 @@ namespace Hermes
             txtCategory.SetText(Resource.String.HorasDisponibles);
             imgLeft.SetOnClickListener(this);
             imgRight.SetImageResource(Resource.Drawable.ic_check_disable);
-
             poblateItemsAdapter(container);
 
             expListViewCourts.ChildClick += (object sender, ExpandableListView.ChildClickEventArgs e) =>
@@ -54,20 +53,17 @@ namespace Hermes
 
         private async void poblateItemsAdapter(ViewGroup container)
         {
-
-            WebService ws = new WebService();
+			WebService ws = new WebService();
             string url = GlobalVar.URL + "blocks/getBlocks/" + ((HermesActivity)this.Activity).TypeSport + "/" + ((HermesActivity)this.Activity).Date + "/" + ((HermesActivity)this.Activity).mBranch.id;
             Console.WriteLine(url);
             JsonValue json = await ws.GetTask(url);
-
             if (json != null)
             {
                 lstCourtHours = JsonConvert.DeserializeObject<List<Block>>(json.ToString());
                 if (lstCourtHours.Count != 0)
                 {
                     myAdapter = new HourListAdapter((AppCompatActivity)(container.Context), lstCourtHours);
-                    expListViewCourts.SetAdapter(myAdapter);
-
+					expListViewCourts.SetAdapter(myAdapter);
                 }
                 else
                 {
@@ -105,12 +101,11 @@ namespace Hermes
 
                     Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(((HermesActivity)this.Activity));
                     Android.App.AlertDialog alertDialog = builder.Create();
-                    alertDialog.SetTitle("Detalles de reserva:");
-                    alertDialog.SetMessage("Su reservacion es: \n"
-                    + "Tipo de cancha: " + ((HermesActivity)this.Activity).TypeSport + "\n"
+                    alertDialog.SetTitle("Detalles de su reserva:");
+                    alertDialog.SetMessage("Tipo de cancha: " + ((HermesActivity)this.Activity).TypeSport + "\n"
                         + "Fecha: " + ((HermesActivity)this.Activity).DateEsp + "\n"
               + "Recinto: " + ((HermesActivity)this.Activity).mBranch.businessId.name + "\n"
-              + "Hora: " + inicio + " hrs. a " + termino + " hrs.");
+              + "Horario: " + inicio + " hrs. a " + termino + " hrs.");
                     alertDialog.SetButton("Reservar", (s, ev) =>
                         { bookCourt(); });
                     alertDialog.SetButton2("Cancelar", (s, ev) => { alertDialog.Dismiss(); });

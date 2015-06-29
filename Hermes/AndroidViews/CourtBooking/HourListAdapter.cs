@@ -15,7 +15,6 @@ namespace Hermes.AndroidViews.CourtBooking
 		public List<Block> items { get; set;}
 		public AppCompatActivity context;
 		List<String> parentItems;
-		Block selectedBlock;
 		public List <List<Block>> superList;
 		//List<Block> childItems;
 
@@ -81,7 +80,6 @@ namespace Hermes.AndroidViews.CourtBooking
 				}
 			}
 			//List<Block> results = items.FindAll ((Block obj) => obj.courtId.name [0].Equals (parentItems[groupPosition]));
-			Console.WriteLine (parentItems[groupPosition] + aux.Count);
 			return aux.Count;
 		}
 

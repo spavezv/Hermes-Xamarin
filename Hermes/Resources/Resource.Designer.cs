@@ -1512,46 +1512,49 @@ namespace Hermes
 			public const int ic_court = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int ic_direction = 2130837586;
+			public const int ic_delete = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int ic_error = 2130837587;
+			public const int ic_direction = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int ic_futbol = 2130837588;
+			public const int ic_error = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int ic_help = 2130837589;
+			public const int ic_futbol = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int ic_price = 2130837590;
+			public const int ic_help = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int ic_reservations = 2130837591;
+			public const int ic_price = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int ic_tennis = 2130837592;
+			public const int ic_reservations = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int ic_user = 2130837593;
+			public const int ic_tennis = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int ic_volleyball = 2130837594;
+			public const int ic_user = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int Icon = 2130837595;
+			public const int ic_volleyball = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int lollipop = 2130837596;
+			public const int Icon = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int lollipop_android5 = 2130837597;
+			public const int lollipop = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int sucursal = 2130837598;
+			public const int lollipop_android5 = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int user_background = 2130837599;
+			public const int sucursal = 2130837599;
+			
+			// aapt resource value: 0x7f020060
+			public const int user_background = 2130837600;
 			
 			static Drawable()
 			{

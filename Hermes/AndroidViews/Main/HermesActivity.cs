@@ -164,13 +164,28 @@ namespace Hermes.AndroidViews.Main
                     replaceFragment(new UserReservations());
                     break;
                 case 3: //Comentarios
-
+					sendComments();
                     break;
                 case 4: //ayuda
 				replaceFragment(new HelpFragment());
 				break;
             }
         }
+
+		void sendComments ()
+		{
+			var email = new Intent (Android.Content.Intent.ActionSend);
+
+			email.PutExtra(Android.Content.Intent.ExtraEmail, new string[]{"hermes.app.android@gmail.com"});
+			email.PutExtra(Android.Content.Intent.ExtraSubject, "Envio de comentario");
+			email.PutExtra(Android.Content.Intent.ExtraText, "");
+			email.SetType("message/rfc822");
+			try {
+				StartActivity(email);
+			} catch (Android.Content.ActivityNotFoundException ex) {
+				Toast.MakeText(this, "No existe aplicación de correo instalada", ToastLength.Short).Show();
+			}
+		}
 
         public void replaceFragment(Fragment fragment)
         {
