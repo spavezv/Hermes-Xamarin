@@ -85,7 +85,9 @@ namespace Hermes
             string json = JsonConvert.SerializeObject(block);
             string url = GlobalVar.URL + "blocks/" + block.id;
             Console.WriteLine(url);
+            Console.WriteLine(json);
             json = await ws.PutTask(url, json);
+            
 
             if (json != null)
             {

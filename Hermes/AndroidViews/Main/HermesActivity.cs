@@ -114,6 +114,7 @@ namespace Hermes.AndroidViews.Main
             switch (item.ItemId)
             {
                 case Resource.Id.ic_settings:
+                    //replaceFragment(new SettingsFragment());
                     break;
                 case Resource.Id.ic_signout:
                     signout();

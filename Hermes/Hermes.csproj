@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidViews\Account\MainActivity.cs" />
+    <Compile Include="AndroidViews\Main\SettingsAdapter.cs" />
+    <Compile Include="AndroidViews\Main\SettingsFragment.cs" />
     <Compile Include="Models\Block.cs" />
     <Compile Include="Models\Branches.cs" />
     <Compile Include="Models\Business.cs" />
@@ -191,6 +193,12 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_delete.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_delete.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_delete.png" />
+    <AndroidResource Include="Resources\layout\settings_fragment.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\text_separator.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">
@@ -269,7 +277,6 @@
   -->
   <ItemGroup>
     <Folder Include="AndroidViews\Utility\" />
-    <Folder Include="AndroidViews\Help\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

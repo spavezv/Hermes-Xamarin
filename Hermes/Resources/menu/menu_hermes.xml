@@ -11,9 +11,4 @@
 		android:title="Cerrar sesión"
         android:icon="@drawable/ic_action_settings"
         myapp:showAsAction="never" />
-    <item
-        android:id="@+id/ic_find"
-        android:icon="@drawable/ic_action_search"
-		myapp:showAsAction="always"/>
-
 </menu>
