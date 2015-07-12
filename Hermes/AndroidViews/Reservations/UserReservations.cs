@@ -38,19 +38,19 @@ namespace Hermes.AndroidViews.Reservations
       var view = inflater.Inflate(Resource.Layout.user_reservations, container, false);
 
       mRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.rv_reservations);
-      mReservations = new MyList<Block>();
       //Create our layout manager
       mLayoutManager = new LinearLayoutManager(this.Activity);
       mRecyclerView.SetLayoutManager(mLayoutManager);
-			fillReservations ();
-     
-
-
+		fillReservations ();
       return view;
     }
+	
 
-		async void fillReservations ()
+
+		public async void fillReservations ()
 		{
+			Console.WriteLine ("cargando reservas");
+			mReservations = new MyList<Block>();
 			WebService ws = new WebService ();
 			JsonValue json;
 			string url;

@@ -62,4 +62,9 @@
     <string name="TtNext4">Confirmar reserva:</string>
     <string name="MessNext4">Si ya estás listo con la sucursa, puedes ver que horarios estan disponibles para reservar.</string>
 
+    <string name="Book">Reservar</string>
+    <string name="MyReservation">Mis Reservas</string>
+    <string name="Configurations">Ajustes</string>
+    <string name="Help">Ayuda</string>
+
 </resources>

@@ -92,11 +92,11 @@ namespace Hermes
       switch (v.Id)
       {
         case Resource.Id.img_arrow_left:
-          ((HermesActivity)this.Activity).replaceFragment(new DateFragment());
+          ((HermesActivity)this.Activity).replaceFragment(new DateFragment(), "");
           break;
         case Resource.Id.img_arrow_right:
           //Dialog
-          ((HermesActivity)this.Activity).replaceFragment(new BlocksFragment());
+          ((HermesActivity)this.Activity).replaceFragment(new BlocksFragment(), "");
           break;
 
         default:

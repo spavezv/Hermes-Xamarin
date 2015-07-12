@@ -93,7 +93,7 @@ namespace Hermes
             switch (v.Id)
             {
                 case Resource.Id.img_arrow_left:
-                    ((HermesActivity)this.Activity).replaceFragment(new BranchFragment());
+                    ((HermesActivity)this.Activity).replaceFragment(new BranchFragment(), "");
                     break;
                 case Resource.Id.img_arrow_right:
                     String inicio = selectedBlock.start.Substring(11, 5);

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:myapp="http://schemas.android.com/apk/res-auto">
+	<item 
+        android:id="@+id/ic_action_delete"
+		android:title="Eliminar"
+		android:icon="@drawable/ic_action_settings"
+		myapp:showAsAction="always" />
+</menu>

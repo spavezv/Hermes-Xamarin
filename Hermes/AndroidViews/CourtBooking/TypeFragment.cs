@@ -121,7 +121,7 @@ namespace Hermes.AndroidViews.CourtBooking
 				//Toast.MakeText((MainActivity)this.Activity, "No hay izquierda", ToastLength.Long).Show();
 				break;
 			case Resource.Id.img_arrow_right:
-				((HermesActivity)this.Activity).replaceFragment(new DateFragment());		
+				((HermesActivity)this.Activity).replaceFragment(new DateFragment(), "");		
 				break;
 			default:
 				break;

@@ -104,8 +104,8 @@ namespace Hermes.AndroidViews.Reservations
     {
       int position = mRecyclerView.GetChildPosition((View)sender);
 			mReservation = mReservations[position];
-			((HermesActivity)mContext).nextFragment (new DetailsFragment());
-
+			var intent = new Intent(((HermesActivity)mContext), typeof(DetailsFragment));
+			((HermesActivity)mContext).StartActivity(intent);
     }
 
     public override int ItemCount

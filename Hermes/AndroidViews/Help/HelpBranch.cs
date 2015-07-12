@@ -71,7 +71,7 @@ namespace Hermes
 			public void OnShowCaseAcknowledged(ShowcaseView showcaseView)
 			{
 				//aqui deberia cambiar de fragment
-				((HermesActivity)this.parent).replaceFragment(new HelpBlock());			
+				((HermesActivity)this.parent).replaceFragment(new HelpBlock(), "");			
 			}
 
 			#endregion

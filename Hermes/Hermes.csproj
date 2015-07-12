@@ -199,6 +199,7 @@
     <AndroidResource Include="Resources\layout\text_separator.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\menu\menu_reservation_details.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">

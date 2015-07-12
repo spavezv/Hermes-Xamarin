@@ -12,10 +12,9 @@ using Hermes.AndroidViews.Reservations;
 using Hermes.AndroidViews.ActionBarDrawerToggle;
 using Hermes.AndroidViews.CourtBooking;
 using Hermes.Models;
-using System;
-using Hermes.AndroidViews.Account;
 using Android.Content;
 using Hermes.WebServices;
+using System;
 
 namespace Hermes.AndroidViews.Main
 {
@@ -96,10 +95,11 @@ namespace Hermes.AndroidViews.Main
                 SupportActionBar.SetTitle(Resource.String.CloseDrawer);
             }
 
-            Fragment f = new UserReservations();
+			Fragment f = new TypeFragment();
             FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-            fragmentTx.Add(Resource.Id.container, f);
+			fragmentTx.Add(Resource.Id.container, f, "");
             fragmentTx.Commit();
+			SupportActionBar.SetTitle (Resource.String.Book);
 
         }
         
@@ -123,6 +123,24 @@ namespace Hermes.AndroidViews.Main
             mDrawerToggle.OnOptionsItemSelected(item);
             return base.OnOptionsItemSelected(item);
         }
+
+
+		protected override void OnResume(){
+			ISharedPreferences prefs = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+			if (prefs.GetBoolean (GlobalVar.RESERVATION_DETAILS, false)) {
+				UserReservations f = (UserReservations) FragmentManager.FindFragmentByTag (GlobalVar.RESERVATION_DETAILS);
+
+				FragmentTransaction fragTransaction = FragmentManager.BeginTransaction();
+				fragTransaction.Detach(f);
+				fragTransaction.Attach(f);
+				fragTransaction.Commit();
+
+				prefs.Edit().PutBoolean(GlobalVar.RESERVATION_DETAILS, false);
+				prefs.Edit ().Apply ();
+			}
+			base.OnResume ();
+		}
+
         
         protected override void OnSaveInstanceState(Bundle outState)
         {
@@ -159,16 +177,16 @@ namespace Hermes.AndroidViews.Main
                 case 0: //Usuario
                     break;
                 case 1: //Reservar cancha
-                    replaceFragment(new TypeFragment());
+                    replaceFragment(new TypeFragment(), "");
                     break;
                 case 2: //Mis Reserva
-                    replaceFragment(new UserReservations());
+				replaceFragment(new UserReservations(), GlobalVar.RESERVATION_DETAILS);
                     break;
                 case 3: //Comentarios
 					sendComments();
                     break;
                 case 4: //ayuda
-				replaceFragment(new HelpFragment());
+				replaceFragment(new HelpFragment(), "");
 				break;
             }
         }
@@ -185,22 +203,23 @@ namespace Hermes.AndroidViews.Main
 				StartActivity(email);
 			} catch (Android.Content.ActivityNotFoundException ex) {
 				Toast.MakeText(this, "No existe aplicación de correo instalada", ToastLength.Short).Show();
+				Console.WriteLine (ex.ToString());
 			}
 		}
 
-        public void replaceFragment(Fragment fragment)
+		public void replaceFragment(Fragment fragment, String id)
         {
 
             FragmentTransaction transaction = FragmentManager.BeginTransaction();
-            transaction.Replace(Resource.Id.container, fragment);
+            transaction.Replace(Resource.Id.container, fragment, id);
             transaction.Commit();
             mDrawerLayout.CloseDrawers();
         }
 
-        public void nextFragment(Fragment fragment)
+		public void nextFragment(Fragment fragment)
         {
             FragmentTransaction transaction = FragmentManager.BeginTransaction();
-            transaction.Replace(Resource.Id.container, fragment);
+			transaction.Replace(Resource.Id.container, fragment);
             transaction.AddToBackStack(null);
             transaction.Commit();
         }

@@ -1,13 +1,9 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Hermes.Models;
@@ -16,25 +12,35 @@ using System.Globalization;
 using Hermes.AndroidViews.Main;
 using Hermes.WebServices;
 using Newtonsoft.Json;
+using Android.Support.V7.App;
+using Android.Content;
 
 namespace Hermes
 {
-
-    public class DetailsFragment : Fragment, View.IOnClickListener
+	[Activity(Label = "Hermes", Theme = "@style/MyTheme", ParentActivity = typeof(HermesActivity))]
+	public class DetailsFragment : AppCompatActivity
     {
-        public Block block;
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            block = RecyclerAdapter.mReservation;
-            View view = inflater.Inflate(Resource.Layout.details_fragment, container, false);
 
-            TextView txtBranche = view.FindViewById<TextView>(Resource.Id.txt_branche);
-            TextView txtCourt = view.FindViewById<TextView>(Resource.Id.txt_court_name);
-            TextView txtDateTime = view.FindViewById<TextView>(Resource.Id.txt_date_time);
-            TextView txtPrice = view.FindViewById<TextView>(Resource.Id.txt_price);
-            TextView txtAddress = view.FindViewById<TextView>(Resource.Id.txt_address);
-            Button btnBack = view.FindViewById<Button>(Resource.Id.button_back);
-            Button btnCancel = view.FindViewById<Button>(Resource.Id.button_cancel);
+		private SupportToolbar mToolbar;
+        public Block block;
+
+		protected override void OnCreate(Bundle bundle)
+        {
+			base.OnCreate(bundle);
+			SetContentView(Resource.Layout.details_fragment);
+
+			mToolbar = FindViewById<Toolbar>(Resource.Id.toolbar_reservation_details);
+			SetSupportActionBar(mToolbar);
+			SupportActionBar.SetHomeButtonEnabled(true);
+			SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            block = RecyclerAdapter.mReservation;
+
+            TextView txtBranche = FindViewById<TextView>(Resource.Id.txt_branche);
+            TextView txtCourt = FindViewById<TextView>(Resource.Id.txt_court_name);
+            TextView txtDateTime = FindViewById<TextView>(Resource.Id.txt_date_time);
+            TextView txtPrice = FindViewById<TextView>(Resource.Id.txt_price);
+            TextView txtAddress = FindViewById<TextView>(Resource.Id.txt_address);
 
             String inicio = block.start.Substring(11, 5);
             String termino = block.finish.Substring(11, 5);
@@ -47,36 +53,38 @@ namespace Hermes
             txtDateTime.Text = dateReservation + " de " + inicio + " a " + termino + " hrs.";
             txtPrice.Text = "$" + block.price.ToString();
             txtAddress.Text = block.courtId.branchId.street + block.courtId.branchId.number;
-
-            btnBack.SetOnClickListener(this);
-            btnCancel.SetOnClickListener(this);
-            return view;
         }
 
-        public void OnClick(View v)
-        {
-            switch (v.Id)
-            {
-                case Resource.Id.button_back:
-                    ((HermesActivity)this.Activity).replaceFragment(new UserReservations());
-                    break;
-                case Resource.Id.button_cancel:
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+			MenuInflater.Inflate(Resource.Menu.menu_reservation_details, menu);
+			return base.OnCreateOptionsMenu(menu);
+		}
 
-                    Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(((HermesActivity)this.Activity));
-                    Android.App.AlertDialog alertDialog = builder.Create();
-                    alertDialog.SetTitle("¿Esta seguro?");
-                    alertDialog.SetMessage("Esta acción es irreversible.");
-                    alertDialog.SetButton("Aceptar", (s, ev) =>
-                        { bookCancel(); });
-                    alertDialog.SetButton2("Cancelar", (s, ev) => { alertDialog.Dismiss(); });
-                    alertDialog.Show();
-
-                    break;
-                default:
-                    break;
-            }
-
-        }
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+			case Resource.Id.ic_action_delete:
+				Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
+				Android.App.AlertDialog alertDialog = builder.Create();
+				alertDialog.SetTitle("¿Esta seguro?");
+				alertDialog.SetMessage("Esta acción es irreversible.");
+				alertDialog.SetButton("Aceptar", (s, ev) =>
+					{ 
+						bookCancel();
+						ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+						editor.PutBoolean(GlobalVar.RESERVATION_DETAILS, true);
+						editor.Apply();
+						//Finish();
+						OnBackPressed();
+					});
+				alertDialog.SetButton2("Cancelar", (s, ev) => { alertDialog.Dismiss(); });
+				alertDialog.Show();
+				break;
+			}
+			return base.OnOptionsItemSelected(item);
+		}
 
         public async void bookCancel()
         {
@@ -91,12 +99,12 @@ namespace Hermes
 
             if (json != null)
             {
-                Toast.MakeText((HermesActivity)this.Activity, "Reserva cancelada", ToastLength.Long).Show();
-                this.Activity.FragmentManager.PopBackStack();
+                //Toast.MakeText((HermesActivity)this.Activity, "Reserva cancelada", ToastLength.Long).Show();
+                //this.Activity.FragmentManager.PopBackStack();
             }
             else
             {
-                Toast.MakeText((HermesActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show();
+                //Toast.MakeText((HermesActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show();
             }
         }
 

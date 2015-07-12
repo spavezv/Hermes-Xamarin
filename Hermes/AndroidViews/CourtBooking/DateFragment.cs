@@ -53,10 +53,10 @@ namespace Hermes.AndroidViews.CourtBooking
             switch (v.Id)
             {
                 case Resource.Id.img_arrow_left:
-                    ((HermesActivity)this.Activity).replaceFragment(new TypeFragment());
+                    ((HermesActivity)this.Activity).replaceFragment(new TypeFragment(), "");
                     break;
                 case Resource.Id.img_arrow_right:
-                    ((HermesActivity)this.Activity).replaceFragment(new BranchFragment());
+                    ((HermesActivity)this.Activity).replaceFragment(new BranchFragment(), "");
                     break;
                 default:
                     break;

@@ -90,7 +90,7 @@ namespace Hermes
 				alertDialog.SetTitle("Has terminado el tutorial");
 				alertDialog.SetMessage("Felicitaciones! \n Has terminado el tutorial para conocer como realizar una reserva.");
 				alertDialog.SetButton("Ok", (s, ev) =>
-					{ ((HermesActivity)this.parent).replaceFragment(new UserReservations());	});
+					{ ((HermesActivity)this.parent).replaceFragment(new UserReservations(), "");	});
 				alertDialog.Show();	
 
 			}
