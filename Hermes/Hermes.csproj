@@ -78,8 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidViews\Account\MainActivity.cs" />
-    <Compile Include="AndroidViews\Main\SettingsAdapter.cs" />
-    <Compile Include="AndroidViews\Main\SettingsFragment.cs" />
     <Compile Include="Models\Block.cs" />
     <Compile Include="Models\Branches.cs" />
     <Compile Include="Models\Business.cs" />
@@ -108,6 +106,9 @@
     <Compile Include="AndroidViews\Help\HelpDate.cs" />
     <Compile Include="AndroidViews\Help\HelpBranch.cs" />
     <Compile Include="AndroidViews\Help\HelpBlock.cs" />
+    <Compile Include="AndroidViews\Settings\EditCountFragment.cs" />
+    <Compile Include="AndroidViews\Settings\SettingFragment.cs" />
+    <Compile Include="AndroidViews\Settings\SettingsAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -200,6 +201,8 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\menu_reservation_details.xml" />
+    <AndroidResource Include="Resources\layout\confirmation_pass_dialog.axml" />
+    <AndroidResource Include="Resources\layout\item_setting.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">
@@ -278,6 +281,7 @@
   -->
   <ItemGroup>
     <Folder Include="AndroidViews\Utility\" />
+    <Folder Include="AndroidViews\Settings\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

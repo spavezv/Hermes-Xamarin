@@ -40,7 +40,7 @@ namespace Hermes
 				var option = items[e.Position];
 				if(option.Equals("Mi cuenta"))
 				{
-					((HermesActivity)this.Activity).replaceFragment(new EditCountFragment());
+					((HermesActivity)this.Activity).replaceFragment(new EditCountFragment(), "");
 				}
 			};      
 			return view;

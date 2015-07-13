@@ -46,7 +46,9 @@ namespace Hermes.AndroidViews.Account
             var view = inflater.Inflate(Resource.Layout.login, container, false);
 
             etMail = view.FindViewById<EditText>(Resource.Id.et_email);
+			etMail.Text = SignupFragment.email;
             etPassword = view.FindViewById<EditText>(Resource.Id.et_password);
+			etPassword.Text = SignupFragment.password;
             btnSignup = view.FindViewById<Button>(Resource.Id.btn_signup);
             btnLogin = view.FindViewById<Button>(Resource.Id.btn_login);
             checkbox = view.FindViewById<CheckBox>(Resource.Id.chk_session);

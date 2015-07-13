@@ -26,6 +26,8 @@ namespace Hermes.AndroidViews.Account
 
         private EditText etNames, etLastnames, etEmail, etPhone, etPassword, etPasswordConfirmation;
         private Button btnSignup;
+		public static String email = "";
+		public static String password = "";
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -58,7 +60,8 @@ namespace Hermes.AndroidViews.Account
                     if (!haveErrors())
                     {
                         Clients c = new Clients { name = etNames.Text, lastname = etLastnames.Text, phone = etPhone.Text, email = etEmail.Text, encryptedPassword = HashPassword(etPassword.Text) };
-
+					email = etEmail.Text;
+					password = etPassword.Text;
                         string json = JsonConvert.SerializeObject(c);
 
                         string url = GlobalVar.URL + "clients";
