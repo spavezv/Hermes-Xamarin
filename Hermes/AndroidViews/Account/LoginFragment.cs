@@ -122,6 +122,9 @@ namespace Hermes.AndroidViews.Account
             editor.PutBoolean(GlobalVar.REMEMBER_USER, checkbox.Checked);
             editor.PutString(GlobalVar.USER_EMAIL, c.email);
             editor.PutString(GlobalVar.USER_PASSWORD, c.encryptedPassword);
+			editor.PutString (GlobalVar.USER_NAMES, c.name);
+			editor.PutString (GlobalVar.USER_LASTNAMES, c.lastname);
+			editor.PutString (GlobalVar.USER_PHONE, c.phone);
             editor.Apply();        // applies changes asynchronously on newer APIs
 
             var remember = (checkbox.Checked) ? "Recuerdame " : "NO Recuerdame ";
