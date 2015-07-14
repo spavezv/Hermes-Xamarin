@@ -36,6 +36,7 @@ namespace Hermes.AndroidViews.Main
         public string workshop { set; get; }
 
         public Block mBlock { set; get; }
+		public int title { set; get; }
         public static Clients Client;
 
         protected override void OnCreate(Bundle bundle)
@@ -85,21 +86,38 @@ namespace Hermes.AndroidViews.Main
 
                 else
                 {
-                    SupportActionBar.SetTitle(Resource.String.CloseDrawer);
+                    SupportActionBar.SetTitle(title);
                 }
             }
 
             else
             {
                 //This is the first the time the activity is ran
-                SupportActionBar.SetTitle(Resource.String.CloseDrawer);
+                SupportActionBar.SetTitle(title);
             }
 
-			Fragment f = new TypeFragment();
+
+			ISharedPreferences editor = this.GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+
+			String currentFragment = editor.GetString (GlobalVar.CURRENT_FRAGMENT, "");
+			Fragment f;
+			if (currentFragment.Equals ("SETTINGS")) {
+				SupportActionBar.SetTitle (Resource.String.Configurations);
+				title = Resource.String.Configurations;
+				f = new SettingFragment ();
+			} else if (currentFragment.Equals ("USER_RESERVATIONS")) {
+				SupportActionBar.SetTitle (Resource.String.MyReservation);
+				title = Resource.String.MyReservation;
+				f = new UserReservations ();
+			} else {
+				SupportActionBar.SetTitle (Resource.String.Book);
+				title = Resource.String.Book;
+				f = new TypeFragment ();
+			}
             FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
 			fragmentTx.Add(Resource.Id.container, f, "");
             fragmentTx.Commit();
-			SupportActionBar.SetTitle (Resource.String.Book);
+
 
         }
         
@@ -114,9 +132,12 @@ namespace Hermes.AndroidViews.Main
             switch (item.ItemId)
             {
                 case Resource.Id.ic_settings:
-				
-				    nextFragment(new SettingFragment());
+				ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+				editor.PutString(GlobalVar.CURRENT_FRAGMENT, "SETTINGS");
+				editor.Apply();
+				nextFragment(new SettingFragment());
 				SupportActionBar.SetTitle(Resource.String.Configurations);
+				title = Resource.String.Configurations;
                     break;
                 case Resource.Id.ic_signout:
                     signout();
@@ -126,27 +147,27 @@ namespace Hermes.AndroidViews.Main
             return base.OnOptionsItemSelected(item);
         }
 
-
+		/*
 		protected override void OnResume(){
 			ISharedPreferences prefs = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
-			if (prefs.GetBoolean (GlobalVar.RESERVATION_DETAILS, false)) {
+			if (prefs.GetString (GlobalVar.CURRENT_FRAGMENT, "").Equals("USER_RESERVATIONS")) {
 				
 				UserReservations f = (UserReservations) FragmentManager.FindFragmentByTag (GlobalVar.RESERVATION_DETAILS);
 				FragmentTransaction fragTransaction = FragmentManager.BeginTransaction();
 				fragTransaction.Detach(f);
 				fragTransaction.Attach(f);
 				fragTransaction.Commit();
-
-				prefs.Edit().PutBoolean(GlobalVar.RESERVATION_DETAILS, false);
-				prefs.Edit ().Apply ();
 			}
 			else if (prefs.GetBoolean (GlobalVar.EDIT_ACCOUNT, false)){
 				nextFragment(new SettingFragment());
+
+				prefs.Edit().PutBoolean(GlobalVar.EDIT_ACCOUNT, false);
+				prefs.Edit ().Apply ();
 			}
 				
 			base.OnResume ();
 		}
-
+		*/
         
         protected override void OnSaveInstanceState(Bundle outState)
         {
@@ -178,26 +199,37 @@ namespace Hermes.AndroidViews.Main
         void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var listView = sender as ListView;
+			ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
             switch (e.Position)
             {
                 case 0: //Usuario
                     break;
                 case 1: //Reservar cancha
+				editor.PutString(GlobalVar.CURRENT_FRAGMENT, "BOOK");
+				editor.Apply();
 				SupportActionBar.SetTitle(Resource.String.Book);
+				title = Resource.String.Book;
                     replaceFragment(new TypeFragment(), "");
                     break;
                 case 2: //Mis Reserva
+				editor.PutString(GlobalVar.CURRENT_FRAGMENT, "MY_RESERVATIONS");
+				editor.Apply();
 				SupportActionBar.SetTitle(Resource.String.MyReservation);
+				title = Resource.String.MyReservation;
 				replaceFragment(new UserReservations(), GlobalVar.RESERVATION_DETAILS);
                     break;
                 case 3: //Comentarios
+				SupportActionBar.SetTitle(Resource.String.Configurations);
+				title = Resource.String.Configurations;
 					sendComments();
                     break;
                 case 4: //ayuda
 				SupportActionBar.SetTitle(Resource.String.Help);
+				title = Resource.String.Help;
 				replaceFragment(new HelpFragment(), "");
 				break;
-            }
+			}
+
         }
 
 		void sendComments ()

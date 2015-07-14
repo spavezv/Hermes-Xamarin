@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Widget;
 using Hermes.AndroidViews.Main;
 using Android.Support.V7.App;
+using Hermes.WebServices;
 
 namespace Hermes
 {
@@ -44,6 +45,12 @@ namespace Hermes
 				{
 					//SupportActionBar.SetTitle(Resource.String.Update);
 					var intent = new Intent(((HermesActivity)mContext), typeof(EditCountFragment));
+					((HermesActivity)mContext).StartActivity(intent);
+				}
+				else if(option.Equals("Sobre Hermes"))
+				{
+					//SupportActionBar.SetTitle(Resource.String.Update);
+					var intent = new Intent(((HermesActivity)mContext), typeof(AboutActivity));
 					((HermesActivity)mContext).StartActivity(intent);
 				}
 			};      

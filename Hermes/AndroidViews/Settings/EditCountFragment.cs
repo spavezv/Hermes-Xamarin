@@ -54,6 +54,9 @@ namespace Hermes
 			btnEdit.SetOnClickListener(this);
 
 			prefs = (this).GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+			ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+			editor.PutBoolean(GlobalVar.EDIT_ACCOUNT, true);
+			editor.Apply();
 
 			var userID = prefs.GetInt (GlobalVar.USER_ID, -1);
 			etNames.Text = prefs.GetString (GlobalVar.USER_NAMES, null);

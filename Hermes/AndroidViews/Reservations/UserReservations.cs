@@ -26,6 +26,8 @@ namespace Hermes.AndroidViews.Reservations
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
     private MyList<Block> mReservations;
+		private TextView txtMessage;
+
     public override void OnCreate(Bundle savedInstanceState)
     {
       base.OnCreate(savedInstanceState);
@@ -36,12 +38,13 @@ namespace Hermes.AndroidViews.Reservations
     public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
       var view = inflater.Inflate(Resource.Layout.user_reservations, container, false);
-
+		
       mRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.rv_reservations);
+	  txtMessage = view.FindViewById<TextView> (Resource.Id.textNoReservations);
       //Create our layout manager
       mLayoutManager = new LinearLayoutManager(this.Activity);
       mRecyclerView.SetLayoutManager(mLayoutManager);
-		fillReservations ();
+	  fillReservations ();
       return view;
     }
 	
@@ -68,13 +71,22 @@ namespace Hermes.AndroidViews.Reservations
 					for (int i = 0; i < userReservations.Count; i++) {
 						mReservations.Add (userReservations[i]);
 					}
+
 					mAdapter = new RecyclerAdapter (mReservations, mRecyclerView, Activity);
 					mReservations.Adapter = mAdapter;
 					mRecyclerView.SetAdapter (mAdapter);
+
+					mRecyclerView.Visibility = ViewStates.Visible;
+					txtMessage.Visibility = ViewStates.Invisible;
 				}
 
 				else {
-					messageNoReservations ();
+					//messageNoReservations ();
+
+
+					mRecyclerView.Visibility = ViewStates.Invisible;
+					txtMessage.Visibility = ViewStates.Visible;
+
 				}
 			} else {
 				Toast.MakeText((HermesActivity)this.Activity, "Problema de conexion", ToastLength.Long).Show();

@@ -12,6 +12,7 @@ using Hermes.WebServices;
 using System.Json;
 using Newtonsoft.Json;
 using Android.Content;
+using Hermes.AndroidViews.Reservations;
 
 namespace Hermes
 {
@@ -131,9 +132,10 @@ namespace Hermes
             if (json != null)
             {
                 Toast.MakeText((HermesActivity)this.Activity, "Reserva realizada", ToastLength.Long).Show();
-                var intent = new Intent((HermesActivity)this.Activity, typeof(HermesActivity));
-                StartActivity(intent);
-
+				ISharedPreferencesEditor editor = ((HermesActivity)this.Activity).GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+				editor.PutString(GlobalVar.CURRENT_FRAGMENT, "USER_RESERVATIONS");
+				editor.Apply();
+				((HermesActivity)this.Activity).replaceFragment (new UserReservations (), "");
             }
             else
             {

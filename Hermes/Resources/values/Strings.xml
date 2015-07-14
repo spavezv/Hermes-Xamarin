@@ -69,4 +69,6 @@
 
     <string name="Update">Actualizar cuenta</string>
 
+    <string name="NoReservations">Usted no tiene reservas.</string>
+
 </resources>

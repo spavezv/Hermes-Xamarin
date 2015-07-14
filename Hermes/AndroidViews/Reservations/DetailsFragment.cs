@@ -74,7 +74,7 @@ namespace Hermes
 					{ 
 						bookCancel();
 						ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
-						editor.PutBoolean(GlobalVar.RESERVATION_DETAILS, true);
+						editor.PutString(GlobalVar.CURRENT_FRAGMENT, "USER_RESERVATIONS");
 						editor.Apply();
 						//Finish();
 						OnBackPressed();

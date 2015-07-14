@@ -109,6 +109,7 @@
     <Compile Include="AndroidViews\Settings\EditCountFragment.cs" />
     <Compile Include="AndroidViews\Settings\SettingFragment.cs" />
     <Compile Include="AndroidViews\Settings\SettingsAdapter.cs" />
+    <Compile Include="AndroidViews\Settings\AboutActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -204,6 +205,7 @@
     <AndroidResource Include="Resources\layout\confirmation_pass_dialog.axml" />
     <AndroidResource Include="Resources\layout\item_setting.axml" />
     <AndroidResource Include="Resources\layout\edit_account.axml" />
+    <AndroidResource Include="Resources\layout\about_hermes.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">
