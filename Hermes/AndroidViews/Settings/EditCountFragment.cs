@@ -36,7 +36,7 @@ namespace Hermes
 			etPasswordConfirmation.Enabled = false;
 			etPasswordConfirmation.Visibility = ViewStates.Invisible;
 			btnEdit = view.FindViewById<Button>(Resource.Id.btn_signup);
-			btnEdit.Text = "Editar";
+			btnEdit.Text = "Actualizar";
 			btnEdit.SetOnClickListener(this);
 
 			prefs = ((HermesActivity)this.Activity).GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
@@ -90,17 +90,18 @@ namespace Hermes
 		async void editClient ()
 		{
 			prefs = ((HermesActivity)this.Activity).GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
-			Clients c = new Clients { name = etNames.Text, lastname = etLastnames.Text, phone = etPhone.Text, email = etEmail.Text, encryptedPassword = HashPassword(etPassword.Text) };
+			Clients c = new Clients {id= prefs.GetInt(GlobalVar.USER_ID, -1), name = etNames.Text, lastname = etLastnames.Text, phone = etPhone.Text, email = etEmail.Text, encryptedPassword = HashPassword(etPassword.Text),
+				createdAt = prefs.GetString(GlobalVar.USER_CREATED, null) , updatedAt = prefs.GetString(GlobalVar.USER_UPDATED, null)  };
 			string json = JsonConvert.SerializeObject(c);
-			string url = GlobalVar.URL + "clients/" + prefs.GetString(GlobalVar.USER_ID, null);
+			string url = GlobalVar.URL + "clients/" + prefs.GetInt(GlobalVar.USER_ID, -1);
 			WebService ws = new WebService();
 			json = await ws.PutTask(url, json);
 
 			if (json != null)
 			{
-				Toast.MakeText((HermesActivity)this.Activity, "Edicion realizada", ToastLength.Long).Show();
-				var intent = new Intent((HermesActivity)this.Activity, typeof(HermesActivity));
-				StartActivity(intent);
+				Toast.MakeText((HermesActivity)this.Activity, "Actualización realizada", ToastLength.Long).Show();
+//				var intent = new Intent((HermesActivity)this.Activity, typeof(HermesActivity));
+//				StartActivity(intent);
 
 			}
 			else
@@ -111,7 +112,6 @@ namespace Hermes
 
 		bool searchPassword (string text)
 		{
-			
 			var hash = HashPassword (text);
 			return (hash.Equals(prefs.GetString(GlobalVar.USER_PASSWORD, null)));
 		}

@@ -25,6 +25,8 @@ namespace Hermes.WebServices
 		public const string USER_NAMES = "HERMES.USER_NAMES";
 		public const string USER_LASTNAMES = "HERMES.USER_LASTNAMES";
 		public const string USER_PHONE = "HERMES.USER_PHONE";
+		public const string USER_CREATED = "HERMES.USER_CREATED";
+		public const string USER_UPDATED = "HERMES.USER_UPDATED";
 		public const string RESERVATION_DETAILS = "HERMES.RESERVATION_DETAILS";
         //REGEX
         public static Regex PHONE_REGEX = new Regex("^([5-9][0-9]{7})$");

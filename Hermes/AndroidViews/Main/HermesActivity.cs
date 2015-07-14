@@ -114,7 +114,9 @@ namespace Hermes.AndroidViews.Main
             switch (item.ItemId)
             {
                 case Resource.Id.ic_settings:
-                    //replaceFragment(new SettingsFragment());
+				
+				    replaceFragment(new SettingFragment(), "");
+				SupportActionBar.SetTitle(Resource.String.Configurations);
                     break;
                 case Resource.Id.ic_signout:
                     signout();
@@ -177,15 +179,18 @@ namespace Hermes.AndroidViews.Main
                 case 0: //Usuario
                     break;
                 case 1: //Reservar cancha
+				SupportActionBar.SetTitle(Resource.String.Book);
                     replaceFragment(new TypeFragment(), "");
                     break;
                 case 2: //Mis Reserva
+				SupportActionBar.SetTitle(Resource.String.MyReservation);
 				replaceFragment(new UserReservations(), GlobalVar.RESERVATION_DETAILS);
                     break;
                 case 3: //Comentarios
 					sendComments();
                     break;
                 case 4: //ayuda
+				SupportActionBar.SetTitle(Resource.String.Help);
 				replaceFragment(new HelpFragment(), "");
 				break;
             }
@@ -203,7 +208,6 @@ namespace Hermes.AndroidViews.Main
 				StartActivity(email);
 			} catch (Android.Content.ActivityNotFoundException ex) {
 				Toast.MakeText(this, "No existe aplicación de correo instalada", ToastLength.Short).Show();
-				Console.WriteLine (ex.ToString());
 			}
 		}
 

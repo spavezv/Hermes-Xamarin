@@ -55,7 +55,6 @@ namespace Hermes
         {
 			WebService ws = new WebService();
             string url = GlobalVar.URL + "blocks/getBlocks/" + ((HermesActivity)this.Activity).TypeSport + "/" + ((HermesActivity)this.Activity).Date + "/" + ((HermesActivity)this.Activity).mBranch.id;
-            Console.WriteLine(url);
             JsonValue json = await ws.GetTask(url);
             if (json != null)
             {

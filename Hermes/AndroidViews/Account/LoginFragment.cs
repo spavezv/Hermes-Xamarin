@@ -21,6 +21,7 @@ using System.Security.Cryptography;
 using Hermes.Models;
 using Newtonsoft.Json;
 using Android.Preferences;
+using Java.Text;
 
 namespace Hermes.AndroidViews.Account
 {
@@ -127,13 +128,14 @@ namespace Hermes.AndroidViews.Account
 			editor.PutString (GlobalVar.USER_NAMES, c.name);
 			editor.PutString (GlobalVar.USER_LASTNAMES, c.lastname);
 			editor.PutString (GlobalVar.USER_PHONE, c.phone);
+			editor.PutString (GlobalVar.USER_CREATED, c.createdAt);
+			editor.PutString (GlobalVar.USER_UPDATED, c.updatedAt);
             editor.Apply();        // applies changes asynchronously on newer APIs
 
             var remember = (checkbox.Checked) ? "Recuerdame " : "NO Recuerdame ";
-            Console.WriteLine(remember);
         }
 
-        public String HashPassword(String password)
+	    public String HashPassword(String password)
         {
             HashAlgorithm algorithm = new SHA256Managed();
             Byte[] inputBytes = Encoding.UTF8.GetBytes(password);
