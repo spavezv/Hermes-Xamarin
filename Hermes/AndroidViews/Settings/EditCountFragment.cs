@@ -106,7 +106,7 @@ namespace Hermes
 		async void editClient ()
 		{
 			prefs = this.GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
-			Clients c = new Clients {id= prefs.GetInt(GlobalVar.USER_ID, -1), name = etNames.Text, lastname = etLastnames.Text, phone = etPhone.Text, email = etEmail.Text, encryptedPassword = HashPassword(etPassword.Text),
+			Clients c = new Clients {id= prefs.GetInt(GlobalVar.USER_ID, -1), name = etNames.Text, lastname = etLastnames.Text, phone = etPhone.Text, email = etEmail.Text, encryptedPassword = HashPassword(edPassword.Text),
 				createdAt = prefs.GetString(GlobalVar.USER_CREATED, null) , updatedAt = prefs.GetString(GlobalVar.USER_UPDATED, null)  };
 			string json = JsonConvert.SerializeObject(c);
 			string url = GlobalVar.URL + "clients/" + prefs.GetInt(GlobalVar.USER_ID, -1);
