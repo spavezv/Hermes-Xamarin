@@ -4,15 +4,12 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:id="@+id/root">
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/TextView_Pwd1"
-        android:text="Ingrese password"
-        android:textStyle="bold" />
     <EditText
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/editText_Pwd1"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:hint="Contraseña"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp" />
 </LinearLayout>

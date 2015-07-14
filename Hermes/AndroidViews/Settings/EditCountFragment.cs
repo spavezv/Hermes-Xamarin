@@ -11,35 +11,49 @@ using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
 using Hermes.AndroidViews;
+using Android.Support.V7.App;
+
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Hermes
 {
-	public class EditCountFragment: Fragment, View.IOnClickListener
+	[Activity(Label = "Hermes", Theme = "@style/MyTheme", ParentActivity = typeof(HermesActivity))]
+	public class EditCountFragment: AppCompatActivity, View.IOnClickListener
 	{
 		private EditText etNames, etLastnames, etEmail, etPhone, etPassword, etPasswordConfirmation;
 		private Button btnEdit;
 		private EditText edPassword;
 		private string passHash;
 		static ISharedPreferences prefs;
+		private SupportToolbar mToolbar;
+		public Block block;
 
-		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+		protected override void OnCreate(Bundle bundle)
 		{
-			var view = inflater.Inflate(Resource.Layout.signup, container, false);
-			etNames = view.FindViewById<EditText>(Resource.Id.et_names);
-			etLastnames = view.FindViewById<EditText>(Resource.Id.et_lastnames);
-			etEmail = view.FindViewById<EditText>(Resource.Id.et_email);
-			etPhone = view.FindViewById<EditText>(Resource.Id.et_phone);
-			etPassword = view.FindViewById<EditText>(Resource.Id.et_password);
+			base.OnCreate(bundle);
+			SetContentView(Resource.Layout.edit_account);
+
+			mToolbar = FindViewById<Toolbar>(Resource.Id.toolbar_edit_account);
+			SetSupportActionBar(mToolbar);
+			SupportActionBar.SetHomeButtonEnabled(true);
+			SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+			etNames = FindViewById<EditText>(Resource.Id.et_names);
+			etLastnames = FindViewById<EditText>(Resource.Id.et_lastnames);
+			etEmail = FindViewById<EditText>(Resource.Id.et_email);
+			etPhone = FindViewById<EditText>(Resource.Id.et_phone);
+			etPassword = FindViewById<EditText>(Resource.Id.et_password);
 			etPassword.Enabled = false;
 			etPassword.Visibility = ViewStates.Invisible;
-			etPasswordConfirmation = view.FindViewById<EditText>(Resource.Id.et_password_confirmation);
+			etPasswordConfirmation = FindViewById<EditText>(Resource.Id.et_password_confirmation);
 			etPasswordConfirmation.Enabled = false;
 			etPasswordConfirmation.Visibility = ViewStates.Invisible;
-			btnEdit = view.FindViewById<Button>(Resource.Id.btn_signup);
+			btnEdit = FindViewById<Button>(Resource.Id.btn_signup);
 			btnEdit.Text = "Actualizar";
 			btnEdit.SetOnClickListener(this);
 
-			prefs = ((HermesActivity)this.Activity).GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+			prefs = (this).GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
 
 			var userID = prefs.GetInt (GlobalVar.USER_ID, -1);
 			etNames.Text = prefs.GetString (GlobalVar.USER_NAMES, null);
@@ -47,20 +61,19 @@ namespace Hermes
 			etEmail.Text = prefs.GetString (GlobalVar.USER_EMAIL, null);
 			etPhone.Text =prefs.GetString(GlobalVar.USER_PHONE, null);
 
-			return view;
 		}
 		
 		public async void OnClick (View v)
 		{
 			switch (v.Id) {
 			case Resource.Id.btn_signup:
+					Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
 
-					Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(((HermesActivity)this.Activity));
-					var inflater = Activity.LayoutInflater;
+					var inflater = this.LayoutInflater;
 					var dialogView = inflater.Inflate(Resource.Layout.confirmation_pass_dialog, null);
 
-					if (dialogView != null) {
-						builder.SetTitle("Confirmar edición:");
+				if (dialogView != null) {
+						builder.SetTitle("Confirmar actualización:");
 						edPassword = dialogView.FindViewById<EditText>(Resource.Id.editText_Pwd1);
 						builder.SetView(dialogView);
 					}
@@ -76,7 +89,7 @@ namespace Hermes
 
 						else
 						{
-							Toast.MakeText((HermesActivity)this.Activity, "Error de contraseña", ToastLength.Long).Show();
+							Toast.MakeText(this, "Error de contraseña", ToastLength.Long).Show();
 						}
 					});
 
@@ -89,7 +102,7 @@ namespace Hermes
 
 		async void editClient ()
 		{
-			prefs = ((HermesActivity)this.Activity).GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+			prefs = this.GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
 			Clients c = new Clients {id= prefs.GetInt(GlobalVar.USER_ID, -1), name = etNames.Text, lastname = etLastnames.Text, phone = etPhone.Text, email = etEmail.Text, encryptedPassword = HashPassword(etPassword.Text),
 				createdAt = prefs.GetString(GlobalVar.USER_CREATED, null) , updatedAt = prefs.GetString(GlobalVar.USER_UPDATED, null)  };
 			string json = JsonConvert.SerializeObject(c);
@@ -99,14 +112,11 @@ namespace Hermes
 
 			if (json != null)
 			{
-				Toast.MakeText((HermesActivity)this.Activity, "Actualización realizada", ToastLength.Long).Show();
-//				var intent = new Intent((HermesActivity)this.Activity, typeof(HermesActivity));
-//				StartActivity(intent);
-
+				Toast.MakeText(this, "Actualización realizada", ToastLength.Long).Show();
 			}
 			else
 			{
-				Toast.MakeText((MainActivity)this.Activity, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show();
+				Toast.MakeText(this, "Problemas de conexión. Intente más tarde.", ToastLength.Long).Show();
 			}
 		}
 

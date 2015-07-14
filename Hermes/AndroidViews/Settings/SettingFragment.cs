@@ -20,6 +20,7 @@ namespace Hermes
 	{
 		ListView settingList;
 		List<string> items = new List<string>();
+		private Context mContext;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -30,17 +31,20 @@ namespace Hermes
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			View view = inflater.Inflate(Resource.Layout.settings_fragment, container, false);
-			settingList = view.FindViewById<ListView>(Resource.Id.list_settings_fragment);
+			View view = inflater.Inflate (Resource.Layout.settings_fragment, container, false);
+			settingList = view.FindViewById<ListView> (Resource.Id.list_settings_fragment);
 			poblateItems ();
-			SettingsAdapter myAdapter = new SettingsAdapter((AppCompatActivity)(container.Context), items);
+			SettingsAdapter myAdapter = new SettingsAdapter ((AppCompatActivity)(container.Context), items);
 			settingList.Adapter = myAdapter;
+			mContext = Activity;
 			settingList.ItemClick += (sender, e) => 
 			{
 				var option = items[e.Position];
 				if(option.Equals("Mi cuenta"))
 				{
-					((HermesActivity)this.Activity).replaceFragment(new EditCountFragment(), "");
+					//SupportActionBar.SetTitle(Resource.String.Update);
+					var intent = new Intent(((HermesActivity)mContext), typeof(EditCountFragment));
+					((HermesActivity)mContext).StartActivity(intent);
 				}
 			};      
 			return view;

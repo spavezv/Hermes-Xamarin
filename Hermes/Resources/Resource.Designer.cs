@@ -1569,11 +1569,8 @@ namespace Hermes
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090069
-			public const int DataRow = 2131296361;
-			
-			// aapt resource value: 0x7f090058
-			public const int TextView_Pwd1 = 2131296344;
+			// aapt resource value: 0x7f090071
+			public const int DataRow = 2131296369;
 			
 			// aapt resource value: 0x7f090043
 			public const int action_bar = 2131296323;
@@ -1629,35 +1626,35 @@ namespace Hermes
 			// aapt resource value: 0x7f090052
 			public const int booking_list_fragment = 2131296338;
 			
-			// aapt resource value: 0x7f090086
-			public const int btn_login = 2131296390;
+			// aapt resource value: 0x7f09008c
+			public const int btn_login = 2131296396;
 			
-			// aapt resource value: 0x7f090087
-			public const int btn_signup = 2131296391;
+			// aapt resource value: 0x7f090070
+			public const int btn_signup = 2131296368;
 			
-			// aapt resource value: 0x7f090074
-			public const int button = 2131296372;
+			// aapt resource value: 0x7f09007c
+			public const int button = 2131296380;
 			
 			// aapt resource value: 0x7f090039
 			public const int buttonPanel = 2131296313;
 			
-			// aapt resource value: 0x7f09008a
-			public const int card_view = 2131296394;
+			// aapt resource value: 0x7f09008f
+			public const int card_view = 2131296399;
 			
 			// aapt resource value: 0x7f09003b
 			public const int checkbox = 2131296315;
 			
-			// aapt resource value: 0x7f090085
-			public const int chk_session = 2131296389;
+			// aapt resource value: 0x7f09008b
+			public const int chk_session = 2131296395;
 			
-			// aapt resource value: 0x7f09006d
-			public const int circleView = 2131296365;
+			// aapt resource value: 0x7f090075
+			public const int circleView = 2131296373;
 			
 			// aapt resource value: 0x7f09001a
 			public const int collapseActionView = 2131296282;
 			
-			// aapt resource value: 0x7f090077
-			public const int container = 2131296375;
+			// aapt resource value: 0x7f09007f
+			public const int container = 2131296383;
 			
 			// aapt resource value: 0x7f090034
 			public const int contentPanel = 2131296308;
@@ -1683,44 +1680,44 @@ namespace Hermes
 			// aapt resource value: 0x7f09000f
 			public const int disableHome = 2131296271;
 			
-			// aapt resource value: 0x7f090076
-			public const int drawer_layout = 2131296374;
+			// aapt resource value: 0x7f09007e
+			public const int drawer_layout = 2131296382;
 			
 			// aapt resource value: 0x7f09001f
 			public const int dropdown = 2131296287;
 			
-			// aapt resource value: 0x7f090059
-			public const int editText_Pwd1 = 2131296345;
+			// aapt resource value: 0x7f090058
+			public const int editText_Pwd1 = 2131296344;
 			
 			// aapt resource value: 0x7f090045
 			public const int edit_query = 2131296325;
 			
-			// aapt resource value: 0x7f09006f
-			public const int email = 2131296367;
+			// aapt resource value: 0x7f090077
+			public const int email = 2131296375;
 			
 			// aapt resource value: 0x7f090017
 			public const int end = 2131296279;
 			
-			// aapt resource value: 0x7f090083
-			public const int et_email = 2131296387;
+			// aapt resource value: 0x7f09006d
+			public const int et_email = 2131296365;
 			
-			// aapt resource value: 0x7f090092
-			public const int et_lastnames = 2131296402;
+			// aapt resource value: 0x7f09006b
+			public const int et_lastnames = 2131296363;
 			
-			// aapt resource value: 0x7f090091
-			public const int et_names = 2131296401;
+			// aapt resource value: 0x7f09006a
+			public const int et_names = 2131296362;
 			
-			// aapt resource value: 0x7f090084
-			public const int et_password = 2131296388;
+			// aapt resource value: 0x7f09006e
+			public const int et_password = 2131296366;
 			
-			// aapt resource value: 0x7f090094
-			public const int et_password_confirmation = 2131296404;
-			
-			// aapt resource value: 0x7f090093
-			public const int et_phone = 2131296403;
+			// aapt resource value: 0x7f09006f
+			public const int et_password_confirmation = 2131296367;
 			
 			// aapt resource value: 0x7f09006c
-			public const int exp_list_fragment = 2131296364;
+			public const int et_phone = 2131296364;
+			
+			// aapt resource value: 0x7f090074
+			public const int exp_list_fragment = 2131296372;
 			
 			// aapt resource value: 0x7f09002a
 			public const int expand_activities_button = 2131296298;
@@ -1728,14 +1725,14 @@ namespace Hermes
 			// aapt resource value: 0x7f09003a
 			public const int expanded_menu = 2131296314;
 			
-			// aapt resource value: 0x7f090089
-			public const int fragment_container = 2131296393;
+			// aapt resource value: 0x7f09008e
+			public const int fragment_container = 2131296398;
 			
 			// aapt resource value: 0x7f090055
 			public const int header = 2131296341;
 			
-			// aapt resource value: 0x7f090070
-			public const int header_booking = 2131296368;
+			// aapt resource value: 0x7f090078
+			public const int header_booking = 2131296376;
 			
 			// aapt resource value: 0x7f090004
 			public const int home = 2131296260;
@@ -1749,14 +1746,14 @@ namespace Hermes
 			// aapt resource value: 0x7f09009b
 			public const int ic_action_help = 2131296411;
 			
-			// aapt resource value: 0x7f090061
-			public const int ic_calendar = 2131296353;
+			// aapt resource value: 0x7f090060
+			public const int ic_calendar = 2131296352;
 			
-			// aapt resource value: 0x7f090067
-			public const int ic_direction = 2131296359;
+			// aapt resource value: 0x7f090066
+			public const int ic_direction = 2131296358;
 			
-			// aapt resource value: 0x7f090064
-			public const int ic_price = 2131296356;
+			// aapt resource value: 0x7f090063
+			public const int ic_price = 2131296355;
 			
 			// aapt resource value: 0x7f090099
 			public const int ic_settings = 2131296409;
@@ -1770,38 +1767,38 @@ namespace Hermes
 			// aapt resource value: 0x7f09001b
 			public const int ifRoom = 2131296283;
 			
-			// aapt resource value: 0x7f09005c
-			public const int im_class = 2131296348;
+			// aapt resource value: 0x7f09005b
+			public const int im_class = 2131296347;
 			
 			// aapt resource value: 0x7f09002b
 			public const int image = 2131296299;
 			
-			// aapt resource value: 0x7f090071
-			public const int img_arrow_left = 2131296369;
-			
-			// aapt resource value: 0x7f090073
-			public const int img_arrow_right = 2131296371;
-			
-			// aapt resource value: 0x7f090080
-			public const int img_arrow_setting = 2131296384;
-			
 			// aapt resource value: 0x7f090079
-			public const int img_branch_item = 2131296377;
+			public const int img_arrow_left = 2131296377;
 			
-			// aapt resource value: 0x7f09007d
-			public const int img_drawer_item = 2131296381;
+			// aapt resource value: 0x7f09007b
+			public const int img_arrow_right = 2131296379;
+			
+			// aapt resource value: 0x7f090088
+			public const int img_arrow_setting = 2131296392;
 			
 			// aapt resource value: 0x7f090081
-			public const int img_type_item = 2131296385;
+			public const int img_branch_item = 2131296385;
 			
-			// aapt resource value: 0x7f09008b
-			public const int iv_image = 2131296395;
+			// aapt resource value: 0x7f090085
+			public const int img_drawer_item = 2131296389;
 			
-			// aapt resource value: 0x7f09005b
-			public const int layout_information = 2131296347;
+			// aapt resource value: 0x7f090089
+			public const int img_type_item = 2131296393;
 			
-			// aapt resource value: 0x7f090078
-			public const int left_drawer = 2131296376;
+			// aapt resource value: 0x7f090090
+			public const int iv_image = 2131296400;
+			
+			// aapt resource value: 0x7f09005a
+			public const int layout_information = 2131296346;
+			
+			// aapt resource value: 0x7f090080
+			public const int left_drawer = 2131296384;
 			
 			// aapt resource value: 0x7f09000c
 			public const int listMode = 2131296268;
@@ -1812,8 +1809,8 @@ namespace Hermes
 			// aapt resource value: 0x7f09002d
 			public const int list_item = 2131296301;
 			
-			// aapt resource value: 0x7f09008f
-			public const int list_settings_fragment = 2131296399;
+			// aapt resource value: 0x7f090094
+			public const int list_settings_fragment = 2131296404;
 			
 			// aapt resource value: 0x7f090018
 			public const int middle = 2131296280;
@@ -1821,8 +1818,8 @@ namespace Hermes
 			// aapt resource value: 0x7f090021
 			public const int multiply = 2131296289;
 			
-			// aapt resource value: 0x7f09006e
-			public const int name = 2131296366;
+			// aapt resource value: 0x7f090076
+			public const int name = 2131296374;
 			
 			// aapt resource value: 0x7f09001c
 			public const int never = 2131296284;
@@ -1914,8 +1911,8 @@ namespace Hermes
 			// aapt resource value: 0x7f09000a
 			public const int showcase_title_text = 2131296266;
 			
-			// aapt resource value: 0x7f090090
-			public const int signup_form = 2131296400;
+			// aapt resource value: 0x7f090069
+			public const int signup_form = 2131296361;
 			
 			// aapt resource value: 0x7f090007
 			public const int split_action_bar = 2131296263;
@@ -1938,17 +1935,17 @@ namespace Hermes
 			// aapt resource value: 0x7f090097
 			public const int tab_workshop = 2131296407;
 			
+			// aapt resource value: 0x7f09005e
+			public const int tableLayout2 = 2131296350;
+			
 			// aapt resource value: 0x7f09005f
-			public const int tableLayout2 = 2131296351;
+			public const int tableRow1 = 2131296351;
 			
-			// aapt resource value: 0x7f090060
-			public const int tableRow1 = 2131296352;
+			// aapt resource value: 0x7f090062
+			public const int tableRow2 = 2131296354;
 			
-			// aapt resource value: 0x7f090063
-			public const int tableRow2 = 2131296355;
-			
-			// aapt resource value: 0x7f090066
-			public const int tableRow3 = 2131296358;
+			// aapt resource value: 0x7f090065
+			public const int tableRow3 = 2131296357;
 			
 			// aapt resource value: 0x7f090095
 			public const int textSeparator = 2131296405;
@@ -1962,68 +1959,71 @@ namespace Hermes
 			// aapt resource value: 0x7f090032
 			public const int title_template = 2131296306;
 			
-			// aapt resource value: 0x7f090088
-			public const int toolbar = 2131296392;
+			// aapt resource value: 0x7f09008d
+			public const int toolbar = 2131296397;
 			
-			// aapt resource value: 0x7f090075
-			public const int toolbar_hermes = 2131296373;
+			// aapt resource value: 0x7f090068
+			public const int toolbar_edit_account = 2131296360;
 			
-			// aapt resource value: 0x7f09005a
-			public const int toolbar_reservation_details = 2131296346;
+			// aapt resource value: 0x7f09007d
+			public const int toolbar_hermes = 2131296381;
+			
+			// aapt resource value: 0x7f090059
+			public const int toolbar_reservation_details = 2131296345;
 			
 			// aapt resource value: 0x7f090031
 			public const int topPanel = 2131296305;
 			
-			// aapt resource value: 0x7f090068
-			public const int txt_address = 2131296360;
+			// aapt resource value: 0x7f090067
+			public const int txt_address = 2131296359;
 			
-			// aapt resource value: 0x7f09006b
-			public const int txt_block_price = 2131296363;
-			
-			// aapt resource value: 0x7f09006a
-			public const int txt_block_time = 2131296362;
+			// aapt resource value: 0x7f090073
+			public const int txt_block_price = 2131296371;
 			
 			// aapt resource value: 0x7f090072
-			public const int txt_book_header = 2131296370;
-			
-			// aapt resource value: 0x7f09005d
-			public const int txt_branche = 2131296349;
-			
-			// aapt resource value: 0x7f09007b
-			public const int txt_branche_address = 2131296379;
-			
-			// aapt resource value: 0x7f09007c
-			public const int txt_branche_city = 2131296380;
-			
-			// aapt resource value: 0x7f09008e
-			public const int txt_business = 2131296398;
+			public const int txt_block_time = 2131296370;
 			
 			// aapt resource value: 0x7f09007a
-			public const int txt_business_name = 2131296378;
+			public const int txt_book_header = 2131296378;
 			
-			// aapt resource value: 0x7f09005e
-			public const int txt_court_name = 2131296350;
+			// aapt resource value: 0x7f09005c
+			public const int txt_branche = 2131296348;
 			
-			// aapt resource value: 0x7f09008d
-			public const int txt_date = 2131296397;
+			// aapt resource value: 0x7f090083
+			public const int txt_branche_address = 2131296387;
 			
-			// aapt resource value: 0x7f090062
-			public const int txt_date_time = 2131296354;
+			// aapt resource value: 0x7f090084
+			public const int txt_branche_city = 2131296388;
 			
-			// aapt resource value: 0x7f09007e
-			public const int txt_drawer_item = 2131296382;
-			
-			// aapt resource value: 0x7f09007f
-			public const int txt_item_setting = 2131296383;
-			
-			// aapt resource value: 0x7f090065
-			public const int txt_price = 2131296357;
-			
-			// aapt resource value: 0x7f09008c
-			public const int txt_type = 2131296396;
+			// aapt resource value: 0x7f090093
+			public const int txt_business = 2131296403;
 			
 			// aapt resource value: 0x7f090082
-			public const int txt_type_item = 2131296386;
+			public const int txt_business_name = 2131296386;
+			
+			// aapt resource value: 0x7f09005d
+			public const int txt_court_name = 2131296349;
+			
+			// aapt resource value: 0x7f090092
+			public const int txt_date = 2131296402;
+			
+			// aapt resource value: 0x7f090061
+			public const int txt_date_time = 2131296353;
+			
+			// aapt resource value: 0x7f090086
+			public const int txt_drawer_item = 2131296390;
+			
+			// aapt resource value: 0x7f090087
+			public const int txt_item_setting = 2131296391;
+			
+			// aapt resource value: 0x7f090064
+			public const int txt_price = 2131296356;
+			
+			// aapt resource value: 0x7f090091
+			public const int txt_type = 2131296401;
+			
+			// aapt resource value: 0x7f09008a
+			public const int txt_type_item = 2131296394;
 			
 			// aapt resource value: 0x7f090008
 			public const int up = 2131296264;
@@ -2163,85 +2163,88 @@ namespace Hermes
 			public const int details_fragment = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int exp_child_list = 2130903069;
+			public const int edit_account = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int exp_group_list = 2130903070;
+			public const int exp_child_list = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int expandable_list = 2130903071;
+			public const int exp_group_list = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int handy = 2130903072;
+			public const int expandable_list = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int header = 2130903073;
+			public const int handy = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int header_booking = 2130903074;
+			public const int header = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int help_fragment = 2130903075;
+			public const int header_booking = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int hermes = 2130903076;
+			public const int help_fragment = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int item_branch_listview = 2130903077;
+			public const int hermes = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int item_listview = 2130903078;
+			public const int item_branch_listview = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int item_setting = 2130903079;
+			public const int item_listview = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int item_type_lstv = 2130903080;
+			public const int item_setting = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int login = 2130903081;
+			public const int item_type_lstv = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int main = 2130903082;
+			public const int login = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int row_reservation = 2130903083;
+			public const int main = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int select_block_fragment = 2130903084;
+			public const int row_reservation = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int select_dialog_item_material = 2130903085;
+			public const int select_block_fragment = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int select_dialog_multichoice_material = 2130903086;
+			public const int select_dialog_item_material = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int select_dialog_singlechoice_material = 2130903087;
+			public const int select_dialog_multichoice_material = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int settings_fragment = 2130903088;
+			public const int select_dialog_singlechoice_material = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int showcase_button = 2130903089;
+			public const int settings_fragment = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int signup = 2130903090;
+			public const int showcase_button = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int support_simple_spinner_dropdown_item = 2130903091;
+			public const int signup = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int text_separator = 2130903092;
+			public const int support_simple_spinner_dropdown_item = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int toolbar = 2130903093;
+			public const int text_separator = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int user_reservations = 2130903094;
+			public const int toolbar = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int workshop_fragment = 2130903095;
+			public const int user_reservations = 2130903095;
+			
+			// aapt resource value: 0x7f030038
+			public const int workshop_fragment = 2130903096;
 			
 			static Layout()
 			{
@@ -2409,6 +2412,9 @@ namespace Hermes
 			
 			// aapt resource value: 0x7f0b002f
 			public const int TtTipoDeporte = 2131427375;
+			
+			// aapt resource value: 0x7f0b0049
+			public const int Update = 2131427401;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int abc_action_bar_home_description = 2131427328;

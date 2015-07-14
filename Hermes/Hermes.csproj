@@ -203,6 +203,7 @@
     <AndroidResource Include="Resources\menu\menu_reservation_details.xml" />
     <AndroidResource Include="Resources\layout\confirmation_pass_dialog.axml" />
     <AndroidResource Include="Resources\layout\item_setting.axml" />
+    <AndroidResource Include="Resources\layout\edit_account.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">

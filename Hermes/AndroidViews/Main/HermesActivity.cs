@@ -115,7 +115,7 @@ namespace Hermes.AndroidViews.Main
             {
                 case Resource.Id.ic_settings:
 				
-				    replaceFragment(new SettingFragment(), "");
+				    nextFragment(new SettingFragment());
 				SupportActionBar.SetTitle(Resource.String.Configurations);
                     break;
                 case Resource.Id.ic_signout:
@@ -130,8 +130,8 @@ namespace Hermes.AndroidViews.Main
 		protected override void OnResume(){
 			ISharedPreferences prefs = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
 			if (prefs.GetBoolean (GlobalVar.RESERVATION_DETAILS, false)) {
+				
 				UserReservations f = (UserReservations) FragmentManager.FindFragmentByTag (GlobalVar.RESERVATION_DETAILS);
-
 				FragmentTransaction fragTransaction = FragmentManager.BeginTransaction();
 				fragTransaction.Detach(f);
 				fragTransaction.Attach(f);
@@ -140,6 +140,10 @@ namespace Hermes.AndroidViews.Main
 				prefs.Edit().PutBoolean(GlobalVar.RESERVATION_DETAILS, false);
 				prefs.Edit ().Apply ();
 			}
+			else if (prefs.GetBoolean (GlobalVar.EDIT_ACCOUNT, false)){
+				nextFragment(new SettingFragment());
+			}
+				
 			base.OnResume ();
 		}
 
