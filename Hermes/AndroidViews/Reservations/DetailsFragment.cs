@@ -29,6 +29,10 @@ namespace Hermes
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.details_fragment);
 
+			ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+			editor.PutString(GlobalVar.CURRENT_FRAGMENT, "USER_RESERVATIONS");
+			editor.Apply();
+
 			mToolbar = FindViewById<Toolbar>(Resource.Id.toolbar_reservation_details);
 			SetSupportActionBar(mToolbar);
 			SupportActionBar.SetHomeButtonEnabled(true);

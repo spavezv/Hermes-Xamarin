@@ -16,8 +16,8 @@ namespace Hermes.WebServices
 {
     class GlobalVar
     {
-		//public const string URL = "http://192.168.1.101:8080/HermesWS/webresources/hermes.";
-		public const string URL = "http://172.17.33.212:8080/HermesWS/webresources/hermes.";
+		public const string URL = "http://192.168.1.100:8080/HermesWS/webresources/hermes.";
+		//public const string URL = "http://172.17.33.212:8080/HermesWS/webresources/hermes.";
 		public const string HERMES_PREFERENCES = "HERMES.PREFERENCES";
 		public const string USER_ID = "HERMES.USER_ID";
 		public const string REMEMBER_USER = "HERMES.REMEMBER_UER";
@@ -29,7 +29,9 @@ namespace Hermes.WebServices
 		public const string USER_CREATED = "HERMES.USER_CREATED";
 		public const string USER_UPDATED = "HERMES.USER_UPDATED";
 		public const string RESERVATION_DETAILS = "HERMES.RESERVATION_DETAILS";
+		public const string USER_RESERVATIONS = "HERMES.USER_RESERVATIONS";
 		public const string EDIT_ACCOUNT = "HERMES.EDIT_ACCOUNT";
+		public const string COURT_BOOKING = "HERMES.COURT_BOOKING";
 		public const string CURRENT_FRAGMENT = "HERMES.CURRENT_FRAGMENT";
         //REGEX
         public static Regex PHONE_REGEX = new Regex("^([5-9][0-9]{7})$");

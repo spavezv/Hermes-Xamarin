@@ -78,7 +78,7 @@ namespace Hermes
       Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(((HermesActivity)this.Activity));
       Android.App.AlertDialog alertDialog = builder.Create();
       alertDialog.SetTitle("Sin sucursales.");
-      alertDialog.SetMessage("No existen sucursales cerca de tu ubicación.");
+      alertDialog.SetMessage("No tenemos sucursales para tu deporte.");
       alertDialog.SetButton("OK", (s, ev) =>
       {
         var intent = new Intent((HermesActivity)this.Activity, typeof(HermesActivity));

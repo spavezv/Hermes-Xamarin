@@ -38,7 +38,11 @@ namespace Hermes.AndroidViews.Reservations
     public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
       var view = inflater.Inflate(Resource.Layout.user_reservations, container, false);
-		
+
+		ISharedPreferencesEditor editor = this.Activity.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+		editor.PutString(GlobalVar.CURRENT_FRAGMENT, "USER_RESERVATIONS");
+		editor.Apply();
+
       mRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.rv_reservations);
 	  txtMessage = view.FindViewById<TextView> (Resource.Id.textNoReservations);
       //Create our layout manager

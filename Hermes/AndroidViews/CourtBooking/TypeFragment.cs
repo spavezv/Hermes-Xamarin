@@ -53,6 +53,11 @@ namespace Hermes.AndroidViews.CourtBooking
 				imgRight.SetOnClickListener (this);
 
 			};
+
+			ISharedPreferencesEditor editor = this.Activity.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+			editor.PutString(GlobalVar.CURRENT_FRAGMENT, "COURT_BOOKING");
+			editor.Apply();
+
 			return view;
 		}
 
