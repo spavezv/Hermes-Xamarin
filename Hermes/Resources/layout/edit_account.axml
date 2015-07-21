@@ -14,7 +14,9 @@
         android:id="@+id/signup_form"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
         <EditText
             android:id="@+id/et_names"
             android:layout_width="match_parent"

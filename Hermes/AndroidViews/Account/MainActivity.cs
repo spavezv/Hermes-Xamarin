@@ -12,7 +12,7 @@ using Hermes.WebServices;
 
 namespace Hermes.AndroidViews
 {
-    [Activity(Label = "Hermes", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
+    [Activity(Label = "Hermes", MainLauncher = true, Icon = "@drawable/ic_launcher", Theme = "@style/MyTheme")]
     public class MainActivity : AppCompatActivity
     {
 

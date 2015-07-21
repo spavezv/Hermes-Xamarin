@@ -39,7 +39,8 @@ namespace Hermes.AndroidViews.CourtBooking
 
 			txtCategory.SetText (Resource.String.TipodeCancha);
 			imgRight.SetImageResource (Resource.Drawable.ic_arrow_right_disable);
-			imgLeft.SetImageResource (Resource.Drawable.ic_arrow_left_disable);
+            imgLeft.Visibility = ViewStates.Invisible;
+			//imgLeft.SetImageResource (Resource.Drawable.ic_arrow_left_disable);
 
 			listViewCourtTypes.ChoiceMode = ChoiceMode.Single;
 

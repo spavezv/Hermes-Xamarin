@@ -32,11 +32,9 @@ namespace Hermes.AndroidViews.Main
         public string DateEsp { set; get; }
         public string Date { set; get; }
         public Branches mBranch { set; get; }
-
         public string workshop { set; get; }
-
         public Block mBlock { set; get; }
-		public int title { set; get; }
+        public int title { set; get; }
         public static Clients Client;
 
         protected override void OnCreate(Bundle bundle)
@@ -62,15 +60,41 @@ namespace Hermes.AndroidViews.Main
             mLeftAdapter = new ItemsAdapter(this, mLeftDataSet);
             mLeftDrawer.Adapter = mLeftAdapter;
 
-			mLeftDrawer.AddHeaderView(LayoutInflater.From(this).Inflate(Resource.Layout.header, null, false), null, true);
+            mLeftDrawer.AddHeaderView(LayoutInflater.From(this).Inflate(Resource.Layout.header, null, false), null, true);
 
-			ISharedPreferences prefs = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
-			 
-			TextView txtEmail = FindViewById<TextView> (Resource.Id.email);
-			txtEmail.Text = prefs.GetString (GlobalVar.USER_EMAIL, null);
-           
-			mLeftDrawer.ItemClick += OnListItemClick;
-            mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
+            ISharedPreferences prefs = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+
+            TextView txtEmail = FindViewById<TextView>(Resource.Id.email);
+            txtEmail.Text = prefs.GetString(GlobalVar.USER_EMAIL, null);
+
+            ISharedPreferences editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
+
+            String currentFragment = editor.GetString(GlobalVar.CURRENT_FRAGMENT, "");
+            Fragment f;
+            if (currentFragment.Equals("SETTINGS"))
+            {
+                title = Resource.String.Settings;
+                f = new SettingFragment();
+            }
+            else if (currentFragment.Equals("USER_RESERVATIONS"))
+            {
+                title = Resource.String.MyReservation;
+                f = new UserReservations();
+            }
+            else
+            {
+                title = Resource.String.Book;
+                f = new TypeFragment();
+            }
+
+            FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
+            fragmentTx.Add(Resource.Id.container, f, "");
+            fragmentTx.Commit();
+
+            
+
+            mLeftDrawer.ItemClick += OnListItemClick;
+            mDrawerToggle = new MyActionBarDrawerToggle(this, mDrawerLayout, Resource.String.OpenDrawer, title);
 
             mDrawerLayout.SetDrawerListener(mDrawerToggle);
             SupportActionBar.SetHomeButtonEnabled(true);
@@ -95,51 +119,29 @@ namespace Hermes.AndroidViews.Main
                 //This is the first the time the activity is ran
                 SupportActionBar.SetTitle(title);
             }
-
-
-			ISharedPreferences editor = this.GetSharedPreferences (GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
-
-			String currentFragment = editor.GetString (GlobalVar.CURRENT_FRAGMENT, "");
-			Fragment f;
-			if (currentFragment.Equals ("SETTINGS")) {
-				SupportActionBar.SetTitle (Resource.String.Configurations);
-				title = Resource.String.Configurations;
-				f = new SettingFragment ();
-			} else if (currentFragment.Equals ("USER_RESERVATIONS")) {
-				SupportActionBar.SetTitle (Resource.String.MyReservation);
-				title = Resource.String.MyReservation;
-				f = new UserReservations ();
-			} else {
-				SupportActionBar.SetTitle (Resource.String.Book);
-				title = Resource.String.Book;
-				f = new TypeFragment ();
-			}
-            FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-			fragmentTx.Add(Resource.Id.container, f, "");
-            fragmentTx.Commit();
-
-
         }
-        
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_hermes, menu);
             return base.OnCreateOptionsMenu(menu);
         }
-        
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
                 case Resource.Id.ic_settings:
-				ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
-				editor.PutString(GlobalVar.CURRENT_FRAGMENT, "SETTINGS");
-				editor.Apply();
-				nextFragment(new SettingFragment());
-				SupportActionBar.SetTitle(Resource.String.Configurations);
-				title = Resource.String.Configurations;
+                    ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+                    editor.PutString(GlobalVar.CURRENT_FRAGMENT, "SETTINGS");
+                    mDrawerToggle.mClosedResource = Resource.String.Settings;
+                    editor.Apply();
+                    nextFragment(new SettingFragment());
                     break;
                 case Resource.Id.ic_signout:
+                    ISharedPreferencesEditor aditor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+                    aditor.Clear();
+                    aditor.Apply();
                     signout();
                     break;
             }
@@ -147,28 +149,6 @@ namespace Hermes.AndroidViews.Main
             return base.OnOptionsItemSelected(item);
         }
 
-		/*
-		protected override void OnResume(){
-			ISharedPreferences prefs = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private);
-			if (prefs.GetString (GlobalVar.CURRENT_FRAGMENT, "").Equals("USER_RESERVATIONS")) {
-				
-				UserReservations f = (UserReservations) FragmentManager.FindFragmentByTag (GlobalVar.RESERVATION_DETAILS);
-				FragmentTransaction fragTransaction = FragmentManager.BeginTransaction();
-				fragTransaction.Detach(f);
-				fragTransaction.Attach(f);
-				fragTransaction.Commit();
-			}
-			else if (prefs.GetBoolean (GlobalVar.EDIT_ACCOUNT, false)){
-				nextFragment(new SettingFragment());
-
-				prefs.Edit().PutBoolean(GlobalVar.EDIT_ACCOUNT, false);
-				prefs.Edit ().Apply ();
-			}
-				
-			base.OnResume ();
-		}
-		*/
-        
         protected override void OnSaveInstanceState(Bundle outState)
         {
             if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
@@ -183,13 +163,13 @@ namespace Hermes.AndroidViews.Main
 
             base.OnSaveInstanceState(outState);
         }
-        
+
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
             base.OnPostCreate(savedInstanceState);
             mDrawerToggle.SyncState();
         }
-        
+
         public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
         {
             base.OnConfigurationChanged(newConfig);
@@ -198,56 +178,56 @@ namespace Hermes.AndroidViews.Main
 
         void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+            Console.WriteLine(GetString(title));
             var listView = sender as ListView;
-			ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
+            ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
             switch (e.Position)
             {
                 case 0: //Usuario
                     break;
                 case 1: //Reservar cancha
-				editor.PutString(GlobalVar.CURRENT_FRAGMENT, "BOOK");
-				editor.Apply();
-				SupportActionBar.SetTitle(Resource.String.Book);
-				title = Resource.String.Book;
+                    editor.PutString(GlobalVar.CURRENT_FRAGMENT, "BOOK");
+                    editor.Apply();
+                    mDrawerToggle.mClosedResource = Resource.String.Book;
                     replaceFragment(new TypeFragment(), "");
                     break;
                 case 2: //Mis Reserva
-				editor.PutString(GlobalVar.CURRENT_FRAGMENT, "MY_RESERVATIONS");
-				editor.Apply();
-				SupportActionBar.SetTitle(Resource.String.MyReservation);
-				title = Resource.String.MyReservation;
-				replaceFragment(new UserReservations(), GlobalVar.RESERVATION_DETAILS);
+                    editor.PutString(GlobalVar.CURRENT_FRAGMENT, "USER_RESERVATIONS");
+                    editor.Apply();
+                    mDrawerToggle.mClosedResource = Resource.String.MyReservation;
+                    replaceFragment(new UserReservations(), GlobalVar.RESERVATION_DETAILS);
                     break;
                 case 3: //Comentarios
-				SupportActionBar.SetTitle(Resource.String.Configurations);
-				title = Resource.String.Configurations;
-					sendComments();
+                    sendComments();
+                    //mDrawerToggle.mClosedResource = Resource.String.Comments;
                     break;
                 case 4: //ayuda
-				SupportActionBar.SetTitle(Resource.String.Help);
-				title = Resource.String.Help;
-				replaceFragment(new HelpFragment(), "");
-				break;
-			}
+                    replaceFragment(new HelpFragment(), "");
+                    mDrawerToggle.mClosedResource = Resource.String.Help;
+                    break;
+            }
 
         }
 
-		void sendComments ()
-		{
-			var email = new Intent (Android.Content.Intent.ActionSend);
+        void sendComments()
+        {
+            var email = new Intent(Android.Content.Intent.ActionSend);
 
-			email.PutExtra(Android.Content.Intent.ExtraEmail, new string[]{"hermes.app.android@gmail.com"});
-			email.PutExtra(Android.Content.Intent.ExtraSubject, "Envio de comentario");
-			email.PutExtra(Android.Content.Intent.ExtraText, "");
-			email.SetType("message/rfc822");
-			try {
-				StartActivity(email);
-			} catch (Android.Content.ActivityNotFoundException ex) {
-				Toast.MakeText(this, "No existe aplicación de correo instalada", ToastLength.Short).Show();
-			}
-		}
+            email.PutExtra(Android.Content.Intent.ExtraEmail, new string[] { "hermes.app.android@gmail.com" });
+            email.PutExtra(Android.Content.Intent.ExtraSubject, "Envio de comentario");
+            email.PutExtra(Android.Content.Intent.ExtraText, "");
+            email.SetType("message/rfc822");
+            try
+            {
+                StartActivity(email);
+            }
+            catch (Android.Content.ActivityNotFoundException ex)
+            {
+                Toast.MakeText(this, "No existe aplicación de correo instalada", ToastLength.Short).Show();
+            }
+        }
 
-		public void replaceFragment(Fragment fragment, String id)
+        public void replaceFragment(Fragment fragment, String id)
         {
 
             FragmentTransaction transaction = FragmentManager.BeginTransaction();
@@ -256,10 +236,10 @@ namespace Hermes.AndroidViews.Main
             mDrawerLayout.CloseDrawers();
         }
 
-		public void nextFragment(Fragment fragment)
+        public void nextFragment(Fragment fragment)
         {
             FragmentTransaction transaction = FragmentManager.BeginTransaction();
-			transaction.Replace(Resource.Id.container, fragment);
+            transaction.Replace(Resource.Id.container, fragment);
             transaction.AddToBackStack(null);
             transaction.Commit();
         }

@@ -9,7 +9,7 @@ namespace Hermes.AndroidViews
     {
 		private AppCompatActivity  mHostActivity;
         private int mOpenedResource;
-        private int mClosedResource;
+        public int mClosedResource;
 		public MyActionBarDrawerToggle(AppCompatActivity  host, DrawerLayout drawerLayout, int openedResource, int closedResource)
             : base(host, drawerLayout, openedResource, closedResource)
         {

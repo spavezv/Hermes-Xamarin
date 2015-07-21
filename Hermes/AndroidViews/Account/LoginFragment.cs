@@ -50,6 +50,9 @@ namespace Hermes.AndroidViews.Account
 			etMail.Text = SignupFragment.email;
             etPassword = view.FindViewById<EditText>(Resource.Id.et_password);
 			etPassword.Text = SignupFragment.password;
+            SignupFragment.email = "";
+            SignupFragment.password = "";
+
             btnSignup = view.FindViewById<Button>(Resource.Id.btn_signup);
             btnLogin = view.FindViewById<Button>(Resource.Id.btn_login);
             checkbox = view.FindViewById<CheckBox>(Resource.Id.chk_session);

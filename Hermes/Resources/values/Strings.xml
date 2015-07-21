@@ -71,4 +71,7 @@
 
     <string name="NoReservations">Usted no tiene reservas.</string>
 
+    <string name="Comments">Comentarios</string>
+    <string name="Settings">Ajustes</string>
+
 </resources>
