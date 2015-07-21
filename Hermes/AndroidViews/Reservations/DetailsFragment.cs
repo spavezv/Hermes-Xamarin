@@ -80,8 +80,11 @@ namespace Hermes
 						ISharedPreferencesEditor editor = this.GetSharedPreferences(GlobalVar.HERMES_PREFERENCES, Android.Content.FileCreationMode.Private).Edit();
 						editor.PutString(GlobalVar.CURRENT_FRAGMENT, "USER_RESERVATIONS");
 						editor.Apply();
-						//Finish();
-						OnBackPressed();
+
+                        var intent = new Intent(this, typeof(HermesActivity));
+                        intent.AddFlags(ActivityFlags.ClearTop);
+                        (this).StartActivity(intent);
+                        this.Finish();
 					});
 				alertDialog.SetButton2("Cancelar", (s, ev) => { alertDialog.Dismiss(); });
 				alertDialog.Show();
